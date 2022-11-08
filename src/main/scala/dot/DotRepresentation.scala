@@ -1,7 +1,7 @@
 package com.github.tizuck
 package dot
 
-import jsonGraphSchema.{Graph, Node, TopLevelSingleGraph}
+import jsonGraphSchema.{SimpleGraph, Node, TopLevelSingleGraph}
 
 import scalax.collection.GraphPredef
 import scalax.collection.edge.LDiEdge
@@ -20,7 +20,7 @@ object DotRepresentation {
      iNodeTransformer:Option[NodeTransformer[N,E]] = None)
 
   def apply[M1,M2,M3](topLevel: TopLevelSingleGraph[M1,M2,M3], representationCtx: RepresentationCtx[Node[M2],LDiEdge]):DotRepresentation = {
-    def toScalaGraph(graph:Graph[M1,M2,M3]):scalax.collection.Graph[Node[M2],LDiEdge] = {
+    def toScalaGraph(graph:SimpleGraph[M1,M2,M3]):scalax.collection.Graph[Node[M2],LDiEdge] = {
       val nodes = graph.nodes.nodes
 
       import scalax.collection.edge.Implicits._
