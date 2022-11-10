@@ -1,13 +1,11 @@
 package com.github.tizuck
 
-import com.github.tizuck.dot.DotRepresentation
-import com.github.tizuck.dot.DotRepresentation.RepresentationCtx
-import io.circe._
+import dot.DotRepresentation
+import dot.DotRepresentation.RepresentationCtx
+
 import io.circe.parser._
-import io.circe.Decoder.Result
-import io.circe.{Decoder, DecodingFailure, HCursor}
 import scalax.collection.edge.LDiEdge
-import scalax.collection.io.dot.{DotAttr, DotEdgeStmt, DotGraph, DotRootGraph, EdgeTransformer, Id, NodeId}
+import scalax.collection.io.dot.{DotAttr, DotEdgeStmt, DotGraph, DotRootGraph, Id, NodeId}
 
 
 object Main extends App {
@@ -65,7 +63,7 @@ object Main extends App {
 
   val parseResult = parse(json)
 
-  import io.circe.generic.auto._, io.circe.syntax._
+  import io.circe.generic.auto._
 
   for {
     p <- parseResult

@@ -1,6 +1,5 @@
 package com.github.tizuck
 
-import io.circe.Decoder.Result
 import io.circe.{Decoder, DecodingFailure, HCursor}
 
 object jsonGraphSchema {
@@ -48,7 +47,7 @@ object jsonGraphSchema {
                                             override val metadata: Option[T] = None
                                           ) extends Edge[T]
 
-  sealed trait Graph[M1,M2,M3,E[M] <: Edge[M]] {
+  sealed trait Graph[M1,M2,M3] {
     val id:Option[String]
 
     val label:Option[String]
@@ -61,64 +60,64 @@ object jsonGraphSchema {
 
     val nodes:Nodes[M2]
 
-    val edges:List[E[M3]]
+    val edges:List[Edge[M3]]
   }
   sealed case class SimpleGraph[M1,M2,M3](
                     override val tpe:Option[String] = None,
                     override val metadata:Option[M1] = None,
-                    override val nodes:Nodes[M2] = Nodes(Nil),
+                    override val nodes:Nodes[M2] = Nodes(List.empty[Node[M2]]),
                     override val id: Option[String] = None,
                     override val label: Option[String] = None,
                     override val directed: Boolean = true,
-                    override val edges:List[SimpleEdge[M3]] = Nil,
-                  ) extends Graph[M1,M2,M3,SimpleEdge] {
+                    override val edges:List[SimpleEdge[M3]] = List.empty[SimpleEdge[M3]],
+                  ) extends Graph[M1,M2,M3] {
   }
 
   sealed case class DirectedHyperGraph[M1,M2,M3](
                                                   override val tpe: Option[String] = None,
                                                   override val metadata: Option[M1] = None,
-                                                  override val nodes: Nodes[M2] = Nodes(Nil),
+                                                  override val nodes: Nodes[M2] = Nodes(List.empty[Node[M2]]),
                                                   override val id: Option[String] = None,
                                                   override val label: Option[String] = None,
                                                   override val directed: Boolean = true,
-                                                  override val edges: List[DirectedHyperEdge[M3]] = Nil
-                                                ) extends Graph[M1,M2,M3,DirectedHyperEdge]
+                                                  override val edges: List[DirectedHyperEdge[M3]] = List.empty[DirectedHyperEdge[M3]]
+                                                ) extends Graph[M1,M2,M3]
 
   sealed case class UndirectedHyperGraph[M1,M2,M3](
                                                     override val tpe: Option[String] = None,
                                                     override val metadata: Option[M1] = None,
-                                                    override val nodes: Nodes[M2] = Nodes(Nil),
+                                                    override val nodes: Nodes[M2] = Nodes(List.empty[Node[M2]]),
                                                     override val id: Option[String] = None,
                                                     override val label: Option[String] = None,
                                                     override val directed: Boolean = true,
                                                     override val edges:List[UndirectedHyperEdge[M3]]
-                                                  ) extends Graph[M1,M2,M3,UndirectedHyperEdge]
+                                                  ) extends Graph[M1,M2,M3]
 
-  sealed case class TopLevelSingleGraph[M1,M2,M3,E[M] <: Edge[M]](graph: Graph[M1,M2,M3,E])
-  sealed case class TopLevelMultipleGraphs[M1,M2,M3,E[M] <: Edge[M]](graphs:List[Graph[M1,M2,M3,E]])
-
-
+  sealed case class TopLevelSingleGraph[M1,M2,M3](graph: Graph[M1,M2,M3])
+  sealed case class TopLevelMultipleGraphs[M1,M2,M3](graphs:List[Graph[M1,M2,M3]])
 
 
-  implicit def toplevelSingleGraphDecoder[M1,M2,M3,E[M] <: Edge[M]](implicit t1decoder:Decoder[M1],
+
+
+  implicit def toplevelSingleGraphDecoder[M1,M2,M3,E <: Edge[M3]](implicit t1decoder:Decoder[M1],
                                                     t2decoder:Decoder[M2],
-                                                    t3decoder:Decoder[M3]):Decoder[TopLevelSingleGraph[M1,M2,M3,E]] = {
+                                                    t3decoder:Decoder[M3]):Decoder[TopLevelSingleGraph[M1,M2,M3]] = {
     (c:HCursor) => {
       for {
-        graph <- c.downField("graph").as[Graph[M1,M2,M3,E]]
+        graph <- c.downField("graph").as[Graph[M1,M2,M3]]
       } yield {
         TopLevelSingleGraph(graph)
       }
     }
   }
 
-  implicit def topLevelMultipleGraphsDecoder[M1,M2,M3,E[M] <: Edge[M]](implicit t1decoder:Decoder[M1],
+  implicit def topLevelMultipleGraphsDecoder[M1,M2,M3,E <: Edge[M3]](implicit t1decoder:Decoder[M1],
                                                          t2decoder:Decoder[M2],
                                                          t3decoder:Decoder[M3]):
-  Decoder[TopLevelMultipleGraphs[M1,M2,M3,E]] = {
+  Decoder[TopLevelMultipleGraphs[M1,M2,M3]] = {
     (c:HCursor) => {
       for {
-        graphs <- c.downField("graphs").as[List[Graph[M1,M2,M3,E]]]
+        graphs <- c.downField("graphs").as[List[Graph[M1,M2,M3]]]
       } yield {
         TopLevelMultipleGraphs(graphs)
       }
@@ -184,25 +183,25 @@ object jsonGraphSchema {
 
   implicit def simpleEdgeDecoder[T1](implicit t1Decoder:Decoder[T1]):Decoder[SimpleEdge[T1]] = {
     (c: HCursor) => {
-      for {
-        id <- c.downField("id").as[Option[String]]
-        source <- c.downField("source").as[String]
-        target <- c.downField("target").as[String]
-        relation <- c.downField("relation").as[Option[String]]
-        directed <- c.downField("directed").as[Option[Boolean]]
-        label <- c.downField("label").as[Option[String]]
-        metadata <- c.downField("metadata").as[Option[T1]]
-      } yield {
-        new SimpleEdge[T1](
-          id = id,
-          source = source,
-          target = target,
-          relation = relation,
-          directed = directed.getOrElse(true),
-          label = label,
-          metadata = metadata
-        )
-      }
+        for {
+          id <- c.downField("id").as[Option[String]]
+          source <- c.downField("source").as[String]
+          target <- c.downField("target").as[String]
+          relation <- c.downField("relation").as[Option[String]]
+          directed <- c.downField("directed").as[Option[Boolean]]
+          label <- c.downField("label").as[Option[String]]
+          metadata <- c.downField("metadata").as[Option[T1]]
+        } yield {
+          new SimpleEdge[T1](
+            id = id,
+            source = source,
+            target = target,
+            relation = relation,
+            directed = directed.getOrElse(true),
+            label = label,
+            metadata = metadata
+          )
+        }
     }
   }
 
@@ -249,13 +248,13 @@ object jsonGraphSchema {
     }
   }
 
-  implicit def graphDecoder[T1,T2,T3,E[T] <: Edge[T]](implicit t1decoder: Decoder[T1],
+  implicit def graphDecoder[T1,T2,T3,E <: Edge[T3]](implicit t1decoder: Decoder[T1],
                                                         t2decoder: Decoder[T2],
-                                                        t3decoder: Decoder[T3]):Decoder[Graph[T1,T2,T3,E]] = {
-    val l: List[Decoder[Graph[T1,T2,T3,E]]] = List[Decoder[Graph[T1,T2,T3,E]]](
+                                                        t3decoder: Decoder[T3]):Decoder[Graph[T1,T2,T3]] = {
+    val l: List[Decoder[Graph[T1,T2,T3]]] = List[Decoder[Graph[T1,T2,T3]]](
       Decoder[SimpleGraph[T1,T2,T3]].widen,
+      Decoder[UndirectedHyperGraph[T1,T2,T3]].widen,
       Decoder[DirectedHyperGraph[T1,T2,T3]].widen,
-      Decoder[UndirectedHyperGraph[T1,T2,T3]].widen
     )
     l.reduceLeft(_ or _)
   }

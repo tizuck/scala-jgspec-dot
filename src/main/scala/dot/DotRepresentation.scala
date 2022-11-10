@@ -1,7 +1,7 @@
 package com.github.tizuck
 package dot
 
-import jsonGraphSchema.{SimpleGraph, Node, TopLevelSingleGraph}
+import jsonGraphSchema.{Node, SimpleGraph, TopLevelSingleGraph}
 
 import scalax.collection.GraphPredef
 import scalax.collection.edge.LDiEdge
@@ -36,8 +36,13 @@ object DotRepresentation {
     }
     import scalax.collection.io.dot._
 
-    DotRepresentation(
-      toScalaGraph(topLevel.graph).toDot(representationCtx.dotRoot,representationCtx.edgeTransformer)
-    )
+    topLevel.graph match {
+      case s@SimpleGraph(tpe, metadata, nodes, id, label, directed, edges) =>
+        DotRepresentation(
+          toScalaGraph(s).toDot(representationCtx.dotRoot, representationCtx.edgeTransformer)
+        )
+      case jsonGraphSchema.DirectedHyperGraph(tpe, metadata, nodes, id, label, directed, edges) => throw new NotImplementedError()
+      case jsonGraphSchema.UndirectedHyperGraph(tpe, metadata, nodes, id, label, directed, edges) => throw new NotImplementedError()
+    }
   }
 }

@@ -1,0 +1,28 @@
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(com.github.tizuck.adt.unit.EdgeADTSpec, org.scalatest.tools.Framework$$anon$1@7d0ebc7c, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(com.github.tizuck.adt.integration.JsonParserToADTSpec, org.scalatest.tools.Framework$$anon$1@7d0ebc7c, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mEdgeADTSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mAn Edge parser[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should parse a simple edge to the correct type[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should parse a directedHyperEdge to the correct Type[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should parse a undirectedHyperEdge to the correct Type[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mJsonParserToADTSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mA Json Parser[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  should parse an empty single graph and the ADT[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  - should contain an empty graph[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  should parse a single graph with nodes only and the ADT[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  - should contain a single graph with the two expected nodes[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  should parse a single graph with edges and nodes and the ADT[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  - should contain a single graph with expected edges and nodes[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  should parse a single graph with hyperedges and the ADT[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  - should contain a HyperGraph instance with expected hyperedges and nodes *** FAILED ***[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m    adt.equals(expectedADT) was false (JsonParserToADTSpec.scala:96)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 489 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 7[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 2, aborted 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 6, failed 1, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m*** 1 TEST FAILED ***[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com.github.tizuck.adt.unit.EdgeADTSpec[0m
+[0m[[0m[31merror[0m] [0m[0mFailed tests:[0m
+[0m[[0m[31merror[0m] [0m[0m	com.github.tizuck.adt.integration.JsonParserToADTSpec[0m
+[0m[[0m[31merror[0m] [0m[0m(Test / [31mtest[0m) sbt.TestsFailedException: Tests unsuccessful[0m

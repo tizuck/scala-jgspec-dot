@@ -1,0 +1,15 @@
+{
+  "graph": {
+    "nodes": {
+      "A": {},
+      "B": {}
+    },
+    "hyperedges": [
+      {
+        "nodes": ["A", "B"],
+        "relation": "associated",
+        "metadata": {}
+      }
+    ]
+  }
+}
