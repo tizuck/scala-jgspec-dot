@@ -1,0 +1,786 @@
+<?xml version="1.0"?>
+<!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
+<coverage 
+line-rate="0.75" lines-valid="334" lines-covered="249" branches-valid="4" branches-covered="2" branch-rate="0.50" complexity="0" version="1.0" timestamp="1668092170053">
+    <sources>
+        <source>--source</source>
+        <source>C:/Users/dbs476/Documents/Repos/scala-jgspec-dot/src/main/scala</source>
+    </sources>
+    <packages>
+        <package name="com.github.tizuck" line-rate="0.81" branch-rate="0.50" complexity="0">
+            <classes>
+                <class 
+                name="com.github.tizuck.jsonGraphSchema" filename="jsonGraphSchema.scala" line-rate="0.95" branch-rate="1.00" complexity="0">
+                    <methods>
+                        <method 
+                        name="com.github.tizuck/jsonGraphSchema/directedHyperGraphEncoder" signature="()V" line-rate="0.97" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="298" hits="1" branch="false"/>
+                                <line number="296" hits="1" branch="false"/>
+                                <line number="295" hits="1" branch="false"/>
+                                <line number="299" hits="1" branch="false"/>
+                                <line number="308" hits="1" branch="false"/>
+                                <line number="297" hits="1" branch="false"/>
+                                <line number="294" hits="1" branch="false"/>
+                                <line number="302" hits="1" branch="false"/>
+                                <line number="300" hits="1" branch="false"/>
+                                <line number="305" hits="1" branch="false"/>
+                                <line number="295" hits="1" branch="false"/>
+                                <line number="298" hits="1" branch="false"/>
+                                <line number="300" hits="1" branch="false"/>
+                                <line number="299" hits="1" branch="false"/>
+                                <line number="294" hits="1" branch="false"/>
+                                <line number="297" hits="1" branch="false"/>
+                                <line number="296" hits="1" branch="false"/>
+                                <line number="299" hits="1" branch="false"/>
+                                <line number="308" hits="1" branch="false"/>
+                                <line number="295" hits="1" branch="false"/>
+                                <line number="309" hits="1" branch="false"/>
+                                <line number="296" hits="1" branch="false"/>
+                                <line number="300" hits="1" branch="false"/>
+                                <line number="296" hits="1" branch="false"/>
+                                <line number="299" hits="1" branch="false"/>
+                                <line number="309" hits="0" branch="false"/>
+                                <line number="294" hits="1" branch="false"/>
+                                <line number="294" hits="1" branch="false"/>
+                                <line number="300" hits="1" branch="false"/>
+                                <line number="300" hits="1" branch="false"/>
+                                <line number="297" hits="1" branch="false"/>
+                                <line number="295" hits="1" branch="false"/>
+                                <line number="298" hits="1" branch="false"/>
+                                <line number="297" hits="1" branch="false"/>
+                                <line number="308" hits="1" branch="false"/>
+                            </lines>
+</method>
+                        <method 
+                        name="com.github.tizuck/jsonGraphSchema/nodesDecoder" signature="()V" line-rate="0.75" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="243" hits="0" branch="false"/>
+                                <line number="233" hits="1" branch="false"/>
+                                <line number="237" hits="1" branch="false"/>
+                                <line number="229" hits="1" branch="false"/>
+                                <line number="244" hits="1" branch="false"/>
+                                <line number="237" hits="1" branch="false"/>
+                                <line number="227" hits="1" branch="false"/>
+                                <line number="237" hits="1" branch="false"/>
+                                <line number="243" hits="0" branch="false"/>
+                                <line number="233" hits="1" branch="false"/>
+                                <line number="233" hits="1" branch="false"/>
+                                <line number="243" hits="0" branch="false"/>
+                                <line number="231" hits="1" branch="false"/>
+                                <line number="244" hits="1" branch="false"/>
+                                <line number="227" hits="0" branch="false"/>
+                                <line number="237" hits="1" branch="false"/>
+                                <line number="244" hits="1" branch="false"/>
+                                <line number="244" hits="1" branch="false"/>
+                                <line number="231" hits="1" branch="false"/>
+                                <line number="243" hits="0" branch="false"/>
+                            </lines>
+</method>
+                        <method 
+                        name="com.github.tizuck/jsonGraphSchema/topLevelMultipleGraphsDecoder" signature="()V" line-rate="0.00" branch-rate="0.00" complexity="0">
+                            <lines>
+                                <line number="120" hits="0" branch="false"/>
+                                <line number="122" hits="0" branch="false"/>
+                                <line number="120" hits="0" branch="false"/>
+                                <line number="120" hits="0" branch="false"/>
+                                <line number="120" hits="0" branch="false"/>
+                            </lines>
+</method>
+                        <method 
+                        name="com.github.tizuck/jsonGraphSchema/toplevelSingleGraphDecoder" signature="()V" line-rate="1.00" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="107" hits="1" branch="false"/>
+                                <line number="107" hits="1" branch="false"/>
+                                <line number="107" hits="1" branch="false"/>
+                                <line number="109" hits="1" branch="false"/>
+                            </lines>
+</method>
+                        <method 
+                        name="com.github.tizuck/jsonGraphSchema/simpleEdgeDecoder" signature="()V" line-rate="1.00" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="191" hits="1" branch="false"/>
+                                <line number="188" hits="1" branch="false"/>
+                                <line number="192" hits="1" branch="false"/>
+                                <line number="188" hits="1" branch="false"/>
+                                <line number="190" hits="1" branch="false"/>
+                                <line number="193" hits="1" branch="false"/>
+                                <line number="189" hits="1" branch="false"/>
+                                <line number="192" hits="1" branch="false"/>
+                                <line number="187" hits="1" branch="false"/>
+                                <line number="190" hits="1" branch="false"/>
+                                <line number="200" hits="1" branch="false"/>
+                                <line number="191" hits="1" branch="false"/>
+                                <line number="192" hits="1" branch="false"/>
+                                <line number="188" hits="1" branch="false"/>
+                                <line number="189" hits="1" branch="false"/>
+                                <line number="190" hits="1" branch="false"/>
+                                <line number="189" hits="1" branch="false"/>
+                                <line number="192" hits="1" branch="false"/>
+                                <line number="193" hits="1" branch="false"/>
+                                <line number="187" hits="1" branch="false"/>
+                                <line number="190" hits="1" branch="false"/>
+                                <line number="193" hits="1" branch="false"/>
+                                <line number="187" hits="1" branch="false"/>
+                                <line number="191" hits="1" branch="false"/>
+                                <line number="187" hits="1" branch="false"/>
+                                <line number="195" hits="1" branch="false"/>
+                                <line number="191" hits="1" branch="false"/>
+                            </lines>
+</method>
+                        <method 
+                        name="com.github.tizuck/jsonGraphSchema/directedHyperEdge" signature="()V" line-rate="1.00" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="142" hits="1" branch="false"/>
+                                <line number="145" hits="1" branch="false"/>
+                                <line number="147" hits="1" branch="false"/>
+                                <line number="143" hits="1" branch="false"/>
+                                <line number="144" hits="1" branch="false"/>
+                                <line number="146" hits="1" branch="false"/>
+                                <line number="141" hits="1" branch="false"/>
+                                <line number="147" hits="1" branch="false"/>
+                                <line number="141" hits="1" branch="false"/>
+                                <line number="144" hits="1" branch="false"/>
+                                <line number="142" hits="1" branch="false"/>
+                                <line number="144" hits="1" branch="false"/>
+                                <line number="147" hits="1" branch="false"/>
+                                <line number="149" hits="1" branch="false"/>
+                                <line number="142" hits="1" branch="false"/>
+                                <line number="145" hits="1" branch="false"/>
+                                <line number="145" hits="1" branch="false"/>
+                                <line number="143" hits="1" branch="false"/>
+                                <line number="146" hits="1" branch="false"/>
+                                <line number="141" hits="1" branch="false"/>
+                                <line number="146" hits="1" branch="false"/>
+                                <line number="143" hits="1" branch="false"/>
+                                <line number="146" hits="1" branch="false"/>
+                                <line number="143" hits="1" branch="false"/>
+                                <line number="141" hits="1" branch="false"/>
+                                <line number="144" hits="1" branch="false"/>
+                                <line number="154" hits="1" branch="false"/>
+                                <line number="142" hits="1" branch="false"/>
+                                <line number="145" hits="1" branch="false"/>
+                            </lines>
+</method>
+                        <method 
+                        name="com.github.tizuck/jsonGraphSchema/edgeDecoder" signature="()V" line-rate="1.00" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="133" hits="1" branch="false"/>
+                                <line number="131" hits="1" branch="false"/>
+                                <line number="135" hits="1" branch="false"/>
+                                <line number="132" hits="1" branch="false"/>
+                                <line number="132" hits="1" branch="false"/>
+                                <line number="131" hits="1" branch="false"/>
+                                <line number="133" hits="1" branch="false"/>
+                                <line number="131" hits="1" branch="false"/>
+                                <line number="130" hits="1" branch="false"/>
+                                <line number="132" hits="1" branch="false"/>
+                                <line number="132" hits="1" branch="false"/>
+                                <line number="135" hits="1" branch="false"/>
+                                <line number="133" hits="1" branch="false"/>
+                                <line number="131" hits="1" branch="false"/>
+                                <line number="133" hits="1" branch="false"/>
+                            </lines>
+</method>
+                        <method 
+                        name="com.github.tizuck/jsonGraphSchema/simpleGraphDecoder" signature="()V" line-rate="0.98" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="327" hits="1" branch="false"/>
+                                <line number="326" hits="1" branch="false"/>
+                                <line number="322" hits="0" branch="false"/>
+                                <line number="330" hits="1" branch="false"/>
+                                <line number="339" hits="1" branch="false"/>
+                                <line number="327" hits="1" branch="false"/>
+                                <line number="322" hits="1" branch="false"/>
+                                <line number="340" hits="1" branch="false"/>
+                                <line number="325" hits="1" branch="false"/>
+                                <line number="331" hits="1" branch="false"/>
+                                <line number="331" hits="1" branch="false"/>
+                                <line number="325" hits="1" branch="false"/>
+                                <line number="321" hits="1" branch="false"/>
+                                <line number="330" hits="1" branch="false"/>
+                                <line number="328" hits="1" branch="false"/>
+                                <line number="325" hits="1" branch="false"/>
+                                <line number="328" hits="1" branch="false"/>
+                                <line number="331" hits="1" branch="false"/>
+                                <line number="331" hits="1" branch="false"/>
+                                <line number="329" hits="1" branch="false"/>
+                                <line number="322" hits="1" branch="false"/>
+                                <line number="326" hits="1" branch="false"/>
+                                <line number="328" hits="1" branch="false"/>
+                                <line number="339" hits="1" branch="false"/>
+                                <line number="327" hits="1" branch="false"/>
+                                <line number="325" hits="1" branch="false"/>
+                                <line number="340" hits="1" branch="false"/>
+                                <line number="322" hits="1" branch="false"/>
+                                <line number="330" hits="1" branch="false"/>
+                                <line number="321" hits="1" branch="false"/>
+                                <line number="326" hits="1" branch="false"/>
+                                <line number="339" hits="1" branch="false"/>
+                                <line number="331" hits="1" branch="false"/>
+                                <line number="333" hits="1" branch="false"/>
+                                <line number="325" hits="1" branch="false"/>
+                                <line number="328" hits="1" branch="false"/>
+                                <line number="336" hits="1" branch="false"/>
+                                <line number="329" hits="1" branch="false"/>
+                                <line number="326" hits="1" branch="false"/>
+                                <line number="329" hits="1" branch="false"/>
+                                <line number="321" hits="1" branch="false"/>
+                                <line number="330" hits="1" branch="false"/>
+                                <line number="322" hits="1" branch="false"/>
+                                <line number="327" hits="1" branch="false"/>
+                            </lines>
+</method>
+                        <method 
+                        name="com.github.tizuck/jsonGraphSchema/nodeDecoder" signature="()V" line-rate="1.00" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="212" hits="1" branch="false"/>
+                                <line number="211" hits="1" branch="false"/>
+                                <line number="212" hits="1" branch="false"/>
+                                <line number="211" hits="1" branch="false"/>
+                                <line number="212" hits="1" branch="false"/>
+                                <line number="211" hits="1" branch="false"/>
+                                <line number="214" hits="1" branch="false"/>
+                                <line number="211" hits="1" branch="false"/>
+                            </lines>
+</method>
+                        <method 
+                        name="com.github.tizuck/jsonGraphSchema/graphDecoder" signature="()V" line-rate="1.00" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="254" hits="1" branch="false"/>
+                                <line number="255" hits="1" branch="false"/>
+                                <line number="256" hits="1" branch="false"/>
+                                <line number="259" hits="1" branch="false"/>
+                                <line number="257" hits="1" branch="false"/>
+                                <line number="255" hits="1" branch="false"/>
+                                <line number="257" hits="1" branch="false"/>
+                                <line number="255" hits="1" branch="false"/>
+                                <line number="257" hits="1" branch="false"/>
+                                <line number="256" hits="1" branch="false"/>
+                                <line number="259" hits="1" branch="false"/>
+                                <line number="256" hits="1" branch="false"/>
+                                <line number="256" hits="1" branch="false"/>
+                                <line number="257" hits="1" branch="false"/>
+                                <line number="255" hits="1" branch="false"/>
+                            </lines>
+</method>
+                        <method 
+                        name="com.github.tizuck/jsonGraphSchema/undirectedHyperGraphDecoder" signature="()V" line-rate="0.97" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="271" hits="1" branch="false"/>
+                                <line number="270" hits="1" branch="false"/>
+                                <line number="283" hits="1" branch="false"/>
+                                <line number="274" hits="1" branch="false"/>
+                                <line number="283" hits="1" branch="false"/>
+                                <line number="271" hits="1" branch="false"/>
+                                <line number="270" hits="1" branch="false"/>
+                                <line number="274" hits="1" branch="false"/>
+                                <line number="284" hits="1" branch="false"/>
+                                <line number="271" hits="1" branch="false"/>
+                                <line number="275" hits="1" branch="false"/>
+                                <line number="274" hits="1" branch="false"/>
+                                <line number="269" hits="1" branch="false"/>
+                                <line number="272" hits="1" branch="false"/>
+                                <line number="275" hits="1" branch="false"/>
+                                <line number="275" hits="1" branch="false"/>
+                                <line number="275" hits="1" branch="false"/>
+                                <line number="270" hits="1" branch="false"/>
+                                <line number="272" hits="1" branch="false"/>
+                                <line number="273" hits="1" branch="false"/>
+                                <line number="283" hits="1" branch="false"/>
+                                <line number="269" hits="1" branch="false"/>
+                                <line number="271" hits="1" branch="false"/>
+                                <line number="274" hits="1" branch="false"/>
+                                <line number="284" hits="0" branch="false"/>
+                                <line number="269" hits="1" branch="false"/>
+                                <line number="272" hits="1" branch="false"/>
+                                <line number="272" hits="1" branch="false"/>
+                                <line number="277" hits="1" branch="false"/>
+                                <line number="269" hits="1" branch="false"/>
+                                <line number="275" hits="1" branch="false"/>
+                                <line number="280" hits="1" branch="false"/>
+                                <line number="273" hits="1" branch="false"/>
+                                <line number="270" hits="1" branch="false"/>
+                                <line number="273" hits="1" branch="false"/>
+                            </lines>
+</method>
+                        <method 
+                        name="com.github.tizuck/jsonGraphSchema/undirectedHyperEdge" signature="()V" line-rate="1.00" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="168" hits="1" branch="false"/>
+                                <line number="169" hits="1" branch="false"/>
+                                <line number="165" hits="1" branch="false"/>
+                                <line number="166" hits="1" branch="false"/>
+                                <line number="170" hits="1" branch="false"/>
+                                <line number="166" hits="1" branch="false"/>
+                                <line number="167" hits="1" branch="false"/>
+                                <line number="170" hits="1" branch="false"/>
+                                <line number="167" hits="1" branch="false"/>
+                                <line number="165" hits="1" branch="false"/>
+                                <line number="168" hits="1" branch="false"/>
+                                <line number="170" hits="1" branch="false"/>
+                                <line number="169" hits="1" branch="false"/>
+                                <line number="166" hits="1" branch="false"/>
+                                <line number="167" hits="1" branch="false"/>
+                                <line number="168" hits="1" branch="false"/>
+                                <line number="166" hits="1" branch="false"/>
+                                <line number="169" hits="1" branch="false"/>
+                                <line number="165" hits="1" branch="false"/>
+                                <line number="167" hits="1" branch="false"/>
+                                <line number="170" hits="1" branch="false"/>
+                                <line number="172" hits="1" branch="false"/>
+                                <line number="165" hits="1" branch="false"/>
+                                <line number="168" hits="1" branch="false"/>
+                                <line number="175" hits="1" branch="false"/>
+                            </lines>
+</method>
+                    </methods>
+                    <lines>
+                        <line number="168" hits="1" branch="false"/>
+                        <line number="169" hits="1" branch="false"/>
+                        <line number="254" hits="1" branch="false"/>
+                        <line number="271" hits="1" branch="false"/>
+                        <line number="133" hits="1" branch="false"/>
+                        <line number="142" hits="1" branch="false"/>
+                        <line number="243" hits="0" branch="false"/>
+                        <line number="191" hits="1" branch="false"/>
+                        <line number="255" hits="1" branch="false"/>
+                        <line number="212" hits="1" branch="false"/>
+                        <line number="270" hits="1" branch="false"/>
+                        <line number="233" hits="1" branch="false"/>
+                        <line number="131" hits="1" branch="false"/>
+                        <line number="188" hits="1" branch="false"/>
+                        <line number="192" hits="1" branch="false"/>
+                        <line number="283" hits="1" branch="false"/>
+                        <line number="145" hits="1" branch="false"/>
+                        <line number="147" hits="1" branch="false"/>
+                        <line number="165" hits="1" branch="false"/>
+                        <line number="274" hits="1" branch="false"/>
+                        <line number="135" hits="1" branch="false"/>
+                        <line number="143" hits="1" branch="false"/>
+                        <line number="166" hits="1" branch="false"/>
+                        <line number="144" hits="1" branch="false"/>
+                        <line number="237" hits="1" branch="false"/>
+                        <line number="188" hits="1" branch="false"/>
+                        <line number="120" hits="0" branch="false"/>
+                        <line number="132" hits="1" branch="false"/>
+                        <line number="190" hits="1" branch="false"/>
+                        <line number="211" hits="1" branch="false"/>
+                        <line number="193" hits="1" branch="false"/>
+                        <line number="146" hits="1" branch="false"/>
+                        <line number="170" hits="1" branch="false"/>
+                        <line number="166" hits="1" branch="false"/>
+                        <line number="167" hits="1" branch="false"/>
+                        <line number="141" hits="1" branch="false"/>
+                        <line number="327" hits="1" branch="false"/>
+                        <line number="326" hits="1" branch="false"/>
+                        <line number="132" hits="1" branch="false"/>
+                        <line number="122" hits="0" branch="false"/>
+                        <line number="298" hits="1" branch="false"/>
+                        <line number="322" hits="0" branch="false"/>
+                        <line number="147" hits="1" branch="false"/>
+                        <line number="141" hits="1" branch="false"/>
+                        <line number="144" hits="1" branch="false"/>
+                        <line number="330" hits="1" branch="false"/>
+                        <line number="339" hits="1" branch="false"/>
+                        <line number="327" hits="1" branch="false"/>
+                        <line number="107" hits="1" branch="false"/>
+                        <line number="296" hits="1" branch="false"/>
+                        <line number="322" hits="1" branch="false"/>
+                        <line number="283" hits="1" branch="false"/>
+                        <line number="271" hits="1" branch="false"/>
+                        <line number="270" hits="1" branch="false"/>
+                        <line number="340" hits="1" branch="false"/>
+                        <line number="325" hits="1" branch="false"/>
+                        <line number="274" hits="1" branch="false"/>
+                        <line number="331" hits="1" branch="false"/>
+                        <line number="295" hits="1" branch="false"/>
+                        <line number="299" hits="1" branch="false"/>
+                        <line number="308" hits="1" branch="false"/>
+                        <line number="331" hits="1" branch="false"/>
+                        <line number="212" hits="1" branch="false"/>
+                        <line number="229" hits="1" branch="false"/>
+                        <line number="297" hits="1" branch="false"/>
+                        <line number="325" hits="1" branch="false"/>
+                        <line number="189" hits="1" branch="false"/>
+                        <line number="294" hits="1" branch="false"/>
+                        <line number="256" hits="1" branch="false"/>
+                        <line number="302" hits="1" branch="false"/>
+                        <line number="321" hits="1" branch="false"/>
+                        <line number="192" hits="1" branch="false"/>
+                        <line number="300" hits="1" branch="false"/>
+                        <line number="284" hits="1" branch="false"/>
+                        <line number="330" hits="1" branch="false"/>
+                        <line number="259" hits="1" branch="false"/>
+                        <line number="271" hits="1" branch="false"/>
+                        <line number="244" hits="1" branch="false"/>
+                        <line number="275" hits="1" branch="false"/>
+                        <line number="328" hits="1" branch="false"/>
+                        <line number="305" hits="1" branch="false"/>
+                        <line number="170" hits="1" branch="false"/>
+                        <line number="187" hits="1" branch="false"/>
+                        <line number="274" hits="1" branch="false"/>
+                        <line number="269" hits="1" branch="false"/>
+                        <line number="295" hits="1" branch="false"/>
+                        <line number="272" hits="1" branch="false"/>
+                        <line number="142" hits="1" branch="false"/>
+                        <line number="144" hits="1" branch="false"/>
+                        <line number="167" hits="1" branch="false"/>
+                        <line number="237" hits="1" branch="false"/>
+                        <line number="257" hits="1" branch="false"/>
+                        <line number="190" hits="1" branch="false"/>
+                        <line number="200" hits="1" branch="false"/>
+                        <line number="211" hits="1" branch="false"/>
+                        <line number="147" hits="1" branch="false"/>
+                        <line number="227" hits="1" branch="false"/>
+                        <line number="237" hits="1" branch="false"/>
+                        <line number="298" hits="1" branch="false"/>
+                        <line number="275" hits="1" branch="false"/>
+                        <line number="212" hits="1" branch="false"/>
+                        <line number="191" hits="1" branch="false"/>
+                        <line number="192" hits="1" branch="false"/>
+                        <line number="149" hits="1" branch="false"/>
+                        <line number="165" hits="1" branch="false"/>
+                        <line number="243" hits="0" branch="false"/>
+                        <line number="168" hits="1" branch="false"/>
+                        <line number="255" hits="1" branch="false"/>
+                        <line number="257" hits="1" branch="false"/>
+                        <line number="142" hits="1" branch="false"/>
+                        <line number="131" hits="1" branch="false"/>
+                        <line number="145" hits="1" branch="false"/>
+                        <line number="133" hits="1" branch="false"/>
+                        <line number="233" hits="1" branch="false"/>
+                        <line number="107" hits="1" branch="false"/>
+                        <line number="170" hits="1" branch="false"/>
+                        <line number="188" hits="1" branch="false"/>
+                        <line number="131" hits="1" branch="false"/>
+                        <line number="130" hits="1" branch="false"/>
+                        <line number="169" hits="1" branch="false"/>
+                        <line number="325" hits="1" branch="false"/>
+                        <line number="166" hits="1" branch="false"/>
+                        <line number="145" hits="1" branch="false"/>
+                        <line number="167" hits="1" branch="false"/>
+                        <line number="189" hits="1" branch="false"/>
+                        <line number="107" hits="1" branch="false"/>
+                        <line number="143" hits="1" branch="false"/>
+                        <line number="146" hits="1" branch="false"/>
+                        <line number="328" hits="1" branch="false"/>
+                        <line number="331" hits="1" branch="false"/>
+                        <line number="331" hits="1" branch="false"/>
+                        <line number="141" hits="1" branch="false"/>
+                        <line number="329" hits="1" branch="false"/>
+                        <line number="120" hits="0" branch="false"/>
+                        <line number="132" hits="1" branch="false"/>
+                        <line number="322" hits="1" branch="false"/>
+                        <line number="326" hits="1" branch="false"/>
+                        <line number="300" hits="1" branch="false"/>
+                        <line number="275" hits="1" branch="false"/>
+                        <line number="299" hits="1" branch="false"/>
+                        <line number="294" hits="1" branch="false"/>
+                        <line number="328" hits="1" branch="false"/>
+                        <line number="297" hits="1" branch="false"/>
+                        <line number="275" hits="1" branch="false"/>
+                        <line number="339" hits="1" branch="false"/>
+                        <line number="233" hits="1" branch="false"/>
+                        <line number="270" hits="1" branch="false"/>
+                        <line number="327" hits="1" branch="false"/>
+                        <line number="211" hits="1" branch="false"/>
+                        <line number="325" hits="1" branch="false"/>
+                        <line number="255" hits="1" branch="false"/>
+                        <line number="257" hits="1" branch="false"/>
+                        <line number="340" hits="1" branch="false"/>
+                        <line number="296" hits="1" branch="false"/>
+                        <line number="322" hits="1" branch="false"/>
+                        <line number="243" hits="0" branch="false"/>
+                        <line number="299" hits="1" branch="false"/>
+                        <line number="308" hits="1" branch="false"/>
+                        <line number="272" hits="1" branch="false"/>
+                        <line number="295" hits="1" branch="false"/>
+                        <line number="273" hits="1" branch="false"/>
+                        <line number="283" hits="1" branch="false"/>
+                        <line number="330" hits="1" branch="false"/>
+                        <line number="309" hits="1" branch="false"/>
+                        <line number="168" hits="1" branch="false"/>
+                        <line number="190" hits="1" branch="false"/>
+                        <line number="189" hits="1" branch="false"/>
+                        <line number="214" hits="1" branch="false"/>
+                        <line number="269" hits="1" branch="false"/>
+                        <line number="271" hits="1" branch="false"/>
+                        <line number="296" hits="1" branch="false"/>
+                        <line number="166" hits="1" branch="false"/>
+                        <line number="169" hits="1" branch="false"/>
+                        <line number="256" hits="1" branch="false"/>
+                        <line number="259" hits="1" branch="false"/>
+                        <line number="321" hits="1" branch="false"/>
+                        <line number="146" hits="1" branch="false"/>
+                        <line number="192" hits="1" branch="false"/>
+                        <line number="274" hits="1" branch="false"/>
+                        <line number="284" hits="0" branch="false"/>
+                        <line number="231" hits="1" branch="false"/>
+                        <line number="244" hits="1" branch="false"/>
+                        <line number="300" hits="1" branch="false"/>
+                        <line number="256" hits="1" branch="false"/>
+                        <line number="227" hits="0" branch="false"/>
+                        <line number="269" hits="1" branch="false"/>
+                        <line number="132" hits="1" branch="false"/>
+                        <line number="135" hits="1" branch="false"/>
+                        <line number="193" hits="1" branch="false"/>
+                        <line number="187" hits="1" branch="false"/>
+                        <line number="165" hits="1" branch="false"/>
+                        <line number="167" hits="1" branch="false"/>
+                        <line number="190" hits="1" branch="false"/>
+                        <line number="170" hits="1" branch="false"/>
+                        <line number="143" hits="1" branch="false"/>
+                        <line number="146" hits="1" branch="false"/>
+                        <line number="143" hits="1" branch="false"/>
+                        <line number="237" hits="1" branch="false"/>
+                        <line number="244" hits="1" branch="false"/>
+                        <line number="120" hits="0" branch="false"/>
+                        <line number="272" hits="1" branch="false"/>
+                        <line number="326" hits="1" branch="false"/>
+                        <line number="133" hits="1" branch="false"/>
+                        <line number="141" hits="1" branch="false"/>
+                        <line number="193" hits="1" branch="false"/>
+                        <line number="120" hits="0" branch="false"/>
+                        <line number="172" hits="1" branch="false"/>
+                        <line number="165" hits="1" branch="false"/>
+                        <line number="187" hits="1" branch="false"/>
+                        <line number="191" hits="1" branch="false"/>
+                        <line number="144" hits="1" branch="false"/>
+                        <line number="168" hits="1" branch="false"/>
+                        <line number="154" hits="1" branch="false"/>
+                        <line number="339" hits="1" branch="false"/>
+                        <line number="296" hits="1" branch="false"/>
+                        <line number="299" hits="1" branch="false"/>
+                        <line number="331" hits="1" branch="false"/>
+                        <line number="131" hits="1" branch="false"/>
+                        <line number="133" hits="1" branch="false"/>
+                        <line number="142" hits="1" branch="false"/>
+                        <line number="333" hits="1" branch="false"/>
+                        <line number="325" hits="1" branch="false"/>
+                        <line number="328" hits="1" branch="false"/>
+                        <line number="109" hits="1" branch="false"/>
+                        <line number="309" hits="0" branch="false"/>
+                        <line number="294" hits="1" branch="false"/>
+                        <line number="145" hits="1" branch="false"/>
+                        <line number="272" hits="1" branch="false"/>
+                        <line number="294" hits="1" branch="false"/>
+                        <line number="277" hits="1" branch="false"/>
+                        <line number="269" hits="1" branch="false"/>
+                        <line number="336" hits="1" branch="false"/>
+                        <line number="329" hits="1" branch="false"/>
+                        <line number="326" hits="1" branch="false"/>
+                        <line number="244" hits="1" branch="false"/>
+                        <line number="300" hits="1" branch="false"/>
+                        <line number="256" hits="1" branch="false"/>
+                        <line number="329" hits="1" branch="false"/>
+                        <line number="300" hits="1" branch="false"/>
+                        <line number="321" hits="1" branch="false"/>
+                        <line number="297" hits="1" branch="false"/>
+                        <line number="275" hits="1" branch="false"/>
+                        <line number="330" hits="1" branch="false"/>
+                        <line number="187" hits="1" branch="false"/>
+                        <line number="211" hits="1" branch="false"/>
+                        <line number="231" hits="1" branch="false"/>
+                        <line number="295" hits="1" branch="false"/>
+                        <line number="298" hits="1" branch="false"/>
+                        <line number="175" hits="1" branch="false"/>
+                        <line number="195" hits="1" branch="false"/>
+                        <line number="257" hits="1" branch="false"/>
+                        <line number="297" hits="1" branch="false"/>
+                        <line number="191" hits="1" branch="false"/>
+                        <line number="280" hits="1" branch="false"/>
+                        <line number="273" hits="1" branch="false"/>
+                        <line number="270" hits="1" branch="false"/>
+                        <line number="243" hits="0" branch="false"/>
+                        <line number="322" hits="1" branch="false"/>
+                        <line number="273" hits="1" branch="false"/>
+                        <line number="255" hits="1" branch="false"/>
+                        <line number="327" hits="1" branch="false"/>
+                        <line number="308" hits="1" branch="false"/>
+                    </lines>
+</class>
+                <class name="com.github.tizuck.Main" filename="Main.scala" line-rate="0.00" branch-rate="0.00" complexity="0">
+                    <methods>
+                        <method 
+                        name="com.github.tizuck/Main/edgeTransformer" signature="()V" line-rate="0.00" branch-rate="0.00" complexity="0">
+                            <lines>
+                                <line number="92" hits="0" branch="false"/>
+                                <line number="94" hits="0" branch="false"/>
+                                <line number="94" hits="0" branch="false"/>
+                                <line number="93" hits="0" branch="false"/>
+                                <line number="94" hits="0" branch="false"/>
+                                <line number="89" hits="0" branch="false"/>
+                                <line number="86" hits="0" branch="false"/>
+                                <line number="94" hits="0" branch="false"/>
+                                <line number="93" hits="0" branch="false"/>
+                                <line number="94" hits="0" branch="false"/>
+                                <line number="90" hits="0" branch="false"/>
+                                <line number="94" hits="0" branch="false"/>
+                                <line number="94" hits="0" branch="false"/>
+                                <line number="91" hits="0" branch="false"/>
+                                <line number="94" hits="0" branch="false"/>
+                                <line number="92" hits="0" branch="false"/>
+                                <line number="94" hits="0" branch="false"/>
+                            </lines>
+</method>
+                        <method name="com.github.tizuck/Main/&lt;none&gt;" signature="()V" line-rate="0.00" branch-rate="0.00" complexity="0">
+                            <lines>
+                                <line number="100" hits="0" branch="false"/>
+                                <line number="71" hits="0" branch="false"/>
+                                <line number="102" hits="0" branch="false"/>
+                                <line number="77" hits="0" branch="false"/>
+                                <line number="78" hits="0" branch="false"/>
+                                <line number="69" hits="0" branch="false"/>
+                                <line number="83" hits="0" branch="false"/>
+                                <line number="57" hits="0" branch="false"/>
+                                <line number="71" hits="0" branch="false"/>
+                                <line number="77" hits="0" branch="false"/>
+                                <line number="73" hits="0" branch="false"/>
+                                <line number="100" hits="0" branch="false"/>
+                                <line number="64" hits="0" branch="false"/>
+                                <line number="79" hits="0" branch="false"/>
+                                <line number="77" hits="0" branch="false"/>
+                                <line number="71" hits="0" branch="false"/>
+                                <line number="100" hits="0" branch="false"/>
+                                <line number="75" hits="0" branch="false"/>
+                                <line number="13" hits="0" branch="false"/>
+                                <line number="82" hits="0" branch="false"/>
+                                <line number="102" hits="0" branch="false"/>
+                                <line number="82" hits="0" branch="false"/>
+                                <line number="71" hits="0" branch="false"/>
+                                <line number="83" hits="0" branch="false"/>
+                                <line number="64" hits="0" branch="false"/>
+                                <line number="78" hits="0" branch="false"/>
+                                <line number="100" hits="0" branch="false"/>
+                                <line number="77" hits="0" branch="false"/>
+                                <line number="100" hits="0" branch="false"/>
+                                <line number="71" hits="0" branch="false"/>
+                            </lines>
+                        </method>
+                    </methods>
+                    <lines>
+                        <line number="92" hits="0" branch="false"/>
+                        <line number="94" hits="0" branch="false"/>
+                        <line number="100" hits="0" branch="false"/>
+                        <line number="94" hits="0" branch="false"/>
+                        <line number="71" hits="0" branch="false"/>
+                        <line number="102" hits="0" branch="false"/>
+                        <line number="77" hits="0" branch="false"/>
+                        <line number="93" hits="0" branch="false"/>
+                        <line number="78" hits="0" branch="false"/>
+                        <line number="94" hits="0" branch="false"/>
+                        <line number="89" hits="0" branch="false"/>
+                        <line number="69" hits="0" branch="false"/>
+                        <line number="83" hits="0" branch="false"/>
+                        <line number="57" hits="0" branch="false"/>
+                        <line number="71" hits="0" branch="false"/>
+                        <line number="77" hits="0" branch="false"/>
+                        <line number="73" hits="0" branch="false"/>
+                        <line number="100" hits="0" branch="false"/>
+                        <line number="64" hits="0" branch="false"/>
+                        <line number="79" hits="0" branch="false"/>
+                        <line number="86" hits="0" branch="false"/>
+                        <line number="94" hits="0" branch="false"/>
+                        <line number="77" hits="0" branch="false"/>
+                        <line number="71" hits="0" branch="false"/>
+                        <line number="100" hits="0" branch="false"/>
+                        <line number="93" hits="0" branch="false"/>
+                        <line number="94" hits="0" branch="false"/>
+                        <line number="75" hits="0" branch="false"/>
+                        <line number="90" hits="0" branch="false"/>
+                        <line number="13" hits="0" branch="false"/>
+                        <line number="82" hits="0" branch="false"/>
+                        <line number="94" hits="0" branch="false"/>
+                        <line number="102" hits="0" branch="false"/>
+                        <line number="94" hits="0" branch="false"/>
+                        <line number="91" hits="0" branch="false"/>
+                        <line number="82" hits="0" branch="false"/>
+                        <line number="71" hits="0" branch="false"/>
+                        <line number="83" hits="0" branch="false"/>
+                        <line number="64" hits="0" branch="false"/>
+                        <line number="78" hits="0" branch="false"/>
+                        <line number="94" hits="0" branch="false"/>
+                        <line number="100" hits="0" branch="false"/>
+                        <line number="77" hits="0" branch="false"/>
+                        <line number="100" hits="0" branch="false"/>
+                        <line number="92" hits="0" branch="false"/>
+                        <line number="94" hits="0" branch="false"/>
+                        <line number="71" hits="0" branch="false"/>
+                    </lines>
+                </class>
+            </classes>
+        </package>
+        <package name="com.github.tizuck.dot" line-rate="0.00" branch-rate="0.00" complexity="0">
+            <classes>
+                <class 
+                name="com.github.tizuck.dot.DotRepresentation" filename="dot/DotRepresentation.scala" line-rate="0.00" branch-rate="0.00" complexity="0">
+                    <methods>
+                        <method 
+                        name="com.github.tizuck.dot/DotRepresentation/toScalaGraph" signature="()V" line-rate="0.00" branch-rate="0.00" complexity="0">
+                            <lines>
+                                <line number="29" hits="0" branch="false"/>
+                                <line number="35" hits="0" branch="false"/>
+                                <line number="30" hits="0" branch="false"/>
+                                <line number="32" hits="0" branch="false"/>
+                                <line number="32" hits="0" branch="false"/>
+                                <line number="35" hits="0" branch="false"/>
+                                <line number="29" hits="0" branch="false"/>
+                                <line number="30" hits="0" branch="false"/>
+                                <line number="39" hits="0" branch="false"/>
+                                <line number="30" hits="0" branch="false"/>
+                                <line number="24" hits="0" branch="false"/>
+                                <line number="28" hits="0" branch="false"/>
+                                <line number="29" hits="0" branch="false"/>
+                            </lines>
+</method>
+                        <method 
+                        name="com.github.tizuck.dot/DotRepresentation/apply" signature="()V" line-rate="0.00" branch-rate="0.00" complexity="0">
+                            <lines>
+                                <line number="42" hits="0" branch="false"/>
+                                <line number="42" hits="0" branch="false"/>
+                                <line number="44" hits="0" branch="false"/>
+                                <line number="42" hits="0" branch="false"/>
+                                <line number="42" hits="0" branch="false"/>
+                                <line number="42" hits="0" branch="false"/>
+                                <line number="41" hits="0" branch="false"/>
+                                <line number="42" hits="0" branch="false"/>
+                                <line number="42" hits="0" branch="false"/>
+                                <line number="42" hits="0" branch="false"/>
+                                <line number="45" hits="0" branch="false"/>
+                                <line number="42" hits="0" branch="false"/>
+                            </lines>
+</method>
+                    </methods>
+                    <lines>
+                        <line number="29" hits="0" branch="false"/>
+                        <line number="35" hits="0" branch="false"/>
+                        <line number="42" hits="0" branch="false"/>
+                        <line number="30" hits="0" branch="false"/>
+                        <line number="42" hits="0" branch="false"/>
+                        <line number="44" hits="0" branch="false"/>
+                        <line number="32" hits="0" branch="false"/>
+                        <line number="42" hits="0" branch="false"/>
+                        <line number="42" hits="0" branch="false"/>
+                        <line number="32" hits="0" branch="false"/>
+                        <line number="42" hits="0" branch="false"/>
+                        <line number="35" hits="0" branch="false"/>
+                        <line number="29" hits="0" branch="false"/>
+                        <line number="41" hits="0" branch="false"/>
+                        <line number="30" hits="0" branch="false"/>
+                        <line number="42" hits="0" branch="false"/>
+                        <line number="39" hits="0" branch="false"/>
+                        <line number="42" hits="0" branch="false"/>
+                        <line number="42" hits="0" branch="false"/>
+                        <line number="30" hits="0" branch="false"/>
+                        <line number="45" hits="0" branch="false"/>
+                        <line number="24" hits="0" branch="false"/>
+                        <line number="28" hits="0" branch="false"/>
+                        <line number="42" hits="0" branch="false"/>
+                        <line number="29" hits="0" branch="false"/>
+                    </lines>
+</class>
+            </classes>
+        </package>
+    </packages>
+</coverage>

@@ -89,7 +89,7 @@ object jsonGraphSchema {
                                                     override val nodes: Nodes[M2] = Nodes(List.empty[Node[M2]]),
                                                     override val id: Option[String] = None,
                                                     override val label: Option[String] = None,
-                                                    override val directed: Boolean = true,
+                                                    override val directed: Boolean = false,
                                                     override val edges:List[UndirectedHyperEdge[M3]]
                                                   ) extends Graph[M1,M2,M3]
 
@@ -248,13 +248,13 @@ object jsonGraphSchema {
     }
   }
 
-  implicit def graphDecoder[T1,T2,T3,E <: Edge[T3]](implicit t1decoder: Decoder[T1],
+  implicit def graphDecoder[T1,T2,T3](implicit t1decoder: Decoder[T1],
                                                         t2decoder: Decoder[T2],
                                                         t3decoder: Decoder[T3]):Decoder[Graph[T1,T2,T3]] = {
     val l: List[Decoder[Graph[T1,T2,T3]]] = List[Decoder[Graph[T1,T2,T3]]](
       Decoder[SimpleGraph[T1,T2,T3]].widen,
-      Decoder[UndirectedHyperGraph[T1,T2,T3]].widen,
       Decoder[DirectedHyperGraph[T1,T2,T3]].widen,
+      Decoder[UndirectedHyperGraph[T1,T2,T3]].widen,
     )
     l.reduceLeft(_ or _)
   }
@@ -272,7 +272,7 @@ object jsonGraphSchema {
         tpe <- c.downField("type").as[Option[String]]
         metadata <- c.downField("metadata").as[Option[T1]]
         nodes <- c.downField("nodes").as[Option[Nodes[T2]]]
-        edges <- c.downField("edges").as[Option[List[UndirectedHyperEdge[T3]]]]
+        edges <- c.downField("hyperedges").as[Option[List[UndirectedHyperEdge[T3]]]]
       } yield {
         new UndirectedHyperGraph[T1,T2,T3](
           id = id,
@@ -297,7 +297,7 @@ object jsonGraphSchema {
         tpe <- c.downField("type").as[Option[String]]
         metadata <- c.downField("metadata").as[Option[T1]]
         nodes <- c.downField("nodes").as[Option[Nodes[T2]]]
-        edges <- c.downField("edges").as[Option[List[DirectedHyperEdge[T3]]]]
+        edges <- c.downField("hyperedges").as[Option[List[DirectedHyperEdge[T3]]]]
       } yield {
         new DirectedHyperGraph[T1,T2,T3](
           id = id,
@@ -318,7 +318,10 @@ object jsonGraphSchema {
                                        t2decoder:Decoder[T2],
                                        t3decoder:Decoder[T3]) : Decoder[SimpleGraph[T1,T2,T3]] = {
     (c: HCursor) => {
-       for {
+      if(c.keys.exists(key => key.exists(s => s.equals("hyperedges")))) {
+        Left(DecodingFailure("Hyperedges unaccepted member of simple graph",c.history))
+      } else {
+        for {
         id <- c.downField("id").as[Option[String]]
         label <- c.downField("label").as[Option[String]]
         directed <- c.downField("directed").as[Option[Boolean]]
@@ -336,7 +339,7 @@ object jsonGraphSchema {
           nodes = nodes.getOrElse(Nodes(Nil)),
           edges = edges.getOrElse(Nil)
         )
-      }
+      }}
     }
   }
 }

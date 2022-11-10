@@ -1,0 +1,1110 @@
+<scoverage 
+statement-count="334" statements-invoked="249" statement-rate="74.55" branch-rate="50.00" version="1.0" timestamp="1668092170115">
+    <packages>
+        <package name="com.github.tizuck" statement-count="309" statements-invoked="249" statement-rate="80.58">
+            <classes>
+                <class 
+                name="com.github.tizuck.jsonGraphSchema" filename="jsonGraphSchema.scala" statement-count="262" statements-invoked="249" statement-rate="95.04" branch-rate="100.00">
+                    <methods>
+                        <method 
+                        name="com.github.tizuck/jsonGraphSchema/directedHyperGraphEncoder" statement-count="35" statements-invoked="34" statement-rate="97.14" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12095" end="12597" line="298" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="11999" end="12009" line="296" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="11917" end="12597" line="295" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12187" end="12187" line="299" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12518" end="12545" line="308" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12059" end="12065" line="297" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="11883" end="11887" line="294" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12317" end="12597" line="302" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12253" end="12253" line="300" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12419" end="12443" line="305" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="11938" end="11945" line="295" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12119" end="12129" line="298" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12253" end="12253" line="300" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12155" end="12597" line="299" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="11891" end="11891" line="294" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12069" end="12069" line="297" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="11975" end="12597" line="296" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12176" end="12183" line="299" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12534" end="12544" line="308" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="11949" end="11949" line="295" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12566" end="12586" line="309" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12013" end="12013" line="296" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12237" end="12249" line="300" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12013" end="12013" line="296" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12187" end="12187" line="299" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12582" end="12585" line="309" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="11850" end="12597" line="294" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="11891" end="11891" line="294" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12253" end="12253" line="300" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12216" end="12597" line="300" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12069" end="12069" line="297" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="11949" end="11949" line="295" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12133" end="12133" line="298" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12040" end="12597" line="297" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperGraphEncoder" start="12540" end="12543" line="308" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="com.github.tizuck/jsonGraphSchema/nodesDecoder" statement-count="20" statements-invoked="15" statement-rate="75.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodesDecoder" start="9727" end="9775" line="243" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodesDecoder" start="9403" end="9427" line="233" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodesDecoder" start="9512" end="9532" line="237" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodesDecoder" start="9283" end="9427" line="229" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodesDecoder" start="9835" end="9857" line="244" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodesDecoder" start="9457" end="9898" line="237" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodesDecoder" start="9240" end="9261" line="227" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodesDecoder" start="9472" end="9543" line="237" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodesDecoder" start="9732" end="9774" line="243" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodesDecoder" start="9408" end="9408" line="233" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodesDecoder" start="9408" end="9408" line="233" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodesDecoder" start="9764" end="9773" line="243" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodesDecoder" start="9318" end="9427" line="231" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodesDecoder" start="9846" end="9857" line="244" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodesDecoder" start="9257" end="9260" line="227" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodesDecoder" start="9506" end="9533" line="237" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodesDecoder" start="9814" end="9859" line="244" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodesDecoder" start="9820" end="9858" line="244" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodesDecoder" start="9362" end="9362" line="231" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodesDecoder" start="9748" end="9762" line="243" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="com.github.tizuck/jsonGraphSchema/topLevelMultipleGraphsDecoder" statement-count="5" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="topLevelMultipleGraphsDecoder" start="5640" end="5648" line="120" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="topLevelMultipleGraphsDecoder" start="5702" end="5732" line="122" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="topLevelMultipleGraphsDecoder" start="5652" end="5652" line="120" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="topLevelMultipleGraphsDecoder" start="5652" end="5652" line="120" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="topLevelMultipleGraphsDecoder" start="5603" end="5732" line="120" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="com.github.tizuck/jsonGraphSchema/toplevelSingleGraphDecoder" statement-count="4" statements-invoked="4" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="toplevelSingleGraphDecoder" start="5166" end="5166" line="107" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="toplevelSingleGraphDecoder" start="5155" end="5162" line="107" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="toplevelSingleGraphDecoder" start="5119" end="5236" line="107" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="toplevelSingleGraphDecoder" start="5210" end="5236" line="109" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="com.github.tizuck/jsonGraphSchema/simpleEdgeDecoder" statement-count="27" statements-invoked="27" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="8099" end="8566" line="191" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="7959" end="7959" line="188" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="8187" end="8194" line="192" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="7925" end="8566" line="188" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="8057" end="8067" line="190" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="8250" end="8260" line="193" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="7979" end="8566" line="189" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="8198" end="8198" line="192" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="7889" end="7893" line="187" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="8071" end="8071" line="190" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="8467" end="8491" line="200" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="8137" end="8137" line="191" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="8166" end="8566" line="192" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="7947" end="7955" line="188" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="8013" end="8013" line="189" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="8033" end="8566" line="190" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="8001" end="8009" line="189" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="8198" end="8198" line="192" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="8264" end="8264" line="193" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="7854" end="8566" line="187" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="8071" end="8071" line="190" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="8226" end="8566" line="193" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="7897" end="7897" line="187" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="8137" end="8137" line="191" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="7897" end="7897" line="187" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="8307" end="8566" line="195" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleEdgeDecoder" start="8123" end="8133" line="191" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="com.github.tizuck/jsonGraphSchema/directedHyperEdge" statement-count="29" statements-invoked="29" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6341" end="6341" line="142" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6525" end="6525" line="145" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6610" end="6935" line="147" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6399" end="6399" line="143" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6423" end="6935" line="144" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6584" end="6584" line="146" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6240" end="6935" line="141" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6648" end="6648" line="147" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6281" end="6281" line="141" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6461" end="6461" line="144" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6307" end="6935" line="142" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6447" end="6457" line="144" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6634" end="6644" line="147" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6686" end="6935" line="149" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6329" end="6337" line="142" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6511" end="6521" line="145" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6487" end="6935" line="145" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6387" end="6395" line="143" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6573" end="6580" line="146" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6273" end="6277" line="141" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6552" end="6935" line="146" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6399" end="6399" line="143" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6584" end="6584" line="146" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6365" end="6935" line="143" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6281" end="6281" line="141" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6461" end="6461" line="144" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6842" end="6866" line="154" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6341" end="6341" line="142" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="directedHyperEdge" start="6525" end="6525" line="145" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="com.github.tizuck/jsonGraphSchema/edgeDecoder" statement-count="15" statements-invoked="15" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="edgeDecoder" start="6035" end="6035" line="133" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="edgeDecoder" start="5943" end="5965" line="131" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="edgeDecoder" start="6095" end="6101" line="135" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="edgeDecoder" start="5989" end="5989" line="132" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="edgeDecoder" start="5982" end="6017" line="132" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="edgeDecoder" start="5950" end="5950" line="131" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="edgeDecoder" start="6028" end="6059" line="133" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="edgeDecoder" start="5943" end="5971" line="131" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="edgeDecoder" start="5910" end="6074" line="130" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="edgeDecoder" start="5989" end="5989" line="132" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="edgeDecoder" start="5982" end="6011" line="132" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="edgeDecoder" start="6082" end="6102" line="135" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="edgeDecoder" start="6035" end="6035" line="133" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="edgeDecoder" start="5950" end="5950" line="131" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="edgeDecoder" start="6028" end="6065" line="133" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="com.github.tizuck/jsonGraphSchema/simpleGraphDecoder" statement-count="44" statements-invoked="43" statement-rate="97.73" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13241" end="13846" line="327" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13215" end="13215" line="326" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13079" end="13088" line="322" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13442" end="13449" line="330" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13783" end="13793" line="339" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13279" end="13279" line="327" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13011" end="13090" line="322" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13815" end="13835" line="340" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13116" end="13846" line="325" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13503" end="13510" line="331" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13514" end="13514" line="331" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13157" end="13157" line="325" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="12958" end="12997" line="321" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13421" end="13846" line="330" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13335" end="13335" line="328" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13157" end="13157" line="325" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13335" end="13335" line="328" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13482" end="13846" line="331" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13514" end="13514" line="331" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13399" end="13399" line="329" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13032" end="13078" line="322" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13215" end="13215" line="326" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13306" end="13846" line="328" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13789" end="13792" line="339" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13279" end="13279" line="327" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13116" end="13846" line="325" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13831" end="13834" line="340" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13011" end="13090" line="322" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13453" end="13453" line="330" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="12974" end="12996" line="321" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13183" end="13846" line="326" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13767" end="13794" line="339" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13514" end="13514" line="331" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13571" end="13846" line="333" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13149" end="13153" line="325" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13325" end="13331" line="328" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13668" end="13692" line="336" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13361" end="13846" line="329" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13204" end="13211" line="326" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13385" end="13395" line="329" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="12937" end="12998" line="321" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13453" end="13453" line="330" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13016" end="13089" line="322" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="simpleGraphDecoder" start="13265" end="13275" line="327" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="com.github.tizuck/jsonGraphSchema/nodeDecoder" statement-count="8" statements-invoked="8" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodeDecoder" start="8818" end="8818" line="212" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodeDecoder" start="8707" end="9087" line="211" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodeDecoder" start="8780" end="9087" line="212" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodeDecoder" start="8743" end="8750" line="211" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodeDecoder" start="8804" end="8814" line="212" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodeDecoder" start="8754" end="8754" line="211" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodeDecoder" start="8857" end="9087" line="214" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="nodeDecoder" start="8754" end="8754" line="211" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="com.github.tizuck/jsonGraphSchema/graphDecoder" statement-count="15" statements-invoked="15" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="graphDecoder" start="10221" end="10410" line="254" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="graphDecoder" start="10260" end="10296" line="255" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="graphDecoder" start="10305" end="10342" line="256" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="graphDecoder" start="10416" end="10436" line="259" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="graphDecoder" start="10364" end="10364" line="257" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="graphDecoder" start="10267" end="10267" line="255" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="graphDecoder" start="10357" end="10402" line="257" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="graphDecoder" start="10260" end="10290" line="255" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="graphDecoder" start="10364" end="10364" line="257" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="graphDecoder" start="10312" end="10312" line="256" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="graphDecoder" start="10429" end="10435" line="259" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="graphDecoder" start="10305" end="10348" line="256" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="graphDecoder" start="10312" end="10312" line="256" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="graphDecoder" start="10357" end="10396" line="257" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="graphDecoder" start="10267" end="10267" line="255" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="com.github.tizuck/jsonGraphSchema/undirectedHyperGraphDecoder" statement-count="35" statements-invoked="34" statement-rate="97.14" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="10916" end="10926" line="271" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="10834" end="11519" line="270" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="11440" end="11467" line="283" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="11104" end="11104" line="274" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="11456" end="11466" line="283" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="10892" end="11519" line="271" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="10866" end="10866" line="270" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="11093" end="11100" line="274" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="11488" end="11508" line="284" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="10930" end="10930" line="271" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="11154" end="11166" line="275" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="11072" end="11519" line="274" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="10808" end="10808" line="269" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="10986" end="10986" line="272" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="11170" end="11170" line="275" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="11133" end="11519" line="275" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="11170" end="11170" line="275" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="10866" end="10866" line="270" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="10957" end="11519" line="272" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="11050" end="11050" line="273" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="11462" end="11465" line="283" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="10767" end="11519" line="269" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="10930" end="10930" line="271" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="11104" end="11104" line="274" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="11504" end="11507" line="284" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="10808" end="10808" line="269" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="10986" end="10986" line="272" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="10976" end="10982" line="272" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="11236" end="11519" line="277" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="10800" end="10804" line="269" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="11170" end="11170" line="275" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="11340" end="11365" line="280" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="11012" end="11519" line="273" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="10855" end="10862" line="270" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperGraphDecoder" start="11036" end="11046" line="273" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="com.github.tizuck/jsonGraphSchema/undirectedHyperEdge" statement-count="25" statements-invoked="25" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7321" end="7321" line="168" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7347" end="7700" line="169" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7134" end="7134" line="165" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7198" end="7198" line="166" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7427" end="7434" line="170" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7160" end="7700" line="166" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7262" end="7262" line="167" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7438" end="7438" line="170" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7262" end="7262" line="167" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7134" end="7134" line="165" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7321" end="7321" line="168" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7406" end="7700" line="170" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7385" end="7385" line="169" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7198" end="7198" line="166" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7224" end="7700" line="167" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7289" end="7700" line="168" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7184" end="7194" line="166" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7371" end="7381" line="169" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7093" end="7700" line="165" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7248" end="7258" line="167" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7438" end="7438" line="170" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7479" end="7700" line="172" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7126" end="7130" line="165" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7310" end="7317" line="168" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="jsonGraphSchema" class-type="Object" full-class-name="com.github.tizuck.jsonGraphSchema" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala" method="undirectedHyperEdge" start="7581" end="7605" line="175" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                    </methods>
+</class>
+                <class 
+                name="com.github.tizuck.Main" filename="Main.scala" statement-count="47" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                    <methods>
+                        <method 
+                        name="com.github.tizuck/Main/edgeTransformer" statement-count="17" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="edgeTransformer" start="2272" end="2294" line="92" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="edgeTransformer" start="2387" end="2432" line="94" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="edgeTransformer" start="2438" end="2441" line="94" branch="true" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="edgeTransformer" start="2318" end="2348" line="93" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="edgeTransformer" start="2415" end="2429" line="94" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="edgeTransformer" start="2179" end="2465" line="89" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="edgeTransformer" start="2049" end="2063" line="86" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="edgeTransformer" start="2392" end="2431" line="94" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="edgeTransformer" start="2325" end="2347" line="93" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="edgeTransformer" start="2438" end="2441" line="94" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="edgeTransformer" start="2202" end="2464" line="90" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="edgeTransformer" start="2400" end="2411" line="94" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="edgeTransformer" start="2375" end="2385" line="94" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="edgeTransformer" start="2231" end="2463" line="91" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="edgeTransformer" start="2412" end="2430" line="94" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="edgeTransformer" start="2265" end="2295" line="92" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="edgeTransformer" start="2387" end="2432" line="94" branch="true" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="com.github.tizuck/Main/&lt;none&gt;" statement-count="30" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="2535" end="2535" line="100" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="1618" end="1618" line="71" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="2626" end="2650" line="102" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="1749" end="1851" line="77" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="1797" end="1802" line="78" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="1557" end="2663" line="69" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="1896" end="1912" line="83" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="315" end="1330" line="57" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="1618" end="1618" line="71" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="1749" end="1749" line="77" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="1670" end="2658" line="73" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="2535" end="2535" line="100" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="1504" end="1515" line="64" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="1825" end="1841" line="79" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="1749" end="1749" line="77" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="1618" end="1618" line="71" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="2518" end="2608" line="100" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="1715" end="1725" line="75" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="315" end="1318" line="13" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="1861" end="1880" line="82" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="2618" end="2651" line="102" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="1869" end="1879" line="82" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="1614" end="1664" line="71" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="1888" end="1913" line="83" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="1510" end="1514" line="64" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="1777" end="1803" line="78" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="2592" end="2607" line="100" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="1749" end="1749" line="77" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="2535" end="2535" line="100" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck" class="Main" class-type="Object" full-class-name="com.github.tizuck.Main" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala" method="&lt;none&gt;" start="1618" end="1618" line="71" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                    </methods>
+</class>
+            </classes>
+        </package>
+        <package name="com.github.tizuck.dot" statement-count="25" statements-invoked="0" statement-rate="0.00">
+            <classes>
+                <class 
+                name="com.github.tizuck.dot.DotRepresentation" filename="dot\DotRepresentation.scala" statement-count="25" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                    <methods>
+                        <method 
+                        name="com.github.tizuck.dot/DotRepresentation/toScalaGraph" statement-count="13" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="toScalaGraph" start="1137" end="1163" line="29" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="toScalaGraph" start="1319" end="1372" line="35" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="toScalaGraph" start="1216" end="1242" line="30" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="toScalaGraph" start="1259" end="1300" line="32" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="toScalaGraph" start="1278" end="1299" line="32" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="toScalaGraph" start="1360" end="1360" line="35" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="toScalaGraph" start="1154" end="1162" line="29" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="toScalaGraph" start="1233" end="1241" line="30" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="toScalaGraph" start="1426" end="1440" line="39" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="toScalaGraph" start="1200" end="1247" line="30" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="toScalaGraph" start="977" end="994" line="24" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="toScalaGraph" start="1067" end="1309" line="28" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="toScalaGraph" start="1121" end="1168" line="29" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="com.github.tizuck.dot/DotRepresentation/apply" statement-count="12" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="apply" start="1583" end="1583" line="42" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="apply" start="1567" end="1582" line="42" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="apply" start="1762" end="1793" line="44" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="apply" start="1583" end="1583" line="42" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="apply" start="1616" end="1649" line="42" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="apply" start="1583" end="1583" line="42" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="apply" start="1537" end="1661" line="41" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="apply" start="1567" end="1582" line="42" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="apply" start="1567" end="1650" line="42" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="apply" start="1589" end="1614" line="42" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="apply" start="1896" end="1927" line="45" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="com.github.tizuck.dot" class="DotRepresentation" class-type="Object" full-class-name="com.github.tizuck.dot.DotRepresentation" source="C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala" method="apply" start="1583" end="1583" line="42" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                    </methods>
+</class>
+            </classes>
+        </package>
+    </packages>
+</scoverage>

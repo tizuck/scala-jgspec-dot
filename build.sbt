@@ -15,5 +15,5 @@ libraryDependencies ++= Seq(
   "io.circe" %% "circe-parser" % circeVersion,
   "org.scala-graph" %% "graph-core" % "1.13.5",
   "org.scala-graph" %% "graph-dot" % "1.13.3",
-  "org.scalatest" %% "scalatest" % "3.2.14" % Test
+  "org.scalatest" %% "scalatest" % "3.2.14" % Test,
 )
