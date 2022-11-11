@@ -1,53 +1,17 @@
 [0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\target\scala-2.13\classes.bak[0m
 [0m[[0m[0mdebug[0m] [0m[0mAbout to delete class files:[0m
-[0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
-[0m[[0m[0mdebug[0m] [0m[0mRegistering generated classes:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$TopLevelMultipleGraphs$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$Edge.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	DotRepresentation$RepresentationCtx$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	DotRepresentation$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$DirectedHyperGraph.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$$anonfun$nodesDecoder$7.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$$anonfun$topLevelMultipleGraphsDecoder$3.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Main$GraphContext.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$$anonfun$simpleGraphDecoder$15.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$$anonfun$directedHyperEdge$10.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	DotRepresentation$RepresentationCtx.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$DirectedHyperGraph$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$DirectedHyperEdge$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$Nodes$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$Node.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$TopLevelSingleGraph.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$$anonfun$undirectedHyperEdge$9.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$DirectedHyperEdge.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$UndirectedHyperGraph$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Main$delayedInit$body.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$UndirectedHyperGraph.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	DotRepresentation.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$SimpleGraph$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$SimpleGraph.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$SimpleEdge.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$UndirectedHyperEdge$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Main$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Main$anon$importedDecoder$macro$17$1$$anon$2.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Main$anon$importedDecoder$macro$17$1.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$$anonfun$toplevelSingleGraphDecoder$3.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$UndirectedHyperEdge.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Main$GraphContext$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$TopLevelMultipleGraphs.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Main$GraphMetadata$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$TopLevelSingleGraph$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$$anonfun$nodeDecoder$4.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$Nodes.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$$anonfun$simpleEdgeDecoder$10.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$$anonfun$undirectedHyperGraphDecoder$12.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$$anonfun$directedHyperGraphEncoder$12.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Main$anon$importedDecoder$macro$17$1$$anon$1.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$Node$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$Graph.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Main$GraphMetadata.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Main.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	jsonGraphSchema$SimpleEdge$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DotRepresentation$RepresentationCtx$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DotRepresentation$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DotRepresentation$RepresentationCtx.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DotRepresentation.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mRegistering generated classes:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DotRepresentation.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DotRepresentation$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DotRepresentation$RepresentationCtx.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DotRepresentation$RepresentationCtx$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0mRemoving the temporary directory used for backing up class files: C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\target\scala-2.13\classes.bak[0m

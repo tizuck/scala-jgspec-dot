@@ -1,8 +1,0 @@
-[0m[[0m[0mdebug[0m] [0m[0mCopy resource mappings: [0m
-[0m[[0m[0mdebug[0m] [0m[0m	(C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\test\resources\completemulti.json,C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\target\scala-2.13\test-classes\completemulti.json)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\test\resources\completesingle.json,C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\target\scala-2.13\test-classes\completesingle.json)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\test\resources\empty.json,C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\target\scala-2.13\test-classes\empty.json)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\test\resources\emptyMulti.json,C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\target\scala-2.13\test-classes\emptyMulti.json)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\test\resources\hyperedgessingle.json,C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\target\scala-2.13\test-classes\hyperedgessingle.json)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\test\resources\nodesedgessingle.json,C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\target\scala-2.13\test-classes\nodesedgessingle.json)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\test\resources\nodesonlysingle.json,C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\target\scala-2.13\test-classes\nodesonlysingle.json)[0m

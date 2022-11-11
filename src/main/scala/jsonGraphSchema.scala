@@ -318,6 +318,9 @@ object jsonGraphSchema {
                                        t2decoder:Decoder[T2],
                                        t3decoder:Decoder[T3]) : Decoder[SimpleGraph[T1,T2,T3]] = {
     (c: HCursor) => {
+      //We need this distinction here because otherwise the hyperedges
+      //field can be ignored by the decoder and the other fields would still
+      //be compatible with a instance of SimpleEdge.
       if(c.keys.exists(key => key.exists(s => s.equals("hyperedges")))) {
         Left(DecodingFailure("Hyperedges unaccepted member of simple graph",c.history))
       } else {

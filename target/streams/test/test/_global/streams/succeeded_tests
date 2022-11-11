@@ -1,5 +1,0 @@
-#Successful Tests
-#Thu Nov 10 15:55:08 CET 2022
-com.github.tizuck.adt.unit.GraphADTSpec=1668092108665
-com.github.tizuck.adt.integration.JsonParserToADTSpec=1668092108665
-com.github.tizuck.adt.unit.EdgeADTSpec=1668092108696

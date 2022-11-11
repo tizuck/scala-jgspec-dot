@@ -85,13 +85,13 @@ object Main extends App {
       def edgeTransformer(innerEdge:scalax.collection.Graph[Node[Unit],LDiEdge]#EdgeT): Option[(DotGraph,DotEdgeStmt)] = {
         innerEdge.edge match {
           case LDiEdge(source,target,label) => label match {
-            case l:String =>
+            case e:Edge[_] =>
               Some(
                 (dotRoot,
                   DotEdgeStmt(
                     NodeId(source.toOuter.jsonkey),
                     NodeId(target.toOuter.jsonkey),
-                    (if(l.nonEmpty) List(DotAttr(Id("label"),Id(label.toString))) else Nil)
+                    (if(e.label.nonEmpty) List(DotAttr(Id("label"),Id(label.toString))) else Nil)
                   )))
           }
         }
