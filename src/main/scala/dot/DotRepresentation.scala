@@ -79,9 +79,8 @@ object DotRepresentation {
     scalax.collection.Graph[Node[M2],LHyperEdge](edges : _*)
   }
 
-  def apply[M1,M2,M3,E[+X] <: GraphPredef.EdgeLikeIn[X]](
-                                                          topLevel: TopLevelSingleGraph[M1,M2,M3],
-                                                          representationCtx: RepresentationCtx[Node[M2],E])
+  def apply[M1,M2,M3,E[+X] <: GraphPredef.EdgeLikeIn[X]](topLevel: TopLevelSingleGraph[M1,M2,M3],
+                                                         representationCtx: RepresentationCtx[Node[M2],E])
   :DotRepresentation = {
 
     import scalax.collection.io.dot._
@@ -91,7 +90,14 @@ object DotRepresentation {
         val scalaGraph = toScalaGraph(s)
         val dotRep = scalaGraph.toDot(
           dotRoot = representationCtx.dotRoot,
-          edgeTransformer = representationCtx.edgeTransformer.asInstanceOf[EdgeTransformer[Node[M2],LDiEdge]]
+          edgeTransformer = representationCtx.edgeTransformer
+            .asInstanceOf[EdgeTransformer[Node[M2],LDiEdge]],
+          cNodeTransformer = representationCtx.cNodeTransformer
+            .asInstanceOf[Option[NodeTransformer[Node[M2],LDiEdge]]],
+          iNodeTransformer = representationCtx.iNodeTransformer
+            .asInstanceOf[Option[NodeTransformer[Node[M2],LDiEdge]]],
+          hEdgeTransformer = representationCtx.hyperEdgeTransformer
+            .asInstanceOf[Option[HyperEdgeTransformer[Node[M2],LDiEdge]]]
         )
         DotRepresentation(dotRep)
 
@@ -99,7 +105,14 @@ object DotRepresentation {
         val scalaGraph = toScalaGraph(dhg)
         val dotRep = scalaGraph.toDot(
           dotRoot = representationCtx.dotRoot,
-          edgeTransformer = representationCtx.edgeTransformer.asInstanceOf[EdgeTransformer[Node[M2], LDiHyperEdge]]
+          edgeTransformer = representationCtx.edgeTransformer
+            .asInstanceOf[EdgeTransformer[Node[M2], LDiHyperEdge]],
+          cNodeTransformer = representationCtx.cNodeTransformer
+            .asInstanceOf[Option[NodeTransformer[Node[M2], LDiHyperEdge]]],
+          iNodeTransformer = representationCtx.iNodeTransformer
+            .asInstanceOf[Option[NodeTransformer[Node[M2], LDiHyperEdge]]],
+          hEdgeTransformer = representationCtx.hyperEdgeTransformer
+            .asInstanceOf[Option[HyperEdgeTransformer[Node[M2], LDiHyperEdge]]]
         )
         DotRepresentation(dotRep)
 
@@ -107,7 +120,14 @@ object DotRepresentation {
         val scalaGraph = toScalaGraph(uhg)
         val dotRep = scalaGraph.toDot(
           dotRoot = representationCtx.dotRoot,
-          edgeTransformer = representationCtx.edgeTransformer.asInstanceOf[EdgeTransformer[Node[M2],LHyperEdge]]
+          edgeTransformer = representationCtx.edgeTransformer
+            .asInstanceOf[EdgeTransformer[Node[M2],LHyperEdge]],
+          cNodeTransformer = representationCtx.cNodeTransformer
+            .asInstanceOf[Option[NodeTransformer[Node[M2], LHyperEdge]]],
+          iNodeTransformer = representationCtx.iNodeTransformer
+            .asInstanceOf[Option[NodeTransformer[Node[M2], LHyperEdge]]],
+          hEdgeTransformer = representationCtx.hyperEdgeTransformer
+            .asInstanceOf[Option[HyperEdgeTransformer[Node[M2], LHyperEdge]]]
         )
         DotRepresentation(dotRep)
     }
