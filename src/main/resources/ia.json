@@ -17,12 +17,12 @@
         "source": "q0",
         "target": "q1",
         "label": "req",
-        "operationCtx": {
-          "spawnId": 0,
-          "transactionId": 0
-        },
         "metadata": {
-          "tpe": "EventReceiveID",
+          "operationCtx": {
+            "spawnId": 0,
+            "transactionId": 0
+          },
+          "tpe": "ReceiveEventID",
           "variable": {
             "name": "c",
             "ctx": {
@@ -63,10 +63,6 @@
         "source": "q2",
         "target": "q0",
         "label": "snd",
-        "operationCtx": {
-          "spawnId": 0,
-          "transactionId": 0
-        },
         "metadata": {
           "tpe":"EventSendVarId",
           "operationCtx": {
