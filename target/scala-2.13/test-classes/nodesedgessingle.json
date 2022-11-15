@@ -1,0 +1,14 @@
+{
+  "graph": {
+    "nodes": {
+      "A": {},
+      "B": {}
+    },
+    "edges": [
+      {
+        "source": "A",
+        "target": "B"
+      }
+    ]
+  }
+}

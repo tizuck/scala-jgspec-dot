@@ -39,7 +39,7 @@ object Main extends App {
   }
   case class Table(rows:List[Row]){
     def toHTML:String = {
-      s"<table>${rows.map(_.toHTML).mkString}</table>"
+      s"<<table>${rows.map(_.toHTML).mkString}</table>>"
     }
     def appendRow(row:Row):Table = {
       this.copy(rows = rows.appended(row))
@@ -130,25 +130,36 @@ object Main extends App {
       def edgeTransformer(innerEdge:scalax.collection.Graph[Node[Unit],LDiEdge]#EdgeT): Option[(DotGraph,DotEdgeStmt)] = {
         innerEdge.edge match {
           case LDiEdge(source,target,label) => label match {
-            case s:SimpleEdge[Event] =>
-              val label = s"${s.label.getOrElse("")}${
-                s.metadata match {
-                  case Some(value) => s"(${
-                    value match {
-                      case EventSendVarId(operationCtx, variableLookUp) =>
-                        s"${variableLookUp.name} sId:${variableLookUp.ctx.spawnId} tId:${variableLookUp.ctx.transactionId}!"
-                      case ReadVar(variable, keyValRef, resultVariable, operationCtx) =>
-                        s"lookup:(${variable.name}, sId:${variable.ctx.spawnId}, tId:${variable.ctx.transactionId}) " +
-                          s"in DB:$keyValRef result: (${resultVariable.name}, sId:${resultVariable.ctx.spawnId}, tId:${resultVariable.ctx.transactionId});"
-                      case ReceiveEventId(variable, operationCtx) => val table = Table.empty
-                        val tableWithName = table.appendRow(Row(List("<b>ReceiveEventId</b>")))
-                        val tableWithVariable = tableWithName.appendRow(Row(List("variable", s"(${variable.name},${variable.ctx.transactionId},${variable.ctx.spawnId})")))
-                        val tableWithOperationContext = tableWithVariable.appendRow(Row(List("op-ctx", s"${operationCtx.transactionId},${operationCtx.spawnId}")))
-                        tableWithOperationContext.toHTML
-                      case _ => ""
-                    }})"
-                  case None => ""
-                }}"
+            case s: SimpleEdge[Event] =>
+              val label: String = s.metadata match {
+                case Some(value) =>
+                  value match {
+                    case EventSendVarId(operationCtx, variableLookUp) =>
+                      Table.empty
+                        .appendRow(Row(List("type",s"${EventSendVarId.getClass.toString}")))
+                        .appendRow(Row(List("ia-name",s"${s.label.getOrElse("")}?")))
+                        .appendRow(Row(List("lookup-var",s"${variableLookUp.name} sId:${variableLookUp.ctx.spawnId} tId:${variableLookUp.ctx.transactionId}")))
+                        .appendRow(Row(List("op-ctx",s"${operationCtx.transactionId},${operationCtx.spawnId}")))
+                        .toHTML
+                    case ReadVar(variable, keyValRef, resultVariable, operationCtx) =>
+                      Table.empty
+                        .appendRow(Row(List("type",s"${ReadVar.getClass.toString}")))
+                        .appendRow(Row(List("ia-name",s"${s.label.getOrElse("")};")))
+                        .appendRow(Row(List("variable", s"(${variable.name},${variable.ctx.transactionId},${variable.ctx.spawnId})")))
+                        .appendRow(Row(List("keyValStore-ID", s"$keyValRef")))
+                        .appendRow(Row(List("result-var",s"${resultVariable.name}, sId:${resultVariable.ctx.spawnId}, tId:${resultVariable.ctx.transactionId}")))
+                        .appendRow(Row(List("op-ctx",s"${operationCtx.transactionId},${operationCtx.spawnId}")))
+                        .toHTML
+                    case ReceiveEventId(variable, operationCtx) =>
+                        Table.empty
+                          .appendRow(Row(List("type","ReceiveEventId")))
+                          .appendRow(Row(List("ia-name",s"${s.label.getOrElse("")}?")))
+                          .appendRow(Row(List("variable", s"(${variable.name},${variable.ctx.transactionId},${variable.ctx.spawnId})")))
+                          .appendRow(Row(List("op-ctx", s"${operationCtx.transactionId},${operationCtx.spawnId}")))
+                          .toHTML
+                    case _ => ""
+                  }
+                case None => ""}
               Some(
                 (dotRoot,
                   DotEdgeStmt(
@@ -156,9 +167,8 @@ object Main extends App {
                     NodeId(target.toOuter.jsonkey),
                     List(DotAttr(Id("label"),Id(label)))
                   )))
-          }
         }
-      }
+      }}
 
       val ctx = RepresentationCtx[Node[Unit],LDiEdge](
         dotRoot = dotRoot,

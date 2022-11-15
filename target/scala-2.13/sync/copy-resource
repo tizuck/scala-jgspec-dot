@@ -1,1 +1,1 @@
-[[{},{}],{}]
+[[{"${BASE}/src/main/resources/ia.json":["${BASE}/target/scala-2.13/classes/ia.json"]},{"${BASE}/target/scala-2.13/classes/ia.json":["${BASE}/src/main/resources/ia.json"]}],{"${BASE}/src/main/resources/ia.json":{"file":"file:///C:/Users/dbs476/Documents/Repos/scala-jgspec-dot/src/main/resources/ia.json","lastModified":1668503832447}}]

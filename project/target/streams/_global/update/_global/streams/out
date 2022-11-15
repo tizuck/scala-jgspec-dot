@@ -1,3 +1,3 @@
-[debug] not up to date. inChanged = true, force = false
-[debug] Updating ProjectRef(uri("file:/C:/Users/dbs476/Documents/Repos/scala-jgspec-dot/project/"), "scala-jgspec-dot-build")...
-[debug] Done updating ProjectRef(uri("file:/C:/Users/dbs476/Documents/Repos/scala-jgspec-dot/project/"), "scala-jgspec-dot-build")
+[0m[[0m[0mdebug[0m] [0m[0mnot up to date. inChanged = true, force = false[0m
+[0m[[0m[0mdebug[0m] [0m[0mUpdating ProjectRef(uri("file:/C:/Users/dbs476/Documents/Repos/scala-jgspec-dot/project/"), "scala-jgspec-dot-build")...[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone updating ProjectRef(uri("file:/C:/Users/dbs476/Documents/Repos/scala-jgspec-dot/project/"), "scala-jgspec-dot-build")[0m

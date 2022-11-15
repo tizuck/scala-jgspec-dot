@@ -1,0 +1,4 @@
+[0m[[0m[33mwarn[0m] [0m[0mC:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala:133:21: non-variable type argument com.github.tizuck.Main.Event in type pattern com.github.tizuck.jsonGraphSchema.SimpleEdge[com.github.tizuck.Main.Event] is unchecked since it is eliminated by erasure[0m
+[0m[[0m[33mwarn[0m] [0m[0m            case s: SimpleEdge[Event] =>[0m
+[0m[[0m[33mwarn[0m] [0m[0m                    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m
