@@ -1,7 +1,15 @@
 package com.github.tizuck
 package adt.integration
 
-import jsonGraphSchema.{Node, Nodes, SimpleEdge, SimpleGraph, TopLevelSingleGraph, UndirectedHyperEdge, UndirectedHyperGraph}
+import jsonGraphSchema.{
+  Node,
+  Nodes,
+  SimpleEdge,
+  SimpleGraph,
+  TopLevelSingleGraph,
+  UndirectedHyperEdge,
+  UndirectedHyperGraph
+}
 
 import io.circe.{Decoder, DecodingFailure, HCursor, ParsingFailure}
 import io.circe.parser._
@@ -19,70 +27,71 @@ class JsonParserToADTSpec extends AnyWordSpec {
   "A Json Parser" should {
     "parse an empty single graph and the ADT" should {
       "contain an empty graph" in {
-        val expectedADT = TopLevelSingleGraph(SimpleGraph[Unit,Unit,Unit]())
+        val expectedADT = TopLevelSingleGraph(SimpleGraph[Unit, Unit, Unit]())
 
-        val res = compareSingleGraphADTs[Unit,Unit,Unit](expectedADT,empty)
+        val res = compareSingleGraphADTs[Unit, Unit, Unit](expectedADT, empty)
         assert(res.isRight)
       }
     }
     "parse a single graph with nodes only and the ADT" should {
       "contain a single graph with the two expected nodes" in {
         val expectedADT = TopLevelSingleGraph(
-          SimpleGraph[Unit,Unit,Unit](
-            nodes = Nodes(List(
-              Node[Unit](jsonkey = "A"),
-              Node[Unit](jsonkey = "B")
-            ))
+          SimpleGraph[Unit, Unit, Unit](nodes =
+            Nodes(List(Node[Unit](jsonkey = "A"), Node[Unit](jsonkey = "B")))
           )
         )
-        val res = compareSingleGraphADTs[Unit,Unit,Unit](expectedADT,singleNodesOnly)
+        val res =
+          compareSingleGraphADTs[Unit, Unit, Unit](expectedADT, singleNodesOnly)
         assert(res.isRight)
       }
     }
     "parse a single graph with edges and nodes and the ADT" should {
       "contain a single graph with expected edges and nodes" in {
         val expectedADT = TopLevelSingleGraph(
-          SimpleGraph[Unit,Unit,Unit](
-            nodes = Nodes(List(
-                Node[Unit](jsonkey = "A"),
-                Node[Unit](jsonkey = "B")
-              )),
-            edges = List(
-              SimpleEdge[Unit]("A","B")
-            )
+          SimpleGraph[Unit, Unit, Unit](
+            nodes =
+              Nodes(List(Node[Unit](jsonkey = "A"), Node[Unit](jsonkey = "B"))),
+            edges = List(SimpleEdge[Unit]("A", "B"))
           )
         )
-        val res = compareSingleGraphADTs[Unit,Unit,Unit](expectedADT,singleGraphNodesEdges)
+        val res = compareSingleGraphADTs[Unit, Unit, Unit](
+          expectedADT,
+          singleGraphNodesEdges
+        )
         assert(res.isRight)
       }
     }
     "parse a single graph with hyperedges and the ADT" should {
       "contain a HyperGraph instance with expected hyperedges and nodes" in {
         val expectedADT = TopLevelSingleGraph(
-          UndirectedHyperGraph[Unit,Unit,Unit](
-            nodes = Nodes(List(
-              Node[Unit](jsonkey = "A"),
-              Node[Unit](jsonkey = "B")
-            )),
+          UndirectedHyperGraph[Unit, Unit, Unit](
+            nodes =
+              Nodes(List(Node[Unit](jsonkey = "A"), Node[Unit](jsonkey = "B"))),
             edges = List(
               UndirectedHyperEdge(
-                List("A","B"),
+                List("A", "B"),
                 relation = Some("associated"),
                 metadata = Some(())
               )
             )
           )
         )
-        val res = compareSingleGraphADTs[Unit,Unit,Unit](expectedADT,singleGraphHyper)
+        val res = compareSingleGraphADTs[Unit, Unit, Unit](
+          expectedADT,
+          singleGraphHyper
+        )
         assert(res.isRight)
       }
     }
     "parse a complete example of a single graph and the ADT" should {
       "be a simple graph" in {
-        sealed case class MetaData(userdefined:String,tpe:Option[String] = None)
+        sealed case class MetaData(
+            userdefined: String,
+            tpe: Option[String] = None
+        )
 
-        implicit val metaDataDecoder:Decoder[MetaData] = {(c:HCursor) =>
-          for{
+        implicit val metaDataDecoder: Decoder[MetaData] = { (c: HCursor) =>
+          for {
             tpe <- c.downField("type").as[Option[String]]
             userdefined <- c.downField("user-defined").as[String]
           } yield {
@@ -91,15 +100,25 @@ class JsonParserToADTSpec extends AnyWordSpec {
         }
 
         val expectedADT = TopLevelSingleGraph(
-          SimpleGraph[MetaData,MetaData,MetaData](
+          SimpleGraph[MetaData, MetaData, MetaData](
             directed = false,
             tpe = Some("graph type"),
             label = Some("graph label"),
             metadata = Some(MetaData("values")),
-            nodes = Nodes(List(
-              Node[MetaData](Some("node label(0)"),Some(MetaData("values",Some("node type"))),"0"),
-              Node[MetaData](Some("node label(1)"),Some(MetaData("values",Some("node type"))),"1")
-            )),
+            nodes = Nodes(
+              List(
+                Node[MetaData](
+                  Some("node label(0)"),
+                  Some(MetaData("values", Some("node type"))),
+                  "0"
+                ),
+                Node[MetaData](
+                  Some("node label(1)"),
+                  Some(MetaData("values", Some("node type"))),
+                  "1"
+                )
+              )
+            ),
             edges = List(
               SimpleEdge[MetaData](
                 "0",
@@ -108,26 +127,32 @@ class JsonParserToADTSpec extends AnyWordSpec {
                 Some("edge relationship"),
                 directed = false,
                 Some("edge label"),
-                Some(MetaData("values")))
+                Some(MetaData("values"))
+              )
             )
           )
         )
-        val res = compareSingleGraphADTs(expectedADT,completeSingle)
+        val res = compareSingleGraphADTs(expectedADT, completeSingle)
         assert(res.isRight)
       }
     }
   }
 
-  private def compareSingleGraphADTs[M1, M2, M3](expectedADT: TopLevelSingleGraph[M1, M2, M3],parsePath:String)(
-    implicit t1D: Decoder[M1],
-    t2D: Decoder[M2],
-    t3D: Decoder[M3]): Either[ParsingFailure, Either[DecodingFailure, Assertion]] = {
+  private def compareSingleGraphADTs[M1, M2, M3](
+      expectedADT: TopLevelSingleGraph[M1, M2, M3],
+      parsePath: String
+  )(implicit
+      t1D: Decoder[M1],
+      t2D: Decoder[M2],
+      t3D: Decoder[M3]
+  ): Either[ParsingFailure, Either[DecodingFailure, Assertion]] = {
     val source = scala.io.Source.fromFile(parsePath)
-    val jsonContent = try {
-      source.mkString
-    } finally {
-      source.close()
-    }
+    val jsonContent =
+      try {
+        source.mkString
+      } finally {
+        source.close()
+      }
 
     val parsedJSON = parse(jsonContent)
 

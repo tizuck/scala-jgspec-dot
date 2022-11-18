@@ -1,4 +1,6 @@
-[0m[[0m[33mwarn[0m] [0m[0mC:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\test\scala\adt\integration\InterfaceAutomatonSpec.scala:167:72: non-variable type argument com.github.tizuck.adt.integration.InterfaceAutomatonSpec.testing the parsing and dot representation of an interface automaton.ast.Event in type pattern com.github.tizuck.jsonGraphSchema.SimpleEdge[com.github.tizuck.adt.integration.InterfaceAutomatonSpec.testing the parsing and dot representation of an interface automaton.ast.Event] is unchecked since it is eliminated by erasure[0m
-[0m[[0m[33mwarn[0m] [0m[0m            case LDiEdge(source,target,label) => label match { case s: SimpleEdge[Event] =>[0m
-[0m[[0m[33mwarn[0m] [0m[0m                                                                       ^[0m
-[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m
+[debug] Acquiring lock on file C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\project\target\.sbt-compilation-infos\root-test\.sbt-idea-lock ...
+[warn] C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\test\scala\adt\integration\InterfaceAutomatonSpec.scala:224:25: non-variable type argument com.github.tizuck.adt.integration.InterfaceAutomatonSpec.testing the parsing and dot representation of an interface automaton.ast.Event in type pattern com.github.tizuck.jsonGraphSchema.SimpleEdge[com.github.tizuck.adt.integration.InterfaceAutomatonSpec.testing the parsing and dot representation of an interface automaton.ast.Event] is unchecked since it is eliminated by erasure
+[warn]                 case s: SimpleEdge[Event] =>
+[warn]                         ^
+[warn] one warning found
+[debug] Releasing lock on file C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\project\target\.sbt-compilation-infos\root-test\.sbt-idea-lock.

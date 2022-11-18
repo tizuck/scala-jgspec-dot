@@ -1,24 +1,27 @@
 package com.github.tizuck
 package adt.unit
 
-import jsonGraphSchema.{DirectedHyperEdge, Edge, SimpleEdge, UndirectedHyperEdge}
+import jsonGraphSchema.{
+  DirectedHyperEdge,
+  Edge,
+  SimpleEdge,
+  UndirectedHyperEdge
+}
 
 import io.circe.parser._
 import io.circe.{Decoder, Json, ParsingFailure}
 import org.scalatest.Assertion
 import org.scalatest.wordspec.AnyWordSpec
 
-/**
- * Test cases for [[com.github.tizuck.jsonGraphSchema.edgeDecoder]].
- * This Decoder is responsible for decoding the three edge types
- * [[com.github.tizuck.jsonGraphSchema.SimpleEdge]],[[com.github.tizuck.jsonGraphSchema.DirectedHyperEdge]]
- * and [[com.github.tizuck.jsonGraphSchema.UndirectedHyperEdge]].
- *
- * Test cases cover one test for each edge type and checking if the parsed type
- * is as expected.
- * Further tests ensure that it is not possible to interpret
- * a parsed result as a wrong type.
- */
+/** Test cases for [[com.github.tizuck.jsonGraphSchema.edgeDecoder]]. This
+  * Decoder is responsible for decoding the three edge types
+  * [[com.github.tizuck.jsonGraphSchema.SimpleEdge]],[[com.github.tizuck.jsonGraphSchema.DirectedHyperEdge]]
+  * and [[com.github.tizuck.jsonGraphSchema.UndirectedHyperEdge]].
+  *
+  * Test cases cover one test for each edge type and checking if the parsed type
+  * is as expected. Further tests ensure that it is not possible to interpret a
+  * parsed result as a wrong type.
+  */
 class EdgeADTSpec extends AnyWordSpec {
   val jsonSimpleEdge: String =
     """
@@ -36,7 +39,7 @@ class EdgeADTSpec extends AnyWordSpec {
       |}
       |""".stripMargin
 
-  val jsonUndirectedHyperEdge : String =
+  val jsonUndirectedHyperEdge: String =
     """
       |{
       |  "nodes":["A","B"]
@@ -47,9 +50,9 @@ class EdgeADTSpec extends AnyWordSpec {
     "parse a simple edge to the correct type" in {
       val jsonParse = parse(jsonSimpleEdge)
 
-      for {p <- jsonParse} yield {
+      for { p <- jsonParse } yield {
         val res = p.as[Edge[Unit]]
-        for{r <- res} yield {
+        for { r <- res } yield {
           assert(r.isInstanceOf[SimpleEdge[Unit]])
         }
       }
@@ -57,9 +60,9 @@ class EdgeADTSpec extends AnyWordSpec {
     "parse a directedHyperEdge to the correct Type" in {
       val jsonParse = parse(jsonDirectedHyperEdge)
 
-      for {p <- jsonParse} yield {
+      for { p <- jsonParse } yield {
         val res = p.as[Edge[Unit]]
-        for {r <- res} yield {
+        for { r <- res } yield {
           assert(r.isInstanceOf[DirectedHyperEdge[Unit]])
         }
       }
@@ -67,9 +70,9 @@ class EdgeADTSpec extends AnyWordSpec {
     "parse a undirectedHyperEdge to the correct Type" in {
       val jsonParse = parse(jsonUndirectedHyperEdge)
 
-      for {p <- jsonParse} yield {
+      for { p <- jsonParse } yield {
         val res = p.as[Edge[Unit]]
-        for {r <- res} yield {
+        for { r <- res } yield {
           assert(r.isInstanceOf[UndirectedHyperEdge[Unit]])
         }
       }
@@ -106,9 +109,10 @@ class EdgeADTSpec extends AnyWordSpec {
     }
   }
 
-  private def assertWrongType[T](jsonParse: Either[ParsingFailure, Json])(implicit tDec:Decoder[T]):
-  Either[ParsingFailure, Assertion] = {
-    for {p <- jsonParse} yield {
+  private def assertWrongType[T](
+      jsonParse: Either[ParsingFailure, Json]
+  )(implicit tDec: Decoder[T]): Either[ParsingFailure, Assertion] = {
+    for { p <- jsonParse } yield {
       val res = p.as[T]
       println(res)
       assert(res.isLeft)

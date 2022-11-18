@@ -1,2 +1,2 @@
-[0m[[0m[0mdebug[0m] [0m[0mCopy resource mappings: [0m
-[0m[[0m[0mdebug[0m] [0m[0m	(C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\resources\ia.json,C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\target\scala-2.13\classes\ia.json)[0m
+[debug] Copy resource mappings: 
+[debug] 	(C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\resources\ia.json,C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\target\scala-2.13\classes\ia.json)
