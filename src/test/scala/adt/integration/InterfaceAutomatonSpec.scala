@@ -107,7 +107,7 @@ class InterfaceAutomatonSpec extends RefSpec with Matchers {
       * decoder can not be auto generated since we want to differentiate the
       * type of the [[ast.Event]] subclass by a field lookup on `tpe`.
       *
-      * Notice that for all other classes of [[ast]] the Circe framework is able
+      * Notice that for all other classes of [[ast]] the Circe fframework is able
       * to auto-generate [[Decoder]] instances.
       *
       * For more information on creating decoders see the webpage of
