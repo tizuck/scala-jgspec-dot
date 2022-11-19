@@ -1,12 +1,11 @@
 [debug] scalafmt: Adding repositories [https://repo1.maven.org/maven2/]
-[debug] scalafmt: parsed config (v3.6.1): C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\.scalafmt.conf
 [debug] scalafmt: considering all files (no git)
 [debug] scalafmt: Change report:
-[debug] 	Checked: C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\test\scala\adt\integration\InterfaceAutomatonSpec.scala, C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\test\scala\adt\integration\JsonParserToADTSpec.scala, C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\test\scala\adt\unit\EdgeADTSpec.scala, C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\test\scala\adt\unit\GraphADTSpec.scala
-[debug] 	Modified: C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\test\scala\adt\integration\InterfaceAutomatonSpec.scala, C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\test\scala\adt\integration\JsonParserToADTSpec.scala, C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\test\scala\adt\unit\EdgeADTSpec.scala, C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\test\scala\adt\unit\GraphADTSpec.scala
-[debug] 	Unmodified: 
-[debug] 	Added: C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\test\scala\adt\integration\InterfaceAutomatonSpec.scala, C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\test\scala\adt\integration\JsonParserToADTSpec.scala, C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\test\scala\adt\unit\EdgeADTSpec.scala, C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\test\scala\adt\unit\GraphADTSpec.scala
+[debug] 	Checked: C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\test\scala\adt\integration\JsonGraphsToADTSpec.scala, C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\test\scala\adt\unit\GraphADTSpec.scala, C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\test\scala\adt\integration\JsonParserToADTSpec.scala, C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\test\scala\adt\unit\EdgeADTSpec.scala, C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\test\scala\adt\integration\InterfaceAutomatonSpec.scala
+[debug] 	Modified: C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\test\scala\adt\integration\JsonGraphsToADTSpec.scala
+[debug] 	Unmodified: C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\test\scala\adt\unit\GraphADTSpec.scala, C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\test\scala\adt\integration\JsonParserToADTSpec.scala, C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\test\scala\adt\unit\EdgeADTSpec.scala, C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\test\scala\adt\integration\InterfaceAutomatonSpec.scala
+[debug] 	Added: 
 [debug] 	Removed: 
-[info] scalafmt: Formatting 4 Scala sources (C:\Users\dbs476\Documents\Repos\scala-jgspec-dot)...
+[info] scalafmt: Formatting 1 Scala sources (C:\Users\Tilman\Documents\Repos\scala-jgspec-dot)...
 [debug] scalafmt: Unchanged 0 Scala sources
-[info] scalafmt: Reformatted 4 Scala sources
+[info] scalafmt: Reformatted 1 Scala sources

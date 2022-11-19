@@ -1,11 +1,9 @@
 [debug] scalafmt: Adding repositories [https://repo1.maven.org/maven2/]
 [debug] scalafmt: considering all files (no git)
 [debug] scalafmt: Change report:
-[debug] 	Checked: C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala, C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala, C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main2.scala, C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala
-[debug] 	Modified: C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala, C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala, C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main2.scala, C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala
-[debug] 	Unmodified: 
-[debug] 	Added: C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala, C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala, C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\Main2.scala, C:\Users\dbs476\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala
+[debug] 	Checked: C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala, C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala, C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala
+[debug] 	Modified: 
+[debug] 	Unmodified: C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala, C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala, C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala
+[debug] 	Added: 
 [debug] 	Removed: 
-[info] scalafmt: Formatting 4 Scala sources (C:\Users\dbs476\Documents\Repos\scala-jgspec-dot)...
 [debug] scalafmt: Unchanged 0 Scala sources
-[info] scalafmt: Reformatted 4 Scala sources

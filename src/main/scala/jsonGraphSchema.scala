@@ -1,136 +1,161 @@
+/*
+ * Copyright 2022 Tilman Zuckmantel
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.github.tizuck
 
 import io.circe.{Decoder, DecodingFailure, HCursor}
 
-/**
- * Contains AST definition according to the
- * [[https://github.com/jsongraph/json-graph-specification/blob/master/json-graph-schema_v2.json
- * JSON graph specification v2]] and a JSON Decoder to parse a JSON file to an instance of the AST.
- *
- * A decoded JSON file is either an instance of [[com.github.tizuck.jsonGraphSchema.TopLevelSingleGraph TopLevelSingleGraph]]
- * or [[com.github.tizuck.jsonGraphSchema.TopLevelMultipleGraphs TopLevelMultipleGraphs]]. The two types are reffering
- * to the possibility to state a single graph or multiple graph in the JSON file. For further information on the
- * specification for graphs in JSON see [[https://github.com/jsongraph/json-graph-specification Json Graph Github]].
- *
- * The JSON file
- * {{{
- *   {
- *     "graph":{
- *       "nodes":{
- *         "q1":{"label":"1"}
- *       },
- *       "edges":[
- *         {
- *           "source":"q1",
- *           "target":"q2",
- *           "label":"foo"
- *         }
- *       ]
- *     }
- *   }
- * }}}
- * for example would be decoded to the following AST:
- * {{{
- *   TopLevelSingleGraph(
- *     SimpleGraph(
- *       tpe = None,
- *       metadata = None,
- *       nodes = Nodes(List(
- *         Node(
- *           label = Some(1),
- *           metadata = None,
- *           jsonkey = q1)
- *         )),
- *       id = None,
- *       label = None,
- *       directed = true,
- *       edges = List(SimpleEdge(
- *         source = q1,
- *         target = q2,
- *         id = None,
- *         relation = None,
- *         directed = true,
- *         label = Some(foo),
- *         metadata = None))
- *       ))
- * }}}
- *
- * A json file can be parsed and transformed into an AST using the parser method
- * of the [[https://circe.github.io/circe/parsing.html Circe]] framework.
- *
- * {{{
- *   import com.github.tizuck.jsonGraphSchema.TopLevelSingleGraph
- *   import io.circe.parser
- *   ...
- *   val json:String = """..."""
- *
- *   val parsed = parser.parse(json)
- *
- *   for{p <- parsed} yield {
- *     for{ tpe <- p.as[TopLevelSingleGraph[Unit,Unit,Unit]]} yield {
- *       //Do something with the toplevel unit
- *     }
- *  }
- * }}}
- *
- * It is also possible to augment the AST with additional types on metadata fields
- * of the JSON graph. Generally, by adding `import io.circe.generic.auto._` to your import statement,
- * the circe framework is able to auto generate decoders for your types. However, some types with
- * more complex structures may need to be decoded with custom decoders.
- * See test
- * [[https://github.com/tizuck/scala-jgspec-dot/blob/main/src/test/scala/adt/integration/InterfaceAutomatonSpec.scala
- * InterfaceAutomatonSpec]]
- * as an example for complex metadata structures. If your graph had a metadata field `"metadata":0` for example,
- * it could be processed in the following way:
- *
- * {{{
- * val json:String = """..."""
- *
- * import io.circe.generic.auto._
- *
- * sealed case class MetaData(meta:Int)
- *
- * val parsed = parser.parse(json)
- *
- * for{p <- parsed} yield {
- *   for{ tpe <- p.as[TopLevelSingleGraph[MetaData,Unit,Unit]]} yield {
- *     println(tpe)
- *     //TopLevelSingleGraph(...,Some(MetaData(0)),...)
- *   }
- * }
- * }}}
- */
+/** Contains AST definition according to the
+  * [[https://github.com/jsongraph/json-graph-specification/blob/master/json-graph-schema_v2.json JSON graph specification v2]]
+  * and a JSON Decoder to parse a JSON file to an instance of the AST.
+  *
+  * A decoded JSON file is either an instance of
+  * [[com.github.tizuck.jsonGraphSchema.TopLevelSingleGraph TopLevelSingleGraph]]
+  * or
+  * [[com.github.tizuck.jsonGraphSchema.TopLevelMultipleGraphs TopLevelMultipleGraphs]].
+  * The two types are reffering to the possibility to state a single graph or
+  * multiple graph in the JSON file. For further information on the
+  * specification for graphs in JSON see
+  * [[https://github.com/jsongraph/json-graph-specification Json Graph Github]].
+  *
+  * The JSON file
+  * {{{
+  *   {
+  *     "graph":{
+  *       "nodes":{
+  *         "q1":{"label":"1"}
+  *       },
+  *       "edges":[
+  *         {
+  *           "source":"q1",
+  *           "target":"q2",
+  *           "label":"foo"
+  *         }
+  *       ]
+  *     }
+  *   }
+  * }}}
+  * for example would be decoded to the following AST:
+  * {{{
+  *   TopLevelSingleGraph(
+  *     SimpleGraph(
+  *       tpe = None,
+  *       metadata = None,
+  *       nodes = Nodes(List(
+  *         Node(
+  *           label = Some(1),
+  *           metadata = None,
+  *           jsonkey = q1)
+  *         )),
+  *       id = None,
+  *       label = None,
+  *       directed = true,
+  *       edges = List(SimpleEdge(
+  *         source = q1,
+  *         target = q2,
+  *         id = None,
+  *         relation = None,
+  *         directed = true,
+  *         label = Some(foo),
+  *         metadata = None))
+  *       ))
+  * }}}
+  *
+  * A json file can be parsed and transformed into an AST using the parser
+  * method of the [[https://circe.github.io/circe/parsing.html Circe]]
+  * framework.
+  *
+  * {{{
+  *   import com.github.tizuck.jsonGraphSchema.TopLevelSingleGraph
+  *   import io.circe.parser
+  *   ...
+  *   val json:String = """..."""
+  *
+  *   val parsed = parser.parse(json)
+  *
+  *   for{p <- parsed} yield {
+  *     for{ tpe <- p.as[TopLevelSingleGraph[Unit,Unit,Unit]]} yield {
+  *       //Do something with the toplevel unit
+  *     }
+  *  }
+  * }}}
+  *
+  * It is also possible to augment the AST with additional types on metadata
+  * fields of the JSON graph. Generally, by adding
+  * <pre>import io.circe.generic.auto._</pre> to your import statement, the circe framework is
+  * able to auto generate decoders for your types. However, some types with more
+  * complex structures may need to be decoded with custom decoders. See test
+  * [[https://github.com/tizuck/scala-jgspec-dot/blob/main/src/test/scala/adt/integration/InterfaceAutomatonSpec.scala InterfaceAutomatonSpec]]
+  * as an example for complex metadata structures. If your graph had a metadata
+  * field `"metadata":0` for example, it could be processed in the following
+  * way:
+  *
+  * {{{
+  * val json:String = """..."""
+  *
+  * import io.circe.generic.auto._
+  *
+  * sealed case class MetaData(meta:Int)
+  *
+  * val parsed = parser.parse(json)
+  *
+  * for{p <- parsed} yield {
+  *   for{ tpe <- p.as[TopLevelSingleGraph[MetaData,Unit,Unit]]} yield {
+  *     println(tpe)
+  *     //TopLevelSingleGraph(...,Some(MetaData(0)),...)
+  *   }
+  * }
+  * }}}
+  */
 object jsonGraphSchema {
 
-  /**
-   * Represents multiple nodes of a graph of the JSON graph specification.
-   *
-   * @param nodes nodes of a graph.
-   * @tparam M2 Type for meta data attached to nodes.
-   */
+  /** Represents multiple nodes of a graph of the JSON graph specification.
+    *
+    * @param nodes
+    *   nodes of a graph.
+    * @tparam M2
+    *   Type for meta data attached to nodes.
+    */
   sealed case class Nodes[M2](nodes: List[Node[M2]])
 
-  /**
-   * Represents a node of a graph of the JSON graph specification.
-   *
-   * @param label optional label of the node.
-   * @param metadata optional attached metadata of a node.
-   * @param jsonkey nodes are stated as objects with a key in the JSON file.
-   *                The key is stored to link edges to nodes in a later step.
-   * @tparam M2 Type of metadata attached to nodes.
-   */
+  /** Represents a node of a graph of the JSON graph specification.
+    *
+    * @param label
+    *   optional label of the node.
+    * @param metadata
+    *   optional attached metadata of a node.
+    * @param jsonkey
+    *   nodes are stated as objects with a key in the JSON file. The key is
+    *   stored to link edges to nodes in a later step.
+    * @tparam M2
+    *   Type of metadata attached to nodes.
+    */
   sealed case class Node[M2](
-                              label: Option[String] = None,
-                              metadata: Option[M2] = None,
-                              jsonkey: String
+      label: Option[String] = None,
+      metadata: Option[M2] = None,
+      jsonkey: String
   )
 
-  /**
-   * Base type for three edge types [[SimpleEdge SimpleEdge]], [[DirectedHyperEdge DirectedHyperEdge]]
-   * and [[UndirectedHyperEdge UndirectedHyperEdge]].
-   *
-   * @tparam M3 Type for meta data attached to edges.
-   */
+  /** Base type for three edge types [[SimpleEdge SimpleEdge]],
+    * [[DirectedHyperEdge DirectedHyperEdge]] and
+    * [[UndirectedHyperEdge UndirectedHyperEdge]].
+    *
+    * @tparam M3
+    *   Type for meta data attached to edges.
+    */
   sealed trait Edge[M3] {
     val id: Option[String]
 
@@ -143,19 +168,26 @@ object jsonGraphSchema {
     val metadata: Option[M3]
   }
 
-  /**
-   * Represents common graph edges consisting of two nodes and a connection between the nodes of
-   * a graph in the JSON graph specification.
-   *
-   * @param source Source node of a graph edge.
-   * @param target Target node of a graph edge.
-   * @param id Optional identifier.
-   * @param relation Optional relationship specifier
-   * @param directed True, if edge is directed. False, otherwise.
-   * @param label Optional label.
-   * @param metadata optional attached metadata of an edge.
-   * @tparam M3 Type for metadata attached to edges.
-   */
+  /** Represents common graph edges consisting of two nodes and a connection
+    * between the nodes of a graph in the JSON graph specification.
+    *
+    * @param source
+    *   Source node of a graph edge.
+    * @param target
+    *   Target node of a graph edge.
+    * @param id
+    *   Optional identifier.
+    * @param relation
+    *   Optional relationship specifier
+    * @param directed
+    *   True, if edge is directed. False, otherwise.
+    * @param label
+    *   Optional label.
+    * @param metadata
+    *   optional attached metadata of an edge.
+    * @tparam M3
+    *   Type for metadata attached to edges.
+    */
   sealed case class SimpleEdge[M3](
       source: String,
       target: String,
@@ -166,21 +198,31 @@ object jsonGraphSchema {
       override val metadata: Option[M3] = None
   ) extends Edge[M3]
 
-  /**
-   * Represents directed hyper graph edges consisting of multiple nodes connected to each other
-   * and a connection between the nodes of a graph in the JSON graph specification.
-   *
-   * This is representative for [[https://en.wikipedia.org/wiki/Hypergraph Hypergraphs]] with directed edges.
-   *
-   * @param source   Source nodes of a hyper graph edge.
-   * @param target   Target nodes of a hyper graph edge.
-   * @param id       Optional identifier.
-   * @param relation Optional relationship specifier
-   * @param directed True, if edge is directed. False, otherwise.
-   * @param label    Optional label.
-   * @param metadata optional attached metadata of an edge.
-   * @tparam M3 Type of metadata attached to edges.
-   */
+  /** Represents directed hyper graph edges consisting of multiple nodes
+    * connected to each other and a connection between the nodes of a graph in
+    * the JSON graph specification.
+    *
+    * This is representative for
+    * [[https://en.wikipedia.org/wiki/Hypergraph Hypergraphs]] with directed
+    * edges.
+    *
+    * @param source
+    *   Source nodes of a hyper graph edge.
+    * @param target
+    *   Target nodes of a hyper graph edge.
+    * @param id
+    *   Optional identifier.
+    * @param relation
+    *   Optional relationship specifier
+    * @param directed
+    *   True, if edge is directed. False, otherwise.
+    * @param label
+    *   Optional label.
+    * @param metadata
+    *   optional attached metadata of an edge.
+    * @tparam M3
+    *   Type of metadata attached to edges.
+    */
   sealed case class DirectedHyperEdge[M3](
       source: List[String],
       target: List[String],
@@ -191,18 +233,25 @@ object jsonGraphSchema {
       override val metadata: Option[M3] = None
   ) extends Edge[M3]
 
-  /**
-   * Represents undirected hyper graph edges consisting of multiple nodes connected to each other
-   * and a connection between the nodes of a graph in the JSON graph specification.
-   *
-   * @param nodes    nodes connected with each other without a relationship direction.
-   * @param id       Optional identifier.
-   * @param relation Optional relationship specifier
-   * @param directed False.
-   * @param label    Optional label.
-   * @param metadata optional attached metadata of an edge.
-   * @tparam M3 Type of metadata attached to edges.
-   */
+  /** Represents undirected hyper graph edges consisting of multiple nodes
+    * connected to each other and a connection between the nodes of a graph in
+    * the JSON graph specification.
+    *
+    * @param nodes
+    *   nodes connected with each other without a relationship direction.
+    * @param id
+    *   Optional identifier.
+    * @param relation
+    *   Optional relationship specifier
+    * @param directed
+    *   False.
+    * @param label
+    *   Optional label.
+    * @param metadata
+    *   optional attached metadata of an edge.
+    * @tparam M3
+    *   Type of metadata attached to edges.
+    */
   sealed case class UndirectedHyperEdge[M3](
       nodes: List[String],
       override val id: Option[String] = None,
@@ -212,14 +261,16 @@ object jsonGraphSchema {
       override val metadata: Option[M3] = None
   ) extends Edge[M3]
 
-  /**
-   * Base Type for the three types of graphs possible to define
-   * in the JSON graph specification.
-   *
-   * @tparam M1 Type for meta data attached to the graph.
-   * @tparam M2 Type for meta data attached to nodes.
-   * @tparam M3 Type for meta data attached to edges.
-   */
+  /** Base Type for the three types of graphs possible to define in the JSON
+    * graph specification.
+    *
+    * @tparam M1
+    *   Type for meta data attached to the graph.
+    * @tparam M2
+    *   Type for meta data attached to nodes.
+    * @tparam M3
+    *   Type for meta data attached to edges.
+    */
   sealed trait Graph[M1, M2, M3] {
     val id: Option[String]
 
@@ -236,13 +287,15 @@ object jsonGraphSchema {
     val edges: List[Edge[M3]]
   }
 
-  /**
-   * Represents common graph instances of the JSON graph specification.
-   *
-   * @tparam M1 Type for meta data attached to the graph.
-   * @tparam M2 Type for meta data attached to nodes.
-   * @tparam M3 Type for meta data attached to edges.
-   */
+  /** Represents common graph instances of the JSON graph specification.
+    *
+    * @tparam M1
+    *   Type for meta data attached to the graph.
+    * @tparam M2
+    *   Type for meta data attached to nodes.
+    * @tparam M3
+    *   Type for meta data attached to edges.
+    */
   sealed case class SimpleGraph[M1, M2, M3](
       override val tpe: Option[String] = None,
       override val metadata: Option[M1] = None,
@@ -253,14 +306,15 @@ object jsonGraphSchema {
       override val edges: List[SimpleEdge[M3]] = List.empty[SimpleEdge[M3]]
   ) extends Graph[M1, M2, M3] {}
 
-  /**
-   *
-   * Represents directed hyper edge instances of the JSON graph specification.
-   *
-   * @tparam M1 Type for meta data attached to the graph.
-   * @tparam M2 Type for meta data attached to nodes.
-   * @tparam M3 Type for meta data attached to edges.
-   */
+  /** Represents directed hyper edge instances of the JSON graph specification.
+    *
+    * @tparam M1
+    *   Type for meta data attached to the graph.
+    * @tparam M2
+    *   Type for meta data attached to nodes.
+    * @tparam M3
+    *   Type for meta data attached to edges.
+    */
   sealed case class DirectedHyperGraph[M1, M2, M3](
       override val tpe: Option[String] = None,
       override val metadata: Option[M1] = None,
@@ -272,14 +326,16 @@ object jsonGraphSchema {
         List.empty[DirectedHyperEdge[M3]]
   ) extends Graph[M1, M2, M3]
 
-  /**
-   *
-   * Represents undirected hyper edge instances of the JSON graph specification.
-   *
-   * @tparam M1 Type for meta data attached to the graph.
-   * @tparam M2 Type for meta data attached to nodes.
-   * @tparam M3 Type for meta data attached to edges.
-   */
+  /** Represents undirected hyper edge instances of the JSON graph
+    * specification.
+    *
+    * @tparam M1
+    *   Type for meta data attached to the graph.
+    * @tparam M2
+    *   Type for meta data attached to nodes.
+    * @tparam M3
+    *   Type for meta data attached to edges.
+    */
   sealed case class UndirectedHyperGraph[M1, M2, M3](
       override val tpe: Option[String] = None,
       override val metadata: Option[M1] = None,
@@ -290,33 +346,38 @@ object jsonGraphSchema {
       override val edges: List[UndirectedHyperEdge[M3]]
   ) extends Graph[M1, M2, M3]
 
-  /**
-   * Top level container for any graph of the three graph types [[SimpleGraph SimpleGraph]], [[DirectedHyperGraph DirectedHyperGraph]]
-   * or [[UndirectedHyperGraph UndirectedHyperGraph]].
-   *
-   * @param graph graph according to the
-   *              [[https://github.com/jsongraph/json-graph-specification/blob/master/json-graph-schema_v2.json
-   *              JSON specification v2]].
-   *              * @tparam M1 type for meta data attached to the graph.
-   * @tparam M1 Type for meta data attached to the graph.
-   * @tparam M2 Type for meta data attached to nodes.
-   * @tparam M3 Type for meta data attached to edges.
-   */
+  /** Top level container for any graph of the three graph types
+    * [[SimpleGraph SimpleGraph]], [[DirectedHyperGraph DirectedHyperGraph]] or
+    * [[UndirectedHyperGraph UndirectedHyperGraph]].
+    *
+    * @param graph
+    *   graph according to the
+    *   [[https://github.com/jsongraph/json-graph-specification/blob/master/json-graph-schema_v2.json JSON specification v2]].
+    *   * @tparam M1 type for meta data attached to the graph.
+    * @tparam M1
+    *   Type for meta data attached to the graph.
+    * @tparam M2
+    *   Type for meta data attached to nodes.
+    * @tparam M3
+    *   Type for meta data attached to edges.
+    */
   sealed case class TopLevelSingleGraph[M1, M2, M3](graph: Graph[M1, M2, M3])
 
-  /**
-   * Top level container for any multiple graphs of the three graph types [[SimpleGraph SimpleGraph]],
-   * [[DirectedHyperGraph DirectedHyperGraph]]
-   * or [[UndirectedHyperGraph UndirectedHyperGraph]].
-   *
-   * @param graphs graph according to the
-   *              [[https://github.com/jsongraph/json-graph-specification/blob/master/json-graph-schema_v2.json
-     *              JSON specification v2]].
-   *              * @tparam M1 type for meta data attached to the graph.
-   * @tparam M1 type for meta data attached to the graph.
-   * @tparam M2 type for meta data attached to nodes.
-   * @tparam M3 type for meta data attached to edges.
-   */
+  /** Top level container for any multiple graphs of the three graph types
+    * [[SimpleGraph SimpleGraph]], [[DirectedHyperGraph DirectedHyperGraph]] or
+    * [[UndirectedHyperGraph UndirectedHyperGraph]].
+    *
+    * @param graphs
+    *   graph according to the
+    *   [[https://github.com/jsongraph/json-graph-specification/blob/master/json-graph-schema_v2.json JSON specification v2]].
+    *   * @tparam M1 type for meta data attached to the graph.
+    * @tparam M1
+    *   type for meta data attached to the graph.
+    * @tparam M2
+    *   type for meta data attached to nodes.
+    * @tparam M3
+    *   type for meta data attached to edges.
+    */
   sealed case class TopLevelMultipleGraphs[M1, M2, M3](
       graphs: List[Graph[M1, M2, M3]]
   )

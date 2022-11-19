@@ -1,6 +1,7 @@
 #Successful Tests
-#Fri Nov 18 14:11:53 CET 2022
-com.github.tizuck.adt.integration.JsonParserToADTSpec=1668777113137
-com.github.tizuck.adt.integration.InterfaceAutomatonSpec=1668777113366
-com.github.tizuck.adt.unit.EdgeADTSpec=1668777113137
-com.github.tizuck.adt.unit.GraphADTSpec=1668777113137
+#Sat Nov 19 12:14:13 CET 2022
+com.github.tizuck.adt.integration.JsonParserToADTSpec=1668856452866
+com.github.tizuck.adt.integration.InterfaceAutomatonSpec=1668856453217
+com.github.tizuck.adt.unit.EdgeADTSpec=1668856453005
+com.github.tizuck.adt.integration.JsonGraphsToADTSpec=1668856452840
+com.github.tizuck.adt.unit.GraphADTSpec=1668856452865

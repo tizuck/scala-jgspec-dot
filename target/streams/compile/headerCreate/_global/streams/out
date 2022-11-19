@@ -1,0 +1,1747 @@
+[0m[[0m[0mdebug[0m] [0m[0mAbout to create/update header for C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0mFirst line of file is:[0m
+[0m[[0m[0mdebug[0m] [0m[0mText of file is:[0m
+[0m[[0m[0mdebug[0m] [0m[0mpackage com.github.tizuck[0m
+[0m[[0m[0mdebug[0m] [0m[0mpackage dot[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport jsonGraphSchema.{[0m
+[0m[[0m[0mdebug[0m] [0m[0m  DirectedHyperGraph,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Node,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  SimpleGraph,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  TopLevelSingleGraph,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  UndirectedHyperGraph[0m
+[0m[[0m[0mdebug[0m] [0m[0m}[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport scalax.collection.GraphEdge.{Bag, CollectionKind}[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport scalax.collection.GraphPredef[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport scalax.collection.edge.{LDiEdge, LDiHyperEdge, LHyperEdge}[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport scalax.collection.io.dot.{[0m
+[0m[[0m[0mdebug[0m] [0m[0m  DotRootGraph,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  EdgeTransformer,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  HyperEdgeTransformer,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  NodeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m}[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0msealed case class DotRepresentation(dot: String)[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mobject DotRepresentation {[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed case class RepresentationCtx[N, E[+X] <: GraphPredef.EdgeLikeIn[X]]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      dotRoot: DotRootGraph,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      edgeTransformer: EdgeTransformer[N, E],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      hyperEdgeTransformer: Option[HyperEdgeTransformer[N, E]] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      cNodeTransformer: Option[NodeTransformer[N, E]] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      iNodeTransformer: Option[NodeTransformer[N, E]] = None[0m
+[0m[[0m[0mdebug[0m] [0m[0m  )[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  private def toScalaGraph[M1, M2, M3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      graph: DirectedHyperGraph[M1, M2, M3][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): scalax.collection.Graph[Node[M2], LDiHyperEdge] = {[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val nodes = graph.nodes.nodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val edges: List[LDiHyperEdge[Node[M2]]] = graph.edges.flatMap { e =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m      for { sourceNodeKey <- e.source } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        val sourceNode = nodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m          .find(n => n.jsonkey.equals(sourceNodeKey))[0m
+[0m[[0m[0mdebug[0m] [0m[0m          .getOrElse(Node[M2](jsonkey = sourceNodeKey))[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m        val targetNodes = e.target[0m
+[0m[[0m[0mdebug[0m] [0m[0m          .map(targetKey =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m            nodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m              .find(n => n.jsonkey.equals(targetKey))[0m
+[0m[[0m[0mdebug[0m] [0m[0m              .getOrElse(Node[M2](jsonkey = targetKey))[0m
+[0m[[0m[0mdebug[0m] [0m[0m          )[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m        val all: List[Node[M2]] = sourceNode :: targetNodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m        implicit val kind: CollectionKind = Bag[0m
+[0m[[0m[0mdebug[0m] [0m[0m        LDiHyperEdge(all)(e)[0m
+[0m[[0m[0mdebug[0m] [0m[0m      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    scalax.collection.Graph[Node[M2], LDiHyperEdge](edges: _*)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  private def toScalaGraph[M1, M2, M3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      graph: SimpleGraph[M1, M2, M3][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): scalax.collection.Graph[Node[M2], LDiEdge] = {[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val nodes = graph.nodes.nodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    import scalax.collection.edge.Implicits._[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val edges = graph.edges.map { e =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m      val node1: Node[M2] = nodes.find(p => p.jsonkey.equals(e.source)).get[0m
+[0m[[0m[0mdebug[0m] [0m[0m      val node2: Node[M2] = nodes.find(p => p.jsonkey.equals(e.target)).get[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (node1 ~+> node2)(e)[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    scalax.collection.Graph[Node[M2], LDiEdge](edges: _*)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  private def toScalaGraph[M1, M2, M3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      graph: UndirectedHyperGraph[M1, M2, M3][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): scalax.collection.Graph[Node[M2], LHyperEdge] = {[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val nodes = graph.nodes.nodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val edges: List[LHyperEdge[Node[M2]]] = graph.edges.map { e =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m      val edgeNodes: List[Node[M2]] = e.nodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m        .map(nKey =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m          nodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .find(n => n.jsonkey.equals(nKey))[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .getOrElse(Node[M2](jsonkey = nKey))[0m
+[0m[[0m[0mdebug[0m] [0m[0m        )[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m      implicit val kind: CollectionKind = Bag[0m
+[0m[[0m[0mdebug[0m] [0m[0m      LHyperEdge(edgeNodes)(e)[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    scalax.collection.Graph[Node[M2], LHyperEdge](edges: _*)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  def apply[M1, M2, M3, E[+X] <: GraphPredef.EdgeLikeIn[X]]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      topLevel: TopLevelSingleGraph[M1, M2, M3],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      representationCtx: RepresentationCtx[Node[M2], E][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): DotRepresentation = {[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    import scalax.collection.io.dot._[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    topLevel.graph match {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      case s: SimpleGraph[M1, M2, M3] =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m        val scalaGraph = toScalaGraph(s)[0m
+[0m[[0m[0mdebug[0m] [0m[0m        val dotRep = scalaGraph.toDot([0m
+[0m[[0m[0mdebug[0m] [0m[0m          dotRoot = representationCtx.dotRoot,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          edgeTransformer = representationCtx.edgeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .asInstanceOf[EdgeTransformer[Node[M2], LDiEdge]],[0m
+[0m[[0m[0mdebug[0m] [0m[0m          cNodeTransformer = representationCtx.cNodeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .asInstanceOf[Option[NodeTransformer[Node[M2], LDiEdge]]],[0m
+[0m[[0m[0mdebug[0m] [0m[0m          iNodeTransformer = representationCtx.iNodeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .asInstanceOf[Option[NodeTransformer[Node[M2], LDiEdge]]],[0m
+[0m[[0m[0mdebug[0m] [0m[0m          hEdgeTransformer = representationCtx.hyperEdgeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .asInstanceOf[Option[HyperEdgeTransformer[Node[M2], LDiEdge]]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        )[0m
+[0m[[0m[0mdebug[0m] [0m[0m        DotRepresentation(dotRep)[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m      case dhg: DirectedHyperGraph[M1, M2, M3] =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m        val scalaGraph = toScalaGraph(dhg)[0m
+[0m[[0m[0mdebug[0m] [0m[0m        val dotRep = scalaGraph.toDot([0m
+[0m[[0m[0mdebug[0m] [0m[0m          dotRoot = representationCtx.dotRoot,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          edgeTransformer = representationCtx.edgeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .asInstanceOf[EdgeTransformer[Node[M2], LDiHyperEdge]],[0m
+[0m[[0m[0mdebug[0m] [0m[0m          cNodeTransformer = representationCtx.cNodeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .asInstanceOf[Option[NodeTransformer[Node[M2], LDiHyperEdge]]],[0m
+[0m[[0m[0mdebug[0m] [0m[0m          iNodeTransformer = representationCtx.iNodeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .asInstanceOf[Option[NodeTransformer[Node[M2], LDiHyperEdge]]],[0m
+[0m[[0m[0mdebug[0m] [0m[0m          hEdgeTransformer = representationCtx.hyperEdgeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .asInstanceOf[Option[HyperEdgeTransformer[Node[M2], LDiHyperEdge]]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        )[0m
+[0m[[0m[0mdebug[0m] [0m[0m        DotRepresentation(dotRep)[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m      case uhg: UndirectedHyperGraph[M1, M2, M3] =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m        val scalaGraph = toScalaGraph(uhg)[0m
+[0m[[0m[0mdebug[0m] [0m[0m        val dotRep = scalaGraph.toDot([0m
+[0m[[0m[0mdebug[0m] [0m[0m          dotRoot = representationCtx.dotRoot,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          edgeTransformer = representationCtx.edgeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .asInstanceOf[EdgeTransformer[Node[M2], LHyperEdge]],[0m
+[0m[[0m[0mdebug[0m] [0m[0m          cNodeTransformer = representationCtx.cNodeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .asInstanceOf[Option[NodeTransformer[Node[M2], LHyperEdge]]],[0m
+[0m[[0m[0mdebug[0m] [0m[0m          iNodeTransformer = representationCtx.iNodeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .asInstanceOf[Option[NodeTransformer[Node[M2], LHyperEdge]]],[0m
+[0m[[0m[0mdebug[0m] [0m[0m          hEdgeTransformer = representationCtx.hyperEdgeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .asInstanceOf[Option[HyperEdgeTransformer[Node[M2], LHyperEdge]]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        )[0m
+[0m[[0m[0mdebug[0m] [0m[0m        DotRepresentation(dotRep)[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m}[0m
+[0m[[0m[0mdebug[0m] [0m[0mModified text of file is:[0m
+[0m[[0m[0mdebug[0m] [0m[0mSome(/*[0m
+[0m[[0m[0mdebug[0m] [0m[0m * Copyright 2022 Tilman Zuckmantel[0m
+[0m[[0m[0mdebug[0m] [0m[0m *[0m
+[0m[[0m[0mdebug[0m] [0m[0m * Licensed under the Apache License, Version 2.0 (the "License");[0m
+[0m[[0m[0mdebug[0m] [0m[0m * you may not use this file except in compliance with the License.[0m
+[0m[[0m[0mdebug[0m] [0m[0m * You may obtain a copy of the License at[0m
+[0m[[0m[0mdebug[0m] [0m[0m *[0m
+[0m[[0m[0mdebug[0m] [0m[0m *     http://www.apache.org/licenses/LICENSE-2.0[0m
+[0m[[0m[0mdebug[0m] [0m[0m *[0m
+[0m[[0m[0mdebug[0m] [0m[0m * Unless required by applicable law or agreed to in writing, software[0m
+[0m[[0m[0mdebug[0m] [0m[0m * distributed under the License is distributed on an "AS IS" BASIS,[0m
+[0m[[0m[0mdebug[0m] [0m[0m * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.[0m
+[0m[[0m[0mdebug[0m] [0m[0m * See the License for the specific language governing permissions and[0m
+[0m[[0m[0mdebug[0m] [0m[0m * limitations under the License.[0m
+[0m[[0m[0mdebug[0m] [0m[0m */[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mpackage com.github.tizuck[0m
+[0m[[0m[0mdebug[0m] [0m[0mpackage dot[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport jsonGraphSchema.{[0m
+[0m[[0m[0mdebug[0m] [0m[0m  DirectedHyperGraph,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Node,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  SimpleGraph,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  TopLevelSingleGraph,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  UndirectedHyperGraph[0m
+[0m[[0m[0mdebug[0m] [0m[0m}[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport scalax.collection.GraphEdge.{Bag, CollectionKind}[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport scalax.collection.GraphPredef[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport scalax.collection.edge.{LDiEdge, LDiHyperEdge, LHyperEdge}[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport scalax.collection.io.dot.{[0m
+[0m[[0m[0mdebug[0m] [0m[0m  DotRootGraph,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  EdgeTransformer,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  HyperEdgeTransformer,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  NodeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m}[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0msealed case class DotRepresentation(dot: String)[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mobject DotRepresentation {[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed case class RepresentationCtx[N, E[+X] <: GraphPredef.EdgeLikeIn[X]]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      dotRoot: DotRootGraph,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      edgeTransformer: EdgeTransformer[N, E],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      hyperEdgeTransformer: Option[HyperEdgeTransformer[N, E]] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      cNodeTransformer: Option[NodeTransformer[N, E]] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      iNodeTransformer: Option[NodeTransformer[N, E]] = None[0m
+[0m[[0m[0mdebug[0m] [0m[0m  )[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  private def toScalaGraph[M1, M2, M3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      graph: DirectedHyperGraph[M1, M2, M3][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): scalax.collection.Graph[Node[M2], LDiHyperEdge] = {[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val nodes = graph.nodes.nodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val edges: List[LDiHyperEdge[Node[M2]]] = graph.edges.flatMap { e =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m      for { sourceNodeKey <- e.source } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        val sourceNode = nodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m          .find(n => n.jsonkey.equals(sourceNodeKey))[0m
+[0m[[0m[0mdebug[0m] [0m[0m          .getOrElse(Node[M2](jsonkey = sourceNodeKey))[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m        val targetNodes = e.target[0m
+[0m[[0m[0mdebug[0m] [0m[0m          .map(targetKey =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m            nodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m              .find(n => n.jsonkey.equals(targetKey))[0m
+[0m[[0m[0mdebug[0m] [0m[0m              .getOrElse(Node[M2](jsonkey = targetKey))[0m
+[0m[[0m[0mdebug[0m] [0m[0m          )[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m        val all: List[Node[M2]] = sourceNode :: targetNodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m        implicit val kind: CollectionKind = Bag[0m
+[0m[[0m[0mdebug[0m] [0m[0m        LDiHyperEdge(all)(e)[0m
+[0m[[0m[0mdebug[0m] [0m[0m      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    scalax.collection.Graph[Node[M2], LDiHyperEdge](edges: _*)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  private def toScalaGraph[M1, M2, M3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      graph: SimpleGraph[M1, M2, M3][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): scalax.collection.Graph[Node[M2], LDiEdge] = {[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val nodes = graph.nodes.nodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    import scalax.collection.edge.Implicits._[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val edges = graph.edges.map { e =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m      val node1: Node[M2] = nodes.find(p => p.jsonkey.equals(e.source)).get[0m
+[0m[[0m[0mdebug[0m] [0m[0m      val node2: Node[M2] = nodes.find(p => p.jsonkey.equals(e.target)).get[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m      (node1 ~+> node2)(e)[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    scalax.collection.Graph[Node[M2], LDiEdge](edges: _*)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  private def toScalaGraph[M1, M2, M3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      graph: UndirectedHyperGraph[M1, M2, M3][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): scalax.collection.Graph[Node[M2], LHyperEdge] = {[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val nodes = graph.nodes.nodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val edges: List[LHyperEdge[Node[M2]]] = graph.edges.map { e =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m      val edgeNodes: List[Node[M2]] = e.nodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m        .map(nKey =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m          nodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .find(n => n.jsonkey.equals(nKey))[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .getOrElse(Node[M2](jsonkey = nKey))[0m
+[0m[[0m[0mdebug[0m] [0m[0m        )[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m      implicit val kind: CollectionKind = Bag[0m
+[0m[[0m[0mdebug[0m] [0m[0m      LHyperEdge(edgeNodes)(e)[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    scalax.collection.Graph[Node[M2], LHyperEdge](edges: _*)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  def apply[M1, M2, M3, E[+X] <: GraphPredef.EdgeLikeIn[X]]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      topLevel: TopLevelSingleGraph[M1, M2, M3],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      representationCtx: RepresentationCtx[Node[M2], E][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): DotRepresentation = {[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    import scalax.collection.io.dot._[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    topLevel.graph match {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      case s: SimpleGraph[M1, M2, M3] =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m        val scalaGraph = toScalaGraph(s)[0m
+[0m[[0m[0mdebug[0m] [0m[0m        val dotRep = scalaGraph.toDot([0m
+[0m[[0m[0mdebug[0m] [0m[0m          dotRoot = representationCtx.dotRoot,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          edgeTransformer = representationCtx.edgeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .asInstanceOf[EdgeTransformer[Node[M2], LDiEdge]],[0m
+[0m[[0m[0mdebug[0m] [0m[0m          cNodeTransformer = representationCtx.cNodeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .asInstanceOf[Option[NodeTransformer[Node[M2], LDiEdge]]],[0m
+[0m[[0m[0mdebug[0m] [0m[0m          iNodeTransformer = representationCtx.iNodeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .asInstanceOf[Option[NodeTransformer[Node[M2], LDiEdge]]],[0m
+[0m[[0m[0mdebug[0m] [0m[0m          hEdgeTransformer = representationCtx.hyperEdgeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .asInstanceOf[Option[HyperEdgeTransformer[Node[M2], LDiEdge]]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        )[0m
+[0m[[0m[0mdebug[0m] [0m[0m        DotRepresentation(dotRep)[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m      case dhg: DirectedHyperGraph[M1, M2, M3] =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m        val scalaGraph = toScalaGraph(dhg)[0m
+[0m[[0m[0mdebug[0m] [0m[0m        val dotRep = scalaGraph.toDot([0m
+[0m[[0m[0mdebug[0m] [0m[0m          dotRoot = representationCtx.dotRoot,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          edgeTransformer = representationCtx.edgeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .asInstanceOf[EdgeTransformer[Node[M2], LDiHyperEdge]],[0m
+[0m[[0m[0mdebug[0m] [0m[0m          cNodeTransformer = representationCtx.cNodeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .asInstanceOf[Option[NodeTransformer[Node[M2], LDiHyperEdge]]],[0m
+[0m[[0m[0mdebug[0m] [0m[0m          iNodeTransformer = representationCtx.iNodeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .asInstanceOf[Option[NodeTransformer[Node[M2], LDiHyperEdge]]],[0m
+[0m[[0m[0mdebug[0m] [0m[0m          hEdgeTransformer = representationCtx.hyperEdgeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .asInstanceOf[Option[HyperEdgeTransformer[Node[M2], LDiHyperEdge]]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        )[0m
+[0m[[0m[0mdebug[0m] [0m[0m        DotRepresentation(dotRep)[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m      case uhg: UndirectedHyperGraph[M1, M2, M3] =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m        val scalaGraph = toScalaGraph(uhg)[0m
+[0m[[0m[0mdebug[0m] [0m[0m        val dotRep = scalaGraph.toDot([0m
+[0m[[0m[0mdebug[0m] [0m[0m          dotRoot = representationCtx.dotRoot,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          edgeTransformer = representationCtx.edgeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .asInstanceOf[EdgeTransformer[Node[M2], LHyperEdge]],[0m
+[0m[[0m[0mdebug[0m] [0m[0m          cNodeTransformer = representationCtx.cNodeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .asInstanceOf[Option[NodeTransformer[Node[M2], LHyperEdge]]],[0m
+[0m[[0m[0mdebug[0m] [0m[0m          iNodeTransformer = representationCtx.iNodeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .asInstanceOf[Option[NodeTransformer[Node[M2], LHyperEdge]]],[0m
+[0m[[0m[0mdebug[0m] [0m[0m          hEdgeTransformer = representationCtx.hyperEdgeTransformer[0m
+[0m[[0m[0mdebug[0m] [0m[0m            .asInstanceOf[Option[HyperEdgeTransformer[Node[M2], LHyperEdge]]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        )[0m
+[0m[[0m[0mdebug[0m] [0m[0m        DotRepresentation(dotRep)[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m}[0m
+[0m[[0m[0mdebug[0m] [0m[0m)[0m
+[0m[[0m[0mdebug[0m] [0m[0mAbout to create/update header for C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0mFirst line of file is:[0m
+[0m[[0m[0mdebug[0m] [0m[0mText of file is:[0m
+[0m[[0m[0mdebug[0m] [0m[0mpackage com.github.tizuck[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport io.circe.{Decoder, DecodingFailure, HCursor}[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m/** Contains AST definition according to the[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * [[https://github.com/jsongraph/json-graph-specification/blob/master/json-graph-schema_v2.json JSON graph specification v2]][0m
+[0m[[0m[0mdebug[0m] [0m[0m  * and a JSON Decoder to parse a JSON file to an instance of the AST.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * A decoded JSON file is either an instance of[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * [[com.github.tizuck.jsonGraphSchema.TopLevelSingleGraph TopLevelSingleGraph]][0m
+[0m[[0m[0mdebug[0m] [0m[0m  * or[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * [[com.github.tizuck.jsonGraphSchema.TopLevelMultipleGraphs TopLevelMultipleGraphs]].[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * The two types are reffering to the possibility to state a single graph or[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * multiple graph in the JSON file. For further information on the[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * specification for graphs in JSON see[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * [[https://github.com/jsongraph/json-graph-specification Json Graph Github]].[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * The JSON file[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * {{{[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *   {[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *     "graph":{[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       "nodes":{[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *         "q1":{"label":"1"}[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       },[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       "edges":[[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *         {[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *           "source":"q1",[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *           "target":"q2",[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *           "label":"foo"[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *         }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       ][0m
+[0m[[0m[0mdebug[0m] [0m[0m  *     }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *   }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * }}}[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * for example would be decoded to the following AST:[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * {{{[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *   TopLevelSingleGraph([0m
+[0m[[0m[0mdebug[0m] [0m[0m  *     SimpleGraph([0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       tpe = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       metadata = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       nodes = Nodes(List([0m
+[0m[[0m[0mdebug[0m] [0m[0m  *         Node([0m
+[0m[[0m[0mdebug[0m] [0m[0m  *           label = Some(1),[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *           metadata = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *           jsonkey = q1)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *         )),[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       id = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       label = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       directed = true,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       edges = List(SimpleEdge([0m
+[0m[[0m[0mdebug[0m] [0m[0m  *         source = q1,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *         target = q2,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *         id = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *         relation = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *         directed = true,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *         label = Some(foo),[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *         metadata = None))[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       ))[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * }}}[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * A json file can be parsed and transformed into an AST using the parser[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * method of the [[https://circe.github.io/circe/parsing.html Circe]][0m
+[0m[[0m[0mdebug[0m] [0m[0m  * framework.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * {{{[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *   import com.github.tizuck.jsonGraphSchema.TopLevelSingleGraph[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *   import io.circe.parser[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *   ...[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *   val json:String = """..."""[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *   val parsed = parser.parse(json)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *   for{p <- parsed} yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *     for{ tpe <- p.as[TopLevelSingleGraph[Unit,Unit,Unit]]} yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       //Do something with the toplevel unit[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *     }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * }}}[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * It is also possible to augment the AST with additional types on metadata[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * fields of the JSON graph. Generally, by adding `import[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * io.circe.generic.auto._` to your import statement, the circe framework is[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * able to auto generate decoders for your types. However, some types with more[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * complex structures may need to be decoded with custom decoders. See test[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * [[https://github.com/tizuck/scala-jgspec-dot/blob/main/src/test/scala/adt/integration/InterfaceAutomatonSpec.scala InterfaceAutomatonSpec]][0m
+[0m[[0m[0mdebug[0m] [0m[0m  * as an example for complex metadata structures. If your graph had a metadata[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * field `"metadata":0` for example, it could be processed in the following[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * way:[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * {{{[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * val json:String = """..."""[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * import io.circe.generic.auto._[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * sealed case class MetaData(meta:Int)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * val parsed = parser.parse(json)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * for{p <- parsed} yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *   for{ tpe <- p.as[TopLevelSingleGraph[MetaData,Unit,Unit]]} yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *     println(tpe)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *     //TopLevelSingleGraph(...,Some(MetaData(0)),...)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *   }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * }}}[0m
+[0m[[0m[0mdebug[0m] [0m[0m  */[0m
+[0m[[0m[0mdebug[0m] [0m[0mobject jsonGraphSchema {[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /** Represents multiple nodes of a graph of the JSON graph specification.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param nodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   nodes of a graph.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M2[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to nodes.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed case class Nodes[M2](nodes: List[Node[M2]])[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /** Represents a node of a graph of the JSON graph specification.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param label[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   optional label of the node.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param metadata[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   optional attached metadata of a node.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param jsonkey[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   nodes are stated as objects with a key in the JSON file. The key is[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   stored to link edges to nodes in a later step.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M2[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type of metadata attached to nodes.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed case class Node[M2]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      label: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      metadata: Option[M2] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      jsonkey: String[0m
+[0m[[0m[0mdebug[0m] [0m[0m  )[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /** Base type for three edge types [[SimpleEdge SimpleEdge]],[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * [[DirectedHyperEdge DirectedHyperEdge]] and[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * [[UndirectedHyperEdge UndirectedHyperEdge]].[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M3[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to edges.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed trait Edge[M3] {[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val id: Option[String][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val relation: Option[String][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val directed: Boolean[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val label: Option[String][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val metadata: Option[M3][0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /** Represents common graph edges consisting of two nodes and a connection[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * between the nodes of a graph in the JSON graph specification.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param source[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Source node of a graph edge.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param target[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Target node of a graph edge.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param id[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Optional identifier.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param relation[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Optional relationship specifier[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param directed[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   True, if edge is directed. False, otherwise.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param label[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Optional label.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param metadata[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   optional attached metadata of an edge.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M3[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for metadata attached to edges.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed case class SimpleEdge[M3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      source: String,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      target: String,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val id: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val relation: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val directed: Boolean = true,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val label: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val metadata: Option[M3] = None[0m
+[0m[[0m[0mdebug[0m] [0m[0m  ) extends Edge[M3][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /** Represents directed hyper graph edges consisting of multiple nodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * connected to each other and a connection between the nodes of a graph in[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * the JSON graph specification.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * This is representative for[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * [[https://en.wikipedia.org/wiki/Hypergraph Hypergraphs]] with directed[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * edges.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param source[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Source nodes of a hyper graph edge.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param target[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Target nodes of a hyper graph edge.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param id[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Optional identifier.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param relation[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Optional relationship specifier[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param directed[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   True, if edge is directed. False, otherwise.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param label[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Optional label.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param metadata[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   optional attached metadata of an edge.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M3[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type of metadata attached to edges.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed case class DirectedHyperEdge[M3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      source: List[String],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      target: List[String],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val id: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val relation: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val directed: Boolean = true,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val label: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val metadata: Option[M3] = None[0m
+[0m[[0m[0mdebug[0m] [0m[0m  ) extends Edge[M3][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /** Represents undirected hyper graph edges consisting of multiple nodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * connected to each other and a connection between the nodes of a graph in[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * the JSON graph specification.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param nodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   nodes connected with each other without a relationship direction.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param id[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Optional identifier.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param relation[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Optional relationship specifier[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param directed[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   False.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param label[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Optional label.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param metadata[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   optional attached metadata of an edge.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M3[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type of metadata attached to edges.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed case class UndirectedHyperEdge[M3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      nodes: List[String],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val id: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val relation: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val directed: Boolean = true,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val label: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val metadata: Option[M3] = None[0m
+[0m[[0m[0mdebug[0m] [0m[0m  ) extends Edge[M3][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /** Base Type for the three types of graphs possible to define in the JSON[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * graph specification.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M1[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to the graph.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M2[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to nodes.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M3[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to edges.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed trait Graph[M1, M2, M3] {[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val id: Option[String][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val label: Option[String][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val directed: Boolean[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val tpe: Option[String][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val metadata: Option[M1][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val nodes: Nodes[M2][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val edges: List[Edge[M3]][0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /** Represents common graph instances of the JSON graph specification.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M1[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to the graph.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M2[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to nodes.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M3[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to edges.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed case class SimpleGraph[M1, M2, M3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val tpe: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val metadata: Option[M1] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val nodes: Nodes[M2] = Nodes(List.empty[Node[M2]]),[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val id: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val label: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val directed: Boolean = true,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val edges: List[SimpleEdge[M3]] = List.empty[SimpleEdge[M3]][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ) extends Graph[M1, M2, M3] {}[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /** Represents directed hyper edge instances of the JSON graph specification.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M1[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to the graph.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M2[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to nodes.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M3[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to edges.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed case class DirectedHyperGraph[M1, M2, M3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val tpe: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val metadata: Option[M1] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val nodes: Nodes[M2] = Nodes(List.empty[Node[M2]]),[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val id: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val label: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val directed: Boolean = true,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val edges: List[DirectedHyperEdge[M3]] =[0m
+[0m[[0m[0mdebug[0m] [0m[0m        List.empty[DirectedHyperEdge[M3]][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ) extends Graph[M1, M2, M3][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /** Represents undirected hyper edge instances of the JSON graph[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * specification.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M1[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to the graph.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M2[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to nodes.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M3[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to edges.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed case class UndirectedHyperGraph[M1, M2, M3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val tpe: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val metadata: Option[M1] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val nodes: Nodes[M2] = Nodes(List.empty[Node[M2]]),[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val id: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val label: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val directed: Boolean = false,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val edges: List[UndirectedHyperEdge[M3]][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ) extends Graph[M1, M2, M3][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /** Top level container for any graph of the three graph types[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * [[SimpleGraph SimpleGraph]], [[DirectedHyperGraph DirectedHyperGraph]] or[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * [[UndirectedHyperGraph UndirectedHyperGraph]].[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param graph[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   graph according to the[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   [[https://github.com/jsongraph/json-graph-specification/blob/master/json-graph-schema_v2.json JSON specification v2]].[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   * @tparam M1 type for meta data attached to the graph.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M1[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to the graph.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M2[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to nodes.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M3[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to edges.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed case class TopLevelSingleGraph[M1, M2, M3](graph: Graph[M1, M2, M3])[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /** Top level container for any multiple graphs of the three graph types[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * [[SimpleGraph SimpleGraph]], [[DirectedHyperGraph DirectedHyperGraph]] or[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * [[UndirectedHyperGraph UndirectedHyperGraph]].[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param graphs[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   graph according to the[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   [[https://github.com/jsongraph/json-graph-specification/blob/master/json-graph-schema_v2.json JSON specification v2]].[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   * @tparam M1 type for meta data attached to the graph.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M1[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   type for meta data attached to the graph.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M2[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   type for meta data attached to nodes.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M3[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   type for meta data attached to edges.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed case class TopLevelMultipleGraphs[M1, M2, M3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      graphs: List[Graph[M1, M2, M3]][0m
+[0m[[0m[0mdebug[0m] [0m[0m  )[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit def toplevelSingleGraphDecoder[M1, M2, M3, E <: Edge[M3]](implicit[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t1decoder: Decoder[M1],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t2decoder: Decoder[M2],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t3decoder: Decoder[M3][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): Decoder[TopLevelSingleGraph[M1, M2, M3]] = { (c: HCursor) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m    {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      for {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        graph <- c.downField("graph").as[Graph[M1, M2, M3]][0m
+[0m[[0m[0mdebug[0m] [0m[0m      } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        TopLevelSingleGraph(graph)[0m
+[0m[[0m[0mdebug[0m] [0m[0m      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit def topLevelMultipleGraphsDecoder[M1, M2, M3, E <: Edge[M3]](implicit[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t1decoder: Decoder[M1],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t2decoder: Decoder[M2],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t3decoder: Decoder[M3][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): Decoder[TopLevelMultipleGraphs[M1, M2, M3]] = { (c: HCursor) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m    {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      for {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        graphs <- c.downField("graphs").as[List[Graph[M1, M2, M3]]][0m
+[0m[[0m[0mdebug[0m] [0m[0m      } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        TopLevelMultipleGraphs(graphs)[0m
+[0m[[0m[0mdebug[0m] [0m[0m      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  import cats.syntax.functor._[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit def edgeDecoder[T](implicit[0m
+[0m[[0m[0mdebug[0m] [0m[0m      tDecoder: Decoder[T][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): Decoder[Edge[T]] = {[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val l: List[Decoder[Edge[T]]] = List[Decoder[Edge[T]]]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      Decoder[SimpleEdge[T]].widen,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Decoder[DirectedHyperEdge[T]].widen,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Decoder[UndirectedHyperEdge[T]].widen[0m
+[0m[[0m[0mdebug[0m] [0m[0m    )[0m
+[0m[[0m[0mdebug[0m] [0m[0m    l.reduceLeft(_ or _)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit def directedHyperEdge[T](implicit[0m
+[0m[[0m[0mdebug[0m] [0m[0m      tDecoder: Decoder[T][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): Decoder[DirectedHyperEdge[T]] = { (c: HCursor) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m    {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      for {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        id <- c.downField("id").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        source <- c.downField("source").as[List[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        target <- c.downField("target").as[List[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        relation <- c.downField("relation").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        directed <- c.downField("directed").as[Option[Boolean]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        label <- c.downField("label").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        metadata <- c.downField("metadata").as[Option[T]][0m
+[0m[[0m[0mdebug[0m] [0m[0m      } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        new DirectedHyperEdge[T]([0m
+[0m[[0m[0mdebug[0m] [0m[0m          id = id,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          source = source,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          target = target,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          relation = relation,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          directed = directed.getOrElse(true),[0m
+[0m[[0m[0mdebug[0m] [0m[0m          label = label,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          metadata = metadata[0m
+[0m[[0m[0mdebug[0m] [0m[0m        )[0m
+[0m[[0m[0mdebug[0m] [0m[0m      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit def undirectedHyperEdge[T](implicit[0m
+[0m[[0m[0mdebug[0m] [0m[0m      tDecoder: Decoder[T][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): Decoder[UndirectedHyperEdge[T]] = { (c: HCursor) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m    {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      for {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        id <- c.downField("id").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        relation <- c.downField("relation").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        directed <- c.downField("directed").as[Option[Boolean]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        label <- c.downField("label").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        metadata <- c.downField("metadata").as[Option[T]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        nodes <- c.downField("nodes").as[List[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m      } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        new UndirectedHyperEdge[T]([0m
+[0m[[0m[0mdebug[0m] [0m[0m          id = id,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          relation = relation,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          directed = directed.getOrElse(true),[0m
+[0m[[0m[0mdebug[0m] [0m[0m          label = label,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          metadata = metadata,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          nodes = nodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m        )[0m
+[0m[[0m[0mdebug[0m] [0m[0m      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit def simpleEdgeDecoder[T1](implicit[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t1Decoder: Decoder[T1][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): Decoder[SimpleEdge[T1]] = { (c: HCursor) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m    {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      for {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        id <- c.downField("id").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        source <- c.downField("source").as[String][0m
+[0m[[0m[0mdebug[0m] [0m[0m        target <- c.downField("target").as[String][0m
+[0m[[0m[0mdebug[0m] [0m[0m        relation <- c.downField("relation").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        directed <- c.downField("directed").as[Option[Boolean]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        label <- c.downField("label").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        metadata <- c.downField("metadata").as[Option[T1]][0m
+[0m[[0m[0mdebug[0m] [0m[0m      } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        new SimpleEdge[T1]([0m
+[0m[[0m[0mdebug[0m] [0m[0m          id = id,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          source = source,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          target = target,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          relation = relation,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          directed = directed.getOrElse(true),[0m
+[0m[[0m[0mdebug[0m] [0m[0m          label = label,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          metadata = metadata[0m
+[0m[[0m[0mdebug[0m] [0m[0m        )[0m
+[0m[[0m[0mdebug[0m] [0m[0m      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit def nodeDecoder[T1](implicit[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t1Decoder: Decoder[T1][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): Decoder[Node[T1]] = { (c: HCursor) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m    {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      for {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        label <- c.downField("label").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        metadata <- c.downField("metadata").as[Option[T1]][0m
+[0m[[0m[0mdebug[0m] [0m[0m      } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        new Node[T1]([0m
+[0m[[0m[0mdebug[0m] [0m[0m          label = label,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          metadata = metadata,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          // Value is initialized empty and set in a higher level decoder who knows about the[0m
+[0m[[0m[0mdebug[0m] [0m[0m          // value of the key[0m
+[0m[[0m[0mdebug[0m] [0m[0m          jsonkey = ""[0m
+[0m[[0m[0mdebug[0m] [0m[0m        )[0m
+[0m[[0m[0mdebug[0m] [0m[0m      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit def nodesDecoder[T1](implicit[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t1Decoder: Decoder[T1][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): Decoder[Nodes[T1]] = { (c: HCursor) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m    {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      val keys = c.keys.getOrElse(Nil)[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m      val nodes = for { key <- keys } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        for {[0m
+[0m[[0m[0mdebug[0m] [0m[0m          node <- c.downField(key).as[Node[T1]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m          node.copy(jsonkey = key)[0m
+[0m[[0m[0mdebug[0m] [0m[0m        }[0m
+[0m[[0m[0mdebug[0m] [0m[0m      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m      nodes.foldLeft([0m
+[0m[[0m[0mdebug[0m] [0m[0m        Right[DecodingFailure, Nodes[T1]](Nodes(List.empty[Node[T1]])).withLeft[0m
+[0m[[0m[0mdebug[0m] [0m[0m      ) { case (acc, value) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m        acc match {[0m
+[0m[[0m[0mdebug[0m] [0m[0m          case l @ Left(_) => l[0m
+[0m[[0m[0mdebug[0m] [0m[0m          case Right(v) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m            value match {[0m
+[0m[[0m[0mdebug[0m] [0m[0m              case l @ Left(_) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m                Left(DecodingFailure(l.value.reason, c.history))[0m
+[0m[[0m[0mdebug[0m] [0m[0m              case Right(value) => Right(v.copy(nodes = v.nodes ++ List(value)))[0m
+[0m[[0m[0mdebug[0m] [0m[0m            }[0m
+[0m[[0m[0mdebug[0m] [0m[0m        }[0m
+[0m[[0m[0mdebug[0m] [0m[0m      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit def graphDecoder[T1, T2, T3](implicit[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t1decoder: Decoder[T1],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t2decoder: Decoder[T2],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t3decoder: Decoder[T3][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): Decoder[Graph[T1, T2, T3]] = {[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val l: List[Decoder[Graph[T1, T2, T3]]] = List[Decoder[Graph[T1, T2, T3]]]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      Decoder[SimpleGraph[T1, T2, T3]].widen,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Decoder[DirectedHyperGraph[T1, T2, T3]].widen,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Decoder[UndirectedHyperGraph[T1, T2, T3]].widen[0m
+[0m[[0m[0mdebug[0m] [0m[0m    )[0m
+[0m[[0m[0mdebug[0m] [0m[0m    l.reduceLeft(_ or _)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit def undirectedHyperGraphDecoder[T1, T2, T3](implicit[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t1decoder: Decoder[T1],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t2decoder: Decoder[T2],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t3decoder: Decoder[T3][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): Decoder[UndirectedHyperGraph[T1, T2, T3]] = { (c: HCursor) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m    {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      for {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        id <- c.downField("id").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        label <- c.downField("label").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        directed <- c.downField("directed").as[Option[Boolean]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        tpe <- c.downField("type").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        metadata <- c.downField("metadata").as[Option[T1]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        nodes <- c.downField("nodes").as[Option[Nodes[T2]]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        edges <- c[0m
+[0m[[0m[0mdebug[0m] [0m[0m          .downField("hyperedges")[0m
+[0m[[0m[0mdebug[0m] [0m[0m          .as[Option[List[UndirectedHyperEdge[T3]]]][0m
+[0m[[0m[0mdebug[0m] [0m[0m      } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        new UndirectedHyperGraph[T1, T2, T3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m          id = id,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          label = label,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          directed = directed.getOrElse(false),[0m
+[0m[[0m[0mdebug[0m] [0m[0m          tpe = tpe,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          metadata = metadata,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          nodes = nodes.getOrElse(Nodes(Nil)),[0m
+[0m[[0m[0mdebug[0m] [0m[0m          edges = edges.getOrElse(Nil)[0m
+[0m[[0m[0mdebug[0m] [0m[0m        )[0m
+[0m[[0m[0mdebug[0m] [0m[0m      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit def directedHyperGraphEncoder[T1, T2, T3](implicit[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t1decoder: Decoder[T1],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t2decoder: Decoder[T2],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t3decoder: Decoder[T3][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): Decoder[DirectedHyperGraph[T1, T2, T3]] = { (c: HCursor) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m    {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      for {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        id <- c.downField("id").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        label <- c.downField("label").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        directed <- c.downField("directed").as[Option[Boolean]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        tpe <- c.downField("type").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        metadata <- c.downField("metadata").as[Option[T1]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        nodes <- c.downField("nodes").as[Option[Nodes[T2]]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        edges <- c[0m
+[0m[[0m[0mdebug[0m] [0m[0m          .downField("hyperedges")[0m
+[0m[[0m[0mdebug[0m] [0m[0m          .as[Option[List[DirectedHyperEdge[T3]]]][0m
+[0m[[0m[0mdebug[0m] [0m[0m      } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        new DirectedHyperGraph[T1, T2, T3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m          id = id,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          label = label,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          directed = directed.getOrElse(true),[0m
+[0m[[0m[0mdebug[0m] [0m[0m          tpe = tpe,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          metadata = metadata,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          nodes = nodes.getOrElse(Nodes(Nil)),[0m
+[0m[[0m[0mdebug[0m] [0m[0m          edges = edges.getOrElse(Nil)[0m
+[0m[[0m[0mdebug[0m] [0m[0m        )[0m
+[0m[[0m[0mdebug[0m] [0m[0m      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit def simpleGraphDecoder[T1, T2, T3](implicit[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t1decoder: Decoder[T1],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t2decoder: Decoder[T2],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t3decoder: Decoder[T3][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): Decoder[SimpleGraph[T1, T2, T3]] = { (c: HCursor) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m    {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      // We need this distinction here because otherwise the hyperedges[0m
+[0m[[0m[0mdebug[0m] [0m[0m      // field can be ignored by the decoder and the other fields would still[0m
+[0m[[0m[0mdebug[0m] [0m[0m      // be compatible with a instance of SimpleEdge.[0m
+[0m[[0m[0mdebug[0m] [0m[0m      if (c.keys.exists(key => key.exists(s => s.equals("hyperedges")))) {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        Left([0m
+[0m[[0m[0mdebug[0m] [0m[0m          DecodingFailure([0m
+[0m[[0m[0mdebug[0m] [0m[0m            "Hyperedges unaccepted member of simple graph",[0m
+[0m[[0m[0mdebug[0m] [0m[0m            c.history[0m
+[0m[[0m[0mdebug[0m] [0m[0m          )[0m
+[0m[[0m[0mdebug[0m] [0m[0m        )[0m
+[0m[[0m[0mdebug[0m] [0m[0m      } else {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        for {[0m
+[0m[[0m[0mdebug[0m] [0m[0m          id <- c.downField("id").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m          label <- c.downField("label").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m          directed <- c.downField("directed").as[Option[Boolean]][0m
+[0m[[0m[0mdebug[0m] [0m[0m          tpe <- c.downField("type").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m          metadata <- c.downField("metadata").as[Option[T1]][0m
+[0m[[0m[0mdebug[0m] [0m[0m          nodes <- c.downField("nodes").as[Option[Nodes[T2]]][0m
+[0m[[0m[0mdebug[0m] [0m[0m          edges <- c.downField("edges").as[Option[List[SimpleEdge[T3]]]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m          new SimpleGraph[T1, T2, T3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m            id = id,[0m
+[0m[[0m[0mdebug[0m] [0m[0m            label = label,[0m
+[0m[[0m[0mdebug[0m] [0m[0m            directed = directed.getOrElse(true),[0m
+[0m[[0m[0mdebug[0m] [0m[0m            tpe = tpe,[0m
+[0m[[0m[0mdebug[0m] [0m[0m            metadata = metadata,[0m
+[0m[[0m[0mdebug[0m] [0m[0m            nodes = nodes.getOrElse(Nodes(Nil)),[0m
+[0m[[0m[0mdebug[0m] [0m[0m            edges = edges.getOrElse(Nil)[0m
+[0m[[0m[0mdebug[0m] [0m[0m          )[0m
+[0m[[0m[0mdebug[0m] [0m[0m        }[0m
+[0m[[0m[0mdebug[0m] [0m[0m      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m}[0m
+[0m[[0m[0mdebug[0m] [0m[0mModified text of file is:[0m
+[0m[[0m[0mdebug[0m] [0m[0mSome(/*[0m
+[0m[[0m[0mdebug[0m] [0m[0m * Copyright 2022 Tilman Zuckmantel[0m
+[0m[[0m[0mdebug[0m] [0m[0m *[0m
+[0m[[0m[0mdebug[0m] [0m[0m * Licensed under the Apache License, Version 2.0 (the "License");[0m
+[0m[[0m[0mdebug[0m] [0m[0m * you may not use this file except in compliance with the License.[0m
+[0m[[0m[0mdebug[0m] [0m[0m * You may obtain a copy of the License at[0m
+[0m[[0m[0mdebug[0m] [0m[0m *[0m
+[0m[[0m[0mdebug[0m] [0m[0m *     http://www.apache.org/licenses/LICENSE-2.0[0m
+[0m[[0m[0mdebug[0m] [0m[0m *[0m
+[0m[[0m[0mdebug[0m] [0m[0m * Unless required by applicable law or agreed to in writing, software[0m
+[0m[[0m[0mdebug[0m] [0m[0m * distributed under the License is distributed on an "AS IS" BASIS,[0m
+[0m[[0m[0mdebug[0m] [0m[0m * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.[0m
+[0m[[0m[0mdebug[0m] [0m[0m * See the License for the specific language governing permissions and[0m
+[0m[[0m[0mdebug[0m] [0m[0m * limitations under the License.[0m
+[0m[[0m[0mdebug[0m] [0m[0m */[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mpackage com.github.tizuck[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport io.circe.{Decoder, DecodingFailure, HCursor}[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m/** Contains AST definition according to the[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * [[https://github.com/jsongraph/json-graph-specification/blob/master/json-graph-schema_v2.json JSON graph specification v2]][0m
+[0m[[0m[0mdebug[0m] [0m[0m  * and a JSON Decoder to parse a JSON file to an instance of the AST.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * A decoded JSON file is either an instance of[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * [[com.github.tizuck.jsonGraphSchema.TopLevelSingleGraph TopLevelSingleGraph]][0m
+[0m[[0m[0mdebug[0m] [0m[0m  * or[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * [[com.github.tizuck.jsonGraphSchema.TopLevelMultipleGraphs TopLevelMultipleGraphs]].[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * The two types are reffering to the possibility to state a single graph or[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * multiple graph in the JSON file. For further information on the[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * specification for graphs in JSON see[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * [[https://github.com/jsongraph/json-graph-specification Json Graph Github]].[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * The JSON file[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * {{{[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *   {[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *     "graph":{[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       "nodes":{[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *         "q1":{"label":"1"}[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       },[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       "edges":[[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *         {[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *           "source":"q1",[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *           "target":"q2",[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *           "label":"foo"[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *         }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       ][0m
+[0m[[0m[0mdebug[0m] [0m[0m  *     }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *   }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * }}}[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * for example would be decoded to the following AST:[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * {{{[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *   TopLevelSingleGraph([0m
+[0m[[0m[0mdebug[0m] [0m[0m  *     SimpleGraph([0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       tpe = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       metadata = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       nodes = Nodes(List([0m
+[0m[[0m[0mdebug[0m] [0m[0m  *         Node([0m
+[0m[[0m[0mdebug[0m] [0m[0m  *           label = Some(1),[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *           metadata = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *           jsonkey = q1)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *         )),[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       id = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       label = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       directed = true,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       edges = List(SimpleEdge([0m
+[0m[[0m[0mdebug[0m] [0m[0m  *         source = q1,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *         target = q2,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *         id = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *         relation = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *         directed = true,[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *         label = Some(foo),[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *         metadata = None))[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       ))[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * }}}[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * A json file can be parsed and transformed into an AST using the parser[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * method of the [[https://circe.github.io/circe/parsing.html Circe]][0m
+[0m[[0m[0mdebug[0m] [0m[0m  * framework.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * {{{[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *   import com.github.tizuck.jsonGraphSchema.TopLevelSingleGraph[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *   import io.circe.parser[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *   ...[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *   val json:String = """..."""[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *   val parsed = parser.parse(json)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *   for{p <- parsed} yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *     for{ tpe <- p.as[TopLevelSingleGraph[Unit,Unit,Unit]]} yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *       //Do something with the toplevel unit[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *     }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * }}}[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * It is also possible to augment the AST with additional types on metadata[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * fields of the JSON graph. Generally, by adding `import[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * io.circe.generic.auto._` to your import statement, the circe framework is[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * able to auto generate decoders for your types. However, some types with more[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * complex structures may need to be decoded with custom decoders. See test[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * [[https://github.com/tizuck/scala-jgspec-dot/blob/main/src/test/scala/adt/integration/InterfaceAutomatonSpec.scala InterfaceAutomatonSpec]][0m
+[0m[[0m[0mdebug[0m] [0m[0m  * as an example for complex metadata structures. If your graph had a metadata[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * field `"metadata":0` for example, it could be processed in the following[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * way:[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * {{{[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * val json:String = """..."""[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * import io.circe.generic.auto._[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * sealed case class MetaData(meta:Int)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * val parsed = parser.parse(json)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * for{p <- parsed} yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *   for{ tpe <- p.as[TopLevelSingleGraph[MetaData,Unit,Unit]]} yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *     println(tpe)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *     //TopLevelSingleGraph(...,Some(MetaData(0)),...)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  *   }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  * }}}[0m
+[0m[[0m[0mdebug[0m] [0m[0m  */[0m
+[0m[[0m[0mdebug[0m] [0m[0mobject jsonGraphSchema {[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /** Represents multiple nodes of a graph of the JSON graph specification.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param nodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   nodes of a graph.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M2[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to nodes.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed case class Nodes[M2](nodes: List[Node[M2]])[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /** Represents a node of a graph of the JSON graph specification.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param label[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   optional label of the node.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param metadata[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   optional attached metadata of a node.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param jsonkey[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   nodes are stated as objects with a key in the JSON file. The key is[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   stored to link edges to nodes in a later step.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M2[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type of metadata attached to nodes.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed case class Node[M2]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      label: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      metadata: Option[M2] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      jsonkey: String[0m
+[0m[[0m[0mdebug[0m] [0m[0m  )[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /** Base type for three edge types [[SimpleEdge SimpleEdge]],[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * [[DirectedHyperEdge DirectedHyperEdge]] and[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * [[UndirectedHyperEdge UndirectedHyperEdge]].[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M3[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to edges.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed trait Edge[M3] {[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val id: Option[String][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val relation: Option[String][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val directed: Boolean[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val label: Option[String][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val metadata: Option[M3][0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /** Represents common graph edges consisting of two nodes and a connection[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * between the nodes of a graph in the JSON graph specification.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param source[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Source node of a graph edge.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param target[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Target node of a graph edge.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param id[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Optional identifier.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param relation[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Optional relationship specifier[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param directed[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   True, if edge is directed. False, otherwise.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param label[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Optional label.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param metadata[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   optional attached metadata of an edge.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M3[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for metadata attached to edges.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed case class SimpleEdge[M3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      source: String,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      target: String,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val id: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val relation: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val directed: Boolean = true,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val label: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val metadata: Option[M3] = None[0m
+[0m[[0m[0mdebug[0m] [0m[0m  ) extends Edge[M3][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /** Represents directed hyper graph edges consisting of multiple nodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * connected to each other and a connection between the nodes of a graph in[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * the JSON graph specification.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * This is representative for[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * [[https://en.wikipedia.org/wiki/Hypergraph Hypergraphs]] with directed[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * edges.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param source[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Source nodes of a hyper graph edge.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param target[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Target nodes of a hyper graph edge.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param id[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Optional identifier.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param relation[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Optional relationship specifier[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param directed[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   True, if edge is directed. False, otherwise.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param label[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Optional label.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param metadata[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   optional attached metadata of an edge.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M3[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type of metadata attached to edges.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed case class DirectedHyperEdge[M3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      source: List[String],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      target: List[String],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val id: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val relation: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val directed: Boolean = true,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val label: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val metadata: Option[M3] = None[0m
+[0m[[0m[0mdebug[0m] [0m[0m  ) extends Edge[M3][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /** Represents undirected hyper graph edges consisting of multiple nodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * connected to each other and a connection between the nodes of a graph in[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * the JSON graph specification.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param nodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   nodes connected with each other without a relationship direction.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param id[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Optional identifier.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param relation[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Optional relationship specifier[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param directed[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   False.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param label[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Optional label.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param metadata[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   optional attached metadata of an edge.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M3[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type of metadata attached to edges.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed case class UndirectedHyperEdge[M3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      nodes: List[String],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val id: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val relation: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val directed: Boolean = true,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val label: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val metadata: Option[M3] = None[0m
+[0m[[0m[0mdebug[0m] [0m[0m  ) extends Edge[M3][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /** Base Type for the three types of graphs possible to define in the JSON[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * graph specification.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M1[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to the graph.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M2[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to nodes.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M3[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to edges.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed trait Graph[M1, M2, M3] {[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val id: Option[String][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val label: Option[String][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val directed: Boolean[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val tpe: Option[String][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val metadata: Option[M1][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val nodes: Nodes[M2][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val edges: List[Edge[M3]][0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /** Represents common graph instances of the JSON graph specification.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M1[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to the graph.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M2[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to nodes.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M3[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to edges.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed case class SimpleGraph[M1, M2, M3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val tpe: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val metadata: Option[M1] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val nodes: Nodes[M2] = Nodes(List.empty[Node[M2]]),[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val id: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val label: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val directed: Boolean = true,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val edges: List[SimpleEdge[M3]] = List.empty[SimpleEdge[M3]][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ) extends Graph[M1, M2, M3] {}[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /** Represents directed hyper edge instances of the JSON graph specification.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M1[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to the graph.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M2[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to nodes.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M3[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to edges.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed case class DirectedHyperGraph[M1, M2, M3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val tpe: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val metadata: Option[M1] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val nodes: Nodes[M2] = Nodes(List.empty[Node[M2]]),[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val id: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val label: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val directed: Boolean = true,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val edges: List[DirectedHyperEdge[M3]] =[0m
+[0m[[0m[0mdebug[0m] [0m[0m        List.empty[DirectedHyperEdge[M3]][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ) extends Graph[M1, M2, M3][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /** Represents undirected hyper edge instances of the JSON graph[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * specification.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M1[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to the graph.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M2[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to nodes.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M3[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to edges.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed case class UndirectedHyperGraph[M1, M2, M3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val tpe: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val metadata: Option[M1] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val nodes: Nodes[M2] = Nodes(List.empty[Node[M2]]),[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val id: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val label: Option[String] = None,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val directed: Boolean = false,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      override val edges: List[UndirectedHyperEdge[M3]][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ) extends Graph[M1, M2, M3][0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /** Top level container for any graph of the three graph types[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * [[SimpleGraph SimpleGraph]], [[DirectedHyperGraph DirectedHyperGraph]] or[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * [[UndirectedHyperGraph UndirectedHyperGraph]].[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param graph[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   graph according to the[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   [[https://github.com/jsongraph/json-graph-specification/blob/master/json-graph-schema_v2.json JSON specification v2]].[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   * @tparam M1 type for meta data attached to the graph.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M1[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to the graph.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M2[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to nodes.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M3[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   Type for meta data attached to edges.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed case class TopLevelSingleGraph[M1, M2, M3](graph: Graph[M1, M2, M3])[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  /** Top level container for any multiple graphs of the three graph types[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * [[SimpleGraph SimpleGraph]], [[DirectedHyperGraph DirectedHyperGraph]] or[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * [[UndirectedHyperGraph UndirectedHyperGraph]].[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @param graphs[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   graph according to the[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   [[https://github.com/jsongraph/json-graph-specification/blob/master/json-graph-schema_v2.json JSON specification v2]].[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   * @tparam M1 type for meta data attached to the graph.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M1[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   type for meta data attached to the graph.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M2[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   type for meta data attached to nodes.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    * @tparam M3[0m
+[0m[[0m[0mdebug[0m] [0m[0m    *   type for meta data attached to edges.[0m
+[0m[[0m[0mdebug[0m] [0m[0m    */[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed case class TopLevelMultipleGraphs[M1, M2, M3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      graphs: List[Graph[M1, M2, M3]][0m
+[0m[[0m[0mdebug[0m] [0m[0m  )[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit def toplevelSingleGraphDecoder[M1, M2, M3, E <: Edge[M3]](implicit[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t1decoder: Decoder[M1],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t2decoder: Decoder[M2],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t3decoder: Decoder[M3][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): Decoder[TopLevelSingleGraph[M1, M2, M3]] = { (c: HCursor) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m    {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      for {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        graph <- c.downField("graph").as[Graph[M1, M2, M3]][0m
+[0m[[0m[0mdebug[0m] [0m[0m      } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        TopLevelSingleGraph(graph)[0m
+[0m[[0m[0mdebug[0m] [0m[0m      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit def topLevelMultipleGraphsDecoder[M1, M2, M3, E <: Edge[M3]](implicit[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t1decoder: Decoder[M1],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t2decoder: Decoder[M2],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t3decoder: Decoder[M3][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): Decoder[TopLevelMultipleGraphs[M1, M2, M3]] = { (c: HCursor) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m    {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      for {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        graphs <- c.downField("graphs").as[List[Graph[M1, M2, M3]]][0m
+[0m[[0m[0mdebug[0m] [0m[0m      } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        TopLevelMultipleGraphs(graphs)[0m
+[0m[[0m[0mdebug[0m] [0m[0m      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  import cats.syntax.functor._[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit def edgeDecoder[T](implicit[0m
+[0m[[0m[0mdebug[0m] [0m[0m      tDecoder: Decoder[T][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): Decoder[Edge[T]] = {[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val l: List[Decoder[Edge[T]]] = List[Decoder[Edge[T]]]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      Decoder[SimpleEdge[T]].widen,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Decoder[DirectedHyperEdge[T]].widen,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Decoder[UndirectedHyperEdge[T]].widen[0m
+[0m[[0m[0mdebug[0m] [0m[0m    )[0m
+[0m[[0m[0mdebug[0m] [0m[0m    l.reduceLeft(_ or _)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit def directedHyperEdge[T](implicit[0m
+[0m[[0m[0mdebug[0m] [0m[0m      tDecoder: Decoder[T][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): Decoder[DirectedHyperEdge[T]] = { (c: HCursor) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m    {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      for {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        id <- c.downField("id").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        source <- c.downField("source").as[List[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        target <- c.downField("target").as[List[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        relation <- c.downField("relation").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        directed <- c.downField("directed").as[Option[Boolean]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        label <- c.downField("label").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        metadata <- c.downField("metadata").as[Option[T]][0m
+[0m[[0m[0mdebug[0m] [0m[0m      } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        new DirectedHyperEdge[T]([0m
+[0m[[0m[0mdebug[0m] [0m[0m          id = id,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          source = source,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          target = target,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          relation = relation,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          directed = directed.getOrElse(true),[0m
+[0m[[0m[0mdebug[0m] [0m[0m          label = label,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          metadata = metadata[0m
+[0m[[0m[0mdebug[0m] [0m[0m        )[0m
+[0m[[0m[0mdebug[0m] [0m[0m      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit def undirectedHyperEdge[T](implicit[0m
+[0m[[0m[0mdebug[0m] [0m[0m      tDecoder: Decoder[T][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): Decoder[UndirectedHyperEdge[T]] = { (c: HCursor) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m    {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      for {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        id <- c.downField("id").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        relation <- c.downField("relation").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        directed <- c.downField("directed").as[Option[Boolean]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        label <- c.downField("label").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        metadata <- c.downField("metadata").as[Option[T]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        nodes <- c.downField("nodes").as[List[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m      } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        new UndirectedHyperEdge[T]([0m
+[0m[[0m[0mdebug[0m] [0m[0m          id = id,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          relation = relation,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          directed = directed.getOrElse(true),[0m
+[0m[[0m[0mdebug[0m] [0m[0m          label = label,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          metadata = metadata,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          nodes = nodes[0m
+[0m[[0m[0mdebug[0m] [0m[0m        )[0m
+[0m[[0m[0mdebug[0m] [0m[0m      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit def simpleEdgeDecoder[T1](implicit[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t1Decoder: Decoder[T1][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): Decoder[SimpleEdge[T1]] = { (c: HCursor) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m    {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      for {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        id <- c.downField("id").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        source <- c.downField("source").as[String][0m
+[0m[[0m[0mdebug[0m] [0m[0m        target <- c.downField("target").as[String][0m
+[0m[[0m[0mdebug[0m] [0m[0m        relation <- c.downField("relation").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        directed <- c.downField("directed").as[Option[Boolean]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        label <- c.downField("label").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        metadata <- c.downField("metadata").as[Option[T1]][0m
+[0m[[0m[0mdebug[0m] [0m[0m      } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        new SimpleEdge[T1]([0m
+[0m[[0m[0mdebug[0m] [0m[0m          id = id,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          source = source,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          target = target,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          relation = relation,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          directed = directed.getOrElse(true),[0m
+[0m[[0m[0mdebug[0m] [0m[0m          label = label,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          metadata = metadata[0m
+[0m[[0m[0mdebug[0m] [0m[0m        )[0m
+[0m[[0m[0mdebug[0m] [0m[0m      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit def nodeDecoder[T1](implicit[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t1Decoder: Decoder[T1][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): Decoder[Node[T1]] = { (c: HCursor) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m    {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      for {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        label <- c.downField("label").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        metadata <- c.downField("metadata").as[Option[T1]][0m
+[0m[[0m[0mdebug[0m] [0m[0m      } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        new Node[T1]([0m
+[0m[[0m[0mdebug[0m] [0m[0m          label = label,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          metadata = metadata,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          // Value is initialized empty and set in a higher level decoder who knows about the[0m
+[0m[[0m[0mdebug[0m] [0m[0m          // value of the key[0m
+[0m[[0m[0mdebug[0m] [0m[0m          jsonkey = ""[0m
+[0m[[0m[0mdebug[0m] [0m[0m        )[0m
+[0m[[0m[0mdebug[0m] [0m[0m      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit def nodesDecoder[T1](implicit[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t1Decoder: Decoder[T1][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): Decoder[Nodes[T1]] = { (c: HCursor) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m    {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      val keys = c.keys.getOrElse(Nil)[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m      val nodes = for { key <- keys } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        for {[0m
+[0m[[0m[0mdebug[0m] [0m[0m          node <- c.downField(key).as[Node[T1]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m          node.copy(jsonkey = key)[0m
+[0m[[0m[0mdebug[0m] [0m[0m        }[0m
+[0m[[0m[0mdebug[0m] [0m[0m      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m      nodes.foldLeft([0m
+[0m[[0m[0mdebug[0m] [0m[0m        Right[DecodingFailure, Nodes[T1]](Nodes(List.empty[Node[T1]])).withLeft[0m
+[0m[[0m[0mdebug[0m] [0m[0m      ) { case (acc, value) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m        acc match {[0m
+[0m[[0m[0mdebug[0m] [0m[0m          case l @ Left(_) => l[0m
+[0m[[0m[0mdebug[0m] [0m[0m          case Right(v) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m            value match {[0m
+[0m[[0m[0mdebug[0m] [0m[0m              case l @ Left(_) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m                Left(DecodingFailure(l.value.reason, c.history))[0m
+[0m[[0m[0mdebug[0m] [0m[0m              case Right(value) => Right(v.copy(nodes = v.nodes ++ List(value)))[0m
+[0m[[0m[0mdebug[0m] [0m[0m            }[0m
+[0m[[0m[0mdebug[0m] [0m[0m        }[0m
+[0m[[0m[0mdebug[0m] [0m[0m      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit def graphDecoder[T1, T2, T3](implicit[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t1decoder: Decoder[T1],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t2decoder: Decoder[T2],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t3decoder: Decoder[T3][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): Decoder[Graph[T1, T2, T3]] = {[0m
+[0m[[0m[0mdebug[0m] [0m[0m    val l: List[Decoder[Graph[T1, T2, T3]]] = List[Decoder[Graph[T1, T2, T3]]]([0m
+[0m[[0m[0mdebug[0m] [0m[0m      Decoder[SimpleGraph[T1, T2, T3]].widen,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Decoder[DirectedHyperGraph[T1, T2, T3]].widen,[0m
+[0m[[0m[0mdebug[0m] [0m[0m      Decoder[UndirectedHyperGraph[T1, T2, T3]].widen[0m
+[0m[[0m[0mdebug[0m] [0m[0m    )[0m
+[0m[[0m[0mdebug[0m] [0m[0m    l.reduceLeft(_ or _)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit def undirectedHyperGraphDecoder[T1, T2, T3](implicit[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t1decoder: Decoder[T1],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t2decoder: Decoder[T2],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t3decoder: Decoder[T3][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): Decoder[UndirectedHyperGraph[T1, T2, T3]] = { (c: HCursor) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m    {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      for {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        id <- c.downField("id").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        label <- c.downField("label").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        directed <- c.downField("directed").as[Option[Boolean]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        tpe <- c.downField("type").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        metadata <- c.downField("metadata").as[Option[T1]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        nodes <- c.downField("nodes").as[Option[Nodes[T2]]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        edges <- c[0m
+[0m[[0m[0mdebug[0m] [0m[0m          .downField("hyperedges")[0m
+[0m[[0m[0mdebug[0m] [0m[0m          .as[Option[List[UndirectedHyperEdge[T3]]]][0m
+[0m[[0m[0mdebug[0m] [0m[0m      } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        new UndirectedHyperGraph[T1, T2, T3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m          id = id,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          label = label,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          directed = directed.getOrElse(false),[0m
+[0m[[0m[0mdebug[0m] [0m[0m          tpe = tpe,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          metadata = metadata,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          nodes = nodes.getOrElse(Nodes(Nil)),[0m
+[0m[[0m[0mdebug[0m] [0m[0m          edges = edges.getOrElse(Nil)[0m
+[0m[[0m[0mdebug[0m] [0m[0m        )[0m
+[0m[[0m[0mdebug[0m] [0m[0m      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit def directedHyperGraphEncoder[T1, T2, T3](implicit[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t1decoder: Decoder[T1],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t2decoder: Decoder[T2],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t3decoder: Decoder[T3][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): Decoder[DirectedHyperGraph[T1, T2, T3]] = { (c: HCursor) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m    {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      for {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        id <- c.downField("id").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        label <- c.downField("label").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        directed <- c.downField("directed").as[Option[Boolean]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        tpe <- c.downField("type").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        metadata <- c.downField("metadata").as[Option[T1]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        nodes <- c.downField("nodes").as[Option[Nodes[T2]]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        edges <- c[0m
+[0m[[0m[0mdebug[0m] [0m[0m          .downField("hyperedges")[0m
+[0m[[0m[0mdebug[0m] [0m[0m          .as[Option[List[DirectedHyperEdge[T3]]]][0m
+[0m[[0m[0mdebug[0m] [0m[0m      } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        new DirectedHyperGraph[T1, T2, T3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m          id = id,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          label = label,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          directed = directed.getOrElse(true),[0m
+[0m[[0m[0mdebug[0m] [0m[0m          tpe = tpe,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          metadata = metadata,[0m
+[0m[[0m[0mdebug[0m] [0m[0m          nodes = nodes.getOrElse(Nodes(Nil)),[0m
+[0m[[0m[0mdebug[0m] [0m[0m          edges = edges.getOrElse(Nil)[0m
+[0m[[0m[0mdebug[0m] [0m[0m        )[0m
+[0m[[0m[0mdebug[0m] [0m[0m      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  implicit def simpleGraphDecoder[T1, T2, T3](implicit[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t1decoder: Decoder[T1],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t2decoder: Decoder[T2],[0m
+[0m[[0m[0mdebug[0m] [0m[0m      t3decoder: Decoder[T3][0m
+[0m[[0m[0mdebug[0m] [0m[0m  ): Decoder[SimpleGraph[T1, T2, T3]] = { (c: HCursor) =>[0m
+[0m[[0m[0mdebug[0m] [0m[0m    {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      // We need this distinction here because otherwise the hyperedges[0m
+[0m[[0m[0mdebug[0m] [0m[0m      // field can be ignored by the decoder and the other fields would still[0m
+[0m[[0m[0mdebug[0m] [0m[0m      // be compatible with a instance of SimpleEdge.[0m
+[0m[[0m[0mdebug[0m] [0m[0m      if (c.keys.exists(key => key.exists(s => s.equals("hyperedges")))) {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        Left([0m
+[0m[[0m[0mdebug[0m] [0m[0m          DecodingFailure([0m
+[0m[[0m[0mdebug[0m] [0m[0m            "Hyperedges unaccepted member of simple graph",[0m
+[0m[[0m[0mdebug[0m] [0m[0m            c.history[0m
+[0m[[0m[0mdebug[0m] [0m[0m          )[0m
+[0m[[0m[0mdebug[0m] [0m[0m        )[0m
+[0m[[0m[0mdebug[0m] [0m[0m      } else {[0m
+[0m[[0m[0mdebug[0m] [0m[0m        for {[0m
+[0m[[0m[0mdebug[0m] [0m[0m          id <- c.downField("id").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m          label <- c.downField("label").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m          directed <- c.downField("directed").as[Option[Boolean]][0m
+[0m[[0m[0mdebug[0m] [0m[0m          tpe <- c.downField("type").as[Option[String]][0m
+[0m[[0m[0mdebug[0m] [0m[0m          metadata <- c.downField("metadata").as[Option[T1]][0m
+[0m[[0m[0mdebug[0m] [0m[0m          nodes <- c.downField("nodes").as[Option[Nodes[T2]]][0m
+[0m[[0m[0mdebug[0m] [0m[0m          edges <- c.downField("edges").as[Option[List[SimpleEdge[T3]]]][0m
+[0m[[0m[0mdebug[0m] [0m[0m        } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m          new SimpleGraph[T1, T2, T3]([0m
+[0m[[0m[0mdebug[0m] [0m[0m            id = id,[0m
+[0m[[0m[0mdebug[0m] [0m[0m            label = label,[0m
+[0m[[0m[0mdebug[0m] [0m[0m            directed = directed.getOrElse(true),[0m
+[0m[[0m[0mdebug[0m] [0m[0m            tpe = tpe,[0m
+[0m[[0m[0mdebug[0m] [0m[0m            metadata = metadata,[0m
+[0m[[0m[0mdebug[0m] [0m[0m            nodes = nodes.getOrElse(Nodes(Nil)),[0m
+[0m[[0m[0mdebug[0m] [0m[0m            edges = edges.getOrElse(Nil)[0m
+[0m[[0m[0mdebug[0m] [0m[0m          )[0m
+[0m[[0m[0mdebug[0m] [0m[0m        }[0m
+[0m[[0m[0mdebug[0m] [0m[0m      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m}[0m
+[0m[[0m[0mdebug[0m] [0m[0m)[0m
+[0m[[0m[0mdebug[0m] [0m[0mAbout to create/update header for C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0mFirst line of file is:[0m
+[0m[[0m[0mdebug[0m] [0m[0mText of file is:[0m
+[0m[[0m[0mdebug[0m] [0m[0mpackage com.github.tizuck[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport com.github.tizuck.jsonGraphSchema.TopLevelSingleGraph[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport io.circe.parser[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mobject Main extends App {[0m
+[0m[[0m[0mdebug[0m] [0m[0m  val json =[0m
+[0m[[0m[0mdebug[0m] [0m[0m    """[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |{[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |      "graph":{[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |        "metadata":{"meta":0},[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |        "nodes":{[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |          "q1":{[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |            "label":"1"[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |          }[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |        },[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |        "edges":[[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |          {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |            "source":"q1",[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |            "target":"q2",[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |           "label":"foo"[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |          }[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |        ][0m
+[0m[[0m[0mdebug[0m] [0m[0m      |      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |""".stripMargin[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  import io.circe.generic.auto._[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed case class MetaData(meta: Int)[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  val parsed = parser.parse(json)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  println(parsed)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  for { p <- parsed } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m    for { tpe <- p.as[TopLevelSingleGraph[MetaData, Unit, Unit]] } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      println(tpe)[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m}[0m
+[0m[[0m[0mdebug[0m] [0m[0mModified text of file is:[0m
+[0m[[0m[0mdebug[0m] [0m[0mSome(/*[0m
+[0m[[0m[0mdebug[0m] [0m[0m * Copyright 2022 Tilman Zuckmantel[0m
+[0m[[0m[0mdebug[0m] [0m[0m *[0m
+[0m[[0m[0mdebug[0m] [0m[0m * Licensed under the Apache License, Version 2.0 (the "License");[0m
+[0m[[0m[0mdebug[0m] [0m[0m * you may not use this file except in compliance with the License.[0m
+[0m[[0m[0mdebug[0m] [0m[0m * You may obtain a copy of the License at[0m
+[0m[[0m[0mdebug[0m] [0m[0m *[0m
+[0m[[0m[0mdebug[0m] [0m[0m *     http://www.apache.org/licenses/LICENSE-2.0[0m
+[0m[[0m[0mdebug[0m] [0m[0m *[0m
+[0m[[0m[0mdebug[0m] [0m[0m * Unless required by applicable law or agreed to in writing, software[0m
+[0m[[0m[0mdebug[0m] [0m[0m * distributed under the License is distributed on an "AS IS" BASIS,[0m
+[0m[[0m[0mdebug[0m] [0m[0m * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.[0m
+[0m[[0m[0mdebug[0m] [0m[0m * See the License for the specific language governing permissions and[0m
+[0m[[0m[0mdebug[0m] [0m[0m * limitations under the License.[0m
+[0m[[0m[0mdebug[0m] [0m[0m */[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mpackage com.github.tizuck[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport com.github.tizuck.jsonGraphSchema.TopLevelSingleGraph[0m
+[0m[[0m[0mdebug[0m] [0m[0mimport io.circe.parser[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mobject Main extends App {[0m
+[0m[[0m[0mdebug[0m] [0m[0m  val json =[0m
+[0m[[0m[0mdebug[0m] [0m[0m    """[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |{[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |      "graph":{[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |        "metadata":{"meta":0},[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |        "nodes":{[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |          "q1":{[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |            "label":"1"[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |          }[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |        },[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |        "edges":[[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |          {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |            "source":"q1",[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |            "target":"q2",[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |           "label":"foo"[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |          }[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |        ][0m
+[0m[[0m[0mdebug[0m] [0m[0m      |      }[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m      |""".stripMargin[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  import io.circe.generic.auto._[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  sealed case class MetaData(meta: Int)[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m  val parsed = parser.parse(json)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  println(parsed)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  for { p <- parsed } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m    for { tpe <- p.as[TopLevelSingleGraph[MetaData, Unit, Unit]] } yield {[0m
+[0m[[0m[0mdebug[0m] [0m[0m      println(tpe)[0m
+[0m[[0m[0mdebug[0m] [0m[0m    }[0m
+[0m[[0m[0mdebug[0m] [0m[0m  }[0m
+[0m[[0m[0mdebug[0m] [0m[0m}[0m
+[0m[[0m[0mdebug[0m] [0m[0m)[0m
+[0m[[0m[0minfo[0m] [0m[0mHeaders created for 3 files:[0m
+[0m[[0m[0minfo[0m] [0m[0m  C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala[0m
+[0m[[0m[0minfo[0m] [0m[0m  C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala[0m
+[0m[[0m[0minfo[0m] [0m[0m  C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala[0m

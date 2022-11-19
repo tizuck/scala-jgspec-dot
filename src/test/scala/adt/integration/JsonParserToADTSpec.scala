@@ -16,10 +16,10 @@ import io.circe.parser._
 import org.scalatest.Assertion
 import org.scalatest.wordspec.AnyWordSpec
 
-/**
- * Test for decoding JSON files given on github page of the JSON graph specification
- * ([[https://github.com/jsongraph/json-graph-specification]]) into an AST of [[jsonGraphSchema]].
- */
+/** Test for decoding JSON files given on github page of the JSON graph
+  * specification ([[https://github.com/jsongraph/json-graph-specification]])
+  * into an AST of [[jsonGraphSchema]].
+  */
 class JsonParserToADTSpec extends AnyWordSpec {
 
   val empty = "src/test/resources/empty.json"
