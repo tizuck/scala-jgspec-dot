@@ -102,14 +102,36 @@ import io.circe.{Decoder, DecodingFailure, HCursor}
  */
 object jsonGraphSchema {
 
-  sealed case class Nodes[T](nodes: List[Node[T]])
-  sealed case class Node[T](
-      label: Option[String] = None,
-      metadata: Option[T] = None,
-      jsonkey: String
+  /**
+   * Represents multiple nodes of a graph of the JSON graph specification.
+   *
+   * @param nodes nodes of a graph.
+   * @tparam M2 Type for meta data attached to nodes.
+   */
+  sealed case class Nodes[M2](nodes: List[Node[M2]])
+
+  /**
+   * Represents a node of a graph of the JSON graph specification.
+   *
+   * @param label optional label of the node.
+   * @param metadata optional attached metadata of a node.
+   * @param jsonkey nodes are stated as objects with a key in the JSON file.
+   *                The key is stored to link edges to nodes in a later step.
+   * @tparam M2 Type of metadata attached to nodes.
+   */
+  sealed case class Node[M2](
+                              label: Option[String] = None,
+                              metadata: Option[M2] = None,
+                              jsonkey: String
   )
 
-  sealed trait Edge[T] {
+  /**
+   * Base type for three edge types [[SimpleEdge SimpleEdge]], [[DirectedHyperEdge DirectedHyperEdge]]
+   * and [[UndirectedHyperEdge UndirectedHyperEdge]].
+   *
+   * @tparam M3 Type for meta data attached to edges.
+   */
+  sealed trait Edge[M3] {
     val id: Option[String]
 
     val relation: Option[String]
@@ -118,44 +140,85 @@ object jsonGraphSchema {
 
     val label: Option[String]
 
-    val metadata: Option[T]
+    val metadata: Option[M3]
   }
-  sealed case class SimpleEdge[T](
+
+  /**
+   * Represents common graph edges consisting of two nodes and a connection between the nodes of
+   * a graph in the JSON graph specification.
+   *
+   * @param source Source node of a graph edge.
+   * @param target Target node of a graph edge.
+   * @param id Optional identifier.
+   * @param relation Optional relationship specifier
+   * @param directed True, if edge is directed. False, otherwise.
+   * @param label Optional label.
+   * @param metadata optional attached metadata of an edge.
+   * @tparam M3 Type for metadata attached to edges.
+   */
+  sealed case class SimpleEdge[M3](
       source: String,
       target: String,
       override val id: Option[String] = None,
       override val relation: Option[String] = None,
       override val directed: Boolean = true,
       override val label: Option[String] = None,
-      override val metadata: Option[T] = None
-  ) extends Edge[T]
+      override val metadata: Option[M3] = None
+  ) extends Edge[M3]
 
-  sealed case class DirectedHyperEdge[T](
+  /**
+   * Represents directed hyper graph edges consisting of multiple nodes connected to each other
+   * and a connection between the nodes of a graph in the JSON graph specification.
+   *
+   * This is representative for [[https://en.wikipedia.org/wiki/Hypergraph Hypergraphs]] with directed edges.
+   *
+   * @param source   Source nodes of a hyper graph edge.
+   * @param target   Target nodes of a hyper graph edge.
+   * @param id       Optional identifier.
+   * @param relation Optional relationship specifier
+   * @param directed True, if edge is directed. False, otherwise.
+   * @param label    Optional label.
+   * @param metadata optional attached metadata of an edge.
+   * @tparam M3 Type of metadata attached to edges.
+   */
+  sealed case class DirectedHyperEdge[M3](
       source: List[String],
       target: List[String],
       override val id: Option[String] = None,
       override val relation: Option[String] = None,
       override val directed: Boolean = true,
       override val label: Option[String] = None,
-      override val metadata: Option[T] = None
-  ) extends Edge[T]
+      override val metadata: Option[M3] = None
+  ) extends Edge[M3]
 
-  sealed case class UndirectedHyperEdge[T](
+  /**
+   * Represents undirected hyper graph edges consisting of multiple nodes connected to each other
+   * and a connection between the nodes of a graph in the JSON graph specification.
+   *
+   * @param nodes    nodes connected with each other without a relationship direction.
+   * @param id       Optional identifier.
+   * @param relation Optional relationship specifier
+   * @param directed False.
+   * @param label    Optional label.
+   * @param metadata optional attached metadata of an edge.
+   * @tparam M3 Type of metadata attached to edges.
+   */
+  sealed case class UndirectedHyperEdge[M3](
       nodes: List[String],
       override val id: Option[String] = None,
       override val relation: Option[String] = None,
       override val directed: Boolean = true,
       override val label: Option[String] = None,
-      override val metadata: Option[T] = None
-  ) extends Edge[T]
+      override val metadata: Option[M3] = None
+  ) extends Edge[M3]
 
   /**
    * Base Type for the three types of graphs possible to define
    * in the JSON graph specification.
    *
-   * @tparam M1 type for meta data attached to the graph.
-   * @tparam M2 type for meta data attached to nodes.
-   * @tparam M3 type for meta data attached to edges.
+   * @tparam M1 Type for meta data attached to the graph.
+   * @tparam M2 Type for meta data attached to nodes.
+   * @tparam M3 Type for meta data attached to edges.
    */
   sealed trait Graph[M1, M2, M3] {
     val id: Option[String]
@@ -172,6 +235,14 @@ object jsonGraphSchema {
 
     val edges: List[Edge[M3]]
   }
+
+  /**
+   * Represents common graph instances of the JSON graph specification.
+   *
+   * @tparam M1 Type for meta data attached to the graph.
+   * @tparam M2 Type for meta data attached to nodes.
+   * @tparam M3 Type for meta data attached to edges.
+   */
   sealed case class SimpleGraph[M1, M2, M3](
       override val tpe: Option[String] = None,
       override val metadata: Option[M1] = None,
@@ -182,6 +253,14 @@ object jsonGraphSchema {
       override val edges: List[SimpleEdge[M3]] = List.empty[SimpleEdge[M3]]
   ) extends Graph[M1, M2, M3] {}
 
+  /**
+   *
+   * Represents directed hyper edge instances of the JSON graph specification.
+   *
+   * @tparam M1 Type for meta data attached to the graph.
+   * @tparam M2 Type for meta data attached to nodes.
+   * @tparam M3 Type for meta data attached to edges.
+   */
   sealed case class DirectedHyperGraph[M1, M2, M3](
       override val tpe: Option[String] = None,
       override val metadata: Option[M1] = None,
@@ -193,6 +272,14 @@ object jsonGraphSchema {
         List.empty[DirectedHyperEdge[M3]]
   ) extends Graph[M1, M2, M3]
 
+  /**
+   *
+   * Represents undirected hyper edge instances of the JSON graph specification.
+   *
+   * @tparam M1 Type for meta data attached to the graph.
+   * @tparam M2 Type for meta data attached to nodes.
+   * @tparam M3 Type for meta data attached to edges.
+   */
   sealed case class UndirectedHyperGraph[M1, M2, M3](
       override val tpe: Option[String] = None,
       override val metadata: Option[M1] = None,
@@ -211,9 +298,9 @@ object jsonGraphSchema {
    *              [[https://github.com/jsongraph/json-graph-specification/blob/master/json-graph-schema_v2.json
    *              JSON specification v2]].
    *              * @tparam M1 type for meta data attached to the graph.
-   * @tparam M1 type for meta data attached to the graph.
-   * @tparam M2 type for meta data attached to nodes.
-   * @tparam M3 type for meta data attached to edges.
+   * @tparam M1 Type for meta data attached to the graph.
+   * @tparam M2 Type for meta data attached to nodes.
+   * @tparam M3 Type for meta data attached to edges.
    */
   sealed case class TopLevelSingleGraph[M1, M2, M3](graph: Graph[M1, M2, M3])
 
