@@ -22,7 +22,8 @@ import jsonGraphSchema.{
   Node,
   SimpleGraph,
   TopLevelSingleGraph,
-  UndirectedHyperGraph
+  UndirectedHyperGraph,
+  TopLevelMultipleGraphs
 }
 
 import scalax.collection.GraphEdge.{Bag, CollectionKind}
@@ -35,6 +36,15 @@ import scalax.collection.io.dot.{
   NodeTransformer
 }
 
+/**
+ * Container for the string representation of decoded JSON graph
+ * specification files.
+ *
+ * Use the apply method to transform a [[TopLevelSingleGraph TopLevelSingleGraph]] or
+ * [[TopLevelMultipleGraphs TopLevelMultipleGraphs]]
+ * into a
+ * @param dot
+ */
 sealed case class DotRepresentation(dot: String)
 
 object DotRepresentation {

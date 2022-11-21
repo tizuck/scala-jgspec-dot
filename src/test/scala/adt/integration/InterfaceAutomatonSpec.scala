@@ -1,3 +1,19 @@
+/*
+ * Copyright 2022 Tilman Zuckmantel
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.github.tizuck
 package adt.integration
 
@@ -107,7 +123,7 @@ class InterfaceAutomatonSpec extends RefSpec with Matchers {
       * decoder can not be auto generated since we want to differentiate the
       * type of the [[ast.Event]] subclass by a field lookup on `tpe`.
       *
-      * Notice that for all other classes of [[ast]] the Circe fframework is
+      * Notice that for all other classes of [[ast]] the Circe framework is
       * able to auto-generate [[Decoder]] instances.
       *
       * For more information on creating decoders see the webpage of
@@ -221,7 +237,7 @@ class InterfaceAutomatonSpec extends RefSpec with Matchers {
           innerEdge.edge match {
             case LDiEdge(source, target, label) =>
               label match {
-                case s: SimpleEdge[Event] =>
+                case s: SimpleEdge[_] =>
                   val label: String = s.metadata match {
                     case Some(event) =>
                       event match {
@@ -307,6 +323,7 @@ class InterfaceAutomatonSpec extends RefSpec with Matchers {
                       )
                     )
                   )
+                case e@_ => throw new IllegalStateException(s"Type other than LDiEdge unexpected, actual type: [${e.getClass.getSimpleName}]")
               }
           }
         }

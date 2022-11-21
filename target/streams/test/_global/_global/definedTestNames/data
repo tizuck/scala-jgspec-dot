@@ -1,1 +1,0 @@
-["com.github.tizuck.adt.unit.GraphADTSpec","com.github.tizuck.adt.integration.JsonParserToADTSpec","com.github.tizuck.adt.integration.JsonGraphsToADTSpec","com.github.tizuck.adt.unit.EdgeADTSpec","com.github.tizuck.adt.integration.InterfaceAutomatonSpec"]

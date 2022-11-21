@@ -1,9 +1,0 @@
-[debug] scalafmt: Adding repositories [https://repo1.maven.org/maven2/]
-[debug] scalafmt: considering all files (no git)
-[debug] scalafmt: Change report:
-[debug] 	Checked: C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala, C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala, C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala
-[debug] 	Modified: 
-[debug] 	Unmodified: C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\main\scala\jsonGraphSchema.scala, C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\main\scala\Main.scala, C:\Users\Tilman\Documents\Repos\scala-jgspec-dot\src\main\scala\dot\DotRepresentation.scala
-[debug] 	Added: 
-[debug] 	Removed: 
-[debug] scalafmt: Unchanged 0 Scala sources

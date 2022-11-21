@@ -46,10 +46,8 @@ object Main extends App {
   sealed case class MetaData(meta: Int)
 
   val parsed = parser.parse(json)
-  println(parsed)
   for { p <- parsed } yield {
     for { tpe <- p.as[TopLevelSingleGraph[MetaData, Unit, Unit]] } yield {
-      println(tpe)
     }
   }
 }
