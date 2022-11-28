@@ -16,38 +16,78 @@
 
 package com.github.tizuck
 
-import com.github.tizuck.jsonGraphSchema.TopLevelSingleGraph
+import dot.DotRepresentation
+import dot.DotRepresentation.RepresentationCtx
+import jsonGraphSchema.{Node, SimpleEdge, TopLevelSingleGraph}
+
 import io.circe.parser
+import scalax.collection.edge.LDiEdge
+import scalax.collection.io.dot.{
+  DotAttr,
+  DotEdgeStmt,
+  DotGraph,
+  DotRootGraph,
+  Id,
+  NodeId
+}
 
 object Main extends App {
   val json =
     """
       |{
-      |      "graph":{
-      |        "metadata":{"meta":0},
-      |        "nodes":{
-      |          "q1":{
-      |            "label":"1"
-      |          }
-      |        },
-      |        "edges":[
-      |          {
+      |       "graph":{
+      |         "nodes":{
+      |           "q1":{"label":"1"},
+      |           "q2":{"label":"2"}
+      |         },
+      |         "edges":[
+      |           {
       |            "source":"q1",
-      |            "target":"q2",
-      |           "label":"foo"
-      |          }
+      |             "target":"q2",
+      |             "label":"foo"
+      |           }
       |        ]
-      |      }
+      |       }
       |    }
       |""".stripMargin
 
-  import io.circe.generic.auto._
-
   sealed case class MetaData(meta: Int)
+
+  val dotRoot = DotRootGraph(directed = true, None)
+
+  def edgeTransformer(
+      innerEdge: scalax.collection.Graph[Node[Unit], LDiEdge]#EdgeT
+  ): Option[(DotGraph, DotEdgeStmt)] = {
+    innerEdge.edge match {
+      case LDiEdge(source, target, label) =>
+        label match {
+          case s: SimpleEdge[_] if s.label.nonEmpty =>
+            Some(
+              (
+                dotRoot,
+                DotEdgeStmt(
+                  NodeId(source.toOuter.jsonkey),
+                  NodeId(target.toOuter.jsonkey),
+                  List(DotAttr(Id("label"), Id(s.label.get)))
+                )
+              )
+            )
+          case _ => None
+        }
+      case _ => None
+    }
+  }
+
+  val rep = RepresentationCtx(
+    dotRoot = DotRootGraph(directed = true, None),
+    edgeTransformer
+  )
 
   val parsed = parser.parse(json)
   for { p <- parsed } yield {
-    for { tpe <- p.as[TopLevelSingleGraph[MetaData, Unit, Unit]] } yield {
+    for { tpe <- p.as[TopLevelSingleGraph[Unit, Unit, Unit]] } yield {
+      println(DotRepresentation(tpe, rep).dot)
     }
   }
+
 }

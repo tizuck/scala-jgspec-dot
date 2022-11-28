@@ -94,10 +94,11 @@ import io.circe.{Decoder, DecodingFailure, HCursor}
   * }}}
   *
   * It is also possible to augment the AST with additional types on metadata
-  * fields of the JSON graph. Generally, by adding
-  * <pre>import io.circe.generic.auto._</pre> to your import statement, the circe framework is
-  * able to auto generate decoders for your types. However, some types with more
-  * complex structures may need to be decoded with custom decoders. See test
+  * fields of the JSON graph. Generally, by adding <pre>import
+  * io.circe.generic.auto._</pre> to your import statement, the circe framework
+  * is able to auto generate decoders for your types. However, some types with
+  * more complex structures may need to be decoded with custom decoders. See
+  * test
   * [[https://github.com/tizuck/scala-jgspec-dot/blob/main/src/test/scala/adt/integration/InterfaceAutomatonSpec.scala InterfaceAutomatonSpec]]
   * as an example for complex metadata structures. If your graph had a metadata
   * field `"metadata":0` for example, it could be processed in the following
